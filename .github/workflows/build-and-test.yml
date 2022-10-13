@@ -44,13 +44,14 @@ jobs:
           cmake -S . -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.build }} \
             -DCMAKE_MAKE_PROGRAM=ninja \
+            -DLLVM_EXTERNAL_LIT=`which lit` \
             -G Ninja
 
       - name: Cache dependencies
         uses: actions/cache@v1
         with:
           path: build/_deps/
-          key: ${{ matrix.os }}-deps-202210-1
+          key: ${{ matrix.os }}-deps-202210-2
 
       - name: Build myself
         run: cmake --build build --target all

@@ -28,6 +28,12 @@ FetchContent_Declare(
   ln -sf ${CMAKE_CURRENT_LIST_DIR}/llvm/lib/IR/Verifier.cpp llvm/lib/IR/Verifier.cpp
   COMMAND
   ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/include/mlir/Dialect/LLVMIR/LLVMIntrinsicOps.td mlir/include/mlir/Dialect/LLVMIR/LLVMIntrinsicOps.td
+  COMMAND
+  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/include/mlir/Dialect/LLVMIR/LLVMOpBase.td mlir/include/mlir/Dialect/LLVMIR/LLVMOpBase.td
+  COMMAND
+  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/lib/Target/LLVMIR/ConvertFromLLVMIR.cpp mlir/lib/Target/LLVMIR/ConvertFromLLVMIR.cpp
+  COMMAND
+  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/lib/Target/LLVMIR/ModuleTranslation.cpp mlir/lib/Target/LLVMIR/ModuleTranslation.cpp
 )
 
 FetchContent_GetProperties(llvm)

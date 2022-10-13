@@ -13,6 +13,7 @@
 
 import click
 import re
+import sys
 from subprocess import Popen, PIPE, STDOUT
 
 
@@ -38,11 +39,23 @@ def entry_point(verbose, file):
             stdout=PIPE,
             stdin=PIPE,
             stderr=PIPE)
-  mlir, err = p.communicate(input=llvm.encode())
 
-  print(mlir.decode())
-  if verbose:
-    print(err.decode())
+  try:
+    mlir, err = p.communicate(input=llvm.encode())
+
+    # Print out MLIR code
+    if p.returncode == 0:
+      print(mlir.decode())
+
+    if verbose or p.returncode != 0:
+      # Debug information
+      print(err.decode(), file=sys.stderr)
+
+  except:
+    # Error happens
+    p.kill()
+    _, err = p.communicate()
+    print(err.decode(), file=sys.stderr)
 
 
 if __name__ == '__main__':
