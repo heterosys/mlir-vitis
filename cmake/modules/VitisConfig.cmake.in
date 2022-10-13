@@ -1,0 +1,48 @@
+##===- VitisConfig.cmake.in - find_package(Vitis) support ---------*- cmake -*-===//
+##
+## Adapted from llvm/circt/cmake/modules/CIRCTConfig.cmake.in
+## This file allows users to call find_package(Vitis) and pick up our targets.
+##
+## This file is licensed under the Apache License v2.0 with LLVM Exceptions.
+## See https://llvm.org/LICENSE.txt for license information.
+## SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+##
+## Copyright (C) 2022, Jason Lau.
+##
+##===----------------------------------------------------------------------===//
+
+@VITIS_CONFIG_CODE@
+
+find_package(MLIR REQUIRED CONFIG
+             HINTS "@VITIS_CONFIG_MLIR_CMAKE_DIR@")
+
+set(VITIS_EXPORTED_TARGETS "@VITIS_EXPORTS@")
+set(VITIS_CMAKE_DIR "@VITIS_CONFIG_CMAKE_DIR@")
+set(VITIS_BINARY_DIR "@VITIS_CONFIG_BINARY_DIR@")
+set(VITIS_INCLUDE_DIRS "@VITIS_CONFIG_INCLUDE_DIRS@")
+set(VITIS_LIBRARY_DIRS "@VITIS_CONFIG_LIBRARY_DIRS@")
+set(VITIS_TOOLS_DIR "@VITIS_CONFIG_TOOLS_DIR@")
+
+set_property(GLOBAL PROPERTY VITIS_ALL_LIBS "@VITIS_ALL_LIBS@")
+set_property(GLOBAL PROPERTY VITIS_DIALECT_LIBS "@VITIS_DIALECT_LIBS@")
+set_property(GLOBAL PROPERTY VITIS_CONVERSION_LIBS "@VITIS_CONVERSION_LIBS@")
+set_property(GLOBAL PROPERTY VITIS_TRANSLATION_LIBS "@VITIS_TRANSLATION_LIBS@")
+
+# Provide all our library targets to users.
+@VITIS_CONFIG_INCLUDE_EXPORTS@
+
+# By creating these targets here, subprojects that depend on Vitis's
+# tablegen-generated headers can always depend on these targets whether building
+# in-tree with Vitis or not.
+if(NOT TARGET vitis-tablegen-targets)
+  add_custom_target(vitis-tablegen-targets)
+endif()
+if(NOT TARGET vitis-headers)
+  add_custom_target(vitis-headers)
+endif()
+if(NOT TARGET vitis-generic-headers)
+  add_custom_target(vitis-generic-headers)
+endif()
+if(NOT TARGET vitis-doc)
+  add_custom_target(vitis-doc)
+endif()

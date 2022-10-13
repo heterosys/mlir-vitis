@@ -1,0 +1,60 @@
+##
+## This file is licensed under the Apache License v2.0 with LLVM Exceptions.
+## See https://llvm.org/LICENSE.txt for license information.
+## SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+##
+## Copyright (C) 2022, Jason Lau.
+##
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# From LLVM/CIRCT
+/build*
+/install*
+.vscode
+.idea
+compile_commands.json
+.cache/
+*~
+.DS_Store
+__pycache__
+lit.site.cfg.py
+
+# Pip artifacts
+/lib/Bindings/Python/build
+*.egg-info
+*.whl
+
+# External software
+/ext

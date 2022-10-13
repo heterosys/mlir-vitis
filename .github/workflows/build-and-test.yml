@@ -1,0 +1,59 @@
+##===- build-and-test.yml - GitHub CI --------------------------*- yaml -*-===//
+##
+## This file builds and tests MLIR-PHY on every push and PR.
+##
+## This file is licensed under the Apache License v2.0 with LLVM Exceptions.
+## See https://llvm.org/LICENSE.txt for license information.
+## SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+##
+## Copyright (C) 2022, Jason Lau.
+##
+##===----------------------------------------------------------------------===//
+
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build ${{ matrix.build }} ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        build: ["Debug", "Release"]
+        os: [ubuntu-18.04, ubuntu-20.04, ubuntu-22.04]
+
+    steps:
+      - name: Checkout myself
+        uses: actions/checkout@v2
+
+      - name: Install build dependencies
+        run: |
+          ./.github/scripts/install-build-deps.sh
+
+      - name: Configure myself
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build }} \
+            -DCMAKE_MAKE_PROGRAM=ninja \
+            -G Ninja
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: build/_deps/
+          key: ${{ matrix.os }}-deps-202210-1
+
+      - name: Build myself
+        run: cmake --build build --target all
+
+      - name: Test myself
+        run: cmake --build build --target check-vitis
