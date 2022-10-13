@@ -44,10 +44,14 @@ config.substitutions.append(('%PATH%', config.environment['PATH']))
 config.substitutions.append(('%shlibext', config.llvm_shlib_ext))
 config.substitutions.append(('%shlibdir', config.vitis_shlib_dir))
 
-config.substitutions.append(('vitis-to-mlir', os.path.join(
-    config.vitis_python_packages_dir, 'mlir-vitis', 'vitis-to-mlir', 'main.py')))
-config.substitutions.append(('mlir-to-vitis', os.path.join(
-    config.vitis_python_packages_dir, 'mlir-vitis', 'mlir-to-vitis', 'main.py')))
+config.substitutions.append(
+    ('vitis-to-mlir',
+     os.path.join(config.vitis_python_packages_dir, 'mlir-vitis',
+                  'vitis-to-mlir', 'main.py')))
+config.substitutions.append(
+    ('mlir-to-vitis',
+     os.path.join(config.vitis_python_packages_dir, 'mlir-vitis',
+                  'mlir-to-vitis', 'main.py')))
 
 llvm_config.with_system_environment(['HOME', 'INCLUDE', 'LIB', 'TMP', 'TEMP'])
 
@@ -69,7 +73,9 @@ llvm_config.with_environment('PATH', config.vitis_tools_dir, append_path=True)
 llvm_config.with_environment('PATH', config.mlir_tools_dir, append_path=True)
 llvm_config.with_environment('PATH', config.llvm_tools_dir, append_path=True)
 
-tool_dirs = [config.vitis_tools_dir, config.mlir_tools_dir, config.llvm_tools_dir]
+tool_dirs = [
+    config.vitis_tools_dir, config.mlir_tools_dir, config.llvm_tools_dir
+]
 tools = ['vitis-translate', 'FileCheck', 'not', 'count']
 
 llvm_config.add_tool_substitutions(tools, tool_dirs)
