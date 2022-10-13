@@ -1,4 +1,4 @@
-; RUN: vitis-to-mlir %s
+; RUN: vitis-to-mlir %s | FileCheck %s
 ; ModuleID = './target.bc'
 source_filename = "llvm-link"
 target datalayout = "e-m:e-i64:64-i128:128-i256:256-i512:512-i1024:1024-i2048:2048-i4096:4096-n8:16:32:64-S128-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
@@ -491,6 +491,8 @@ $_ZN3hls6streamIfLi0EEC2Ev = comdat any
 
 @llvm.global_ctors = appending global [0 x { i32, void ()*, i8* }] zeroinitializer
 
+; CHECK: llvm.func @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_
+
 ; Function Attrs: noinline nounwind
 define void @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%"class.hls::stream<ap_uint<256>, 0>"* dereferenceable(32) %fifo_A_serialize, %"class.hls::stream<ap_uint<256>, 0>"* dereferenceable(32) %fifo_A_local_out) #0 !dbg !11814 !fpga.function.pragma !12349 {
 entry:
@@ -647,7 +649,7 @@ for.body20:                                       ; preds = %for.cond17
   %20 = bitcast %"struct.ap_uint<256>"* %ref.tmp to i8*, !dbg !12432
   call void @llvm.lifetime.start.p0i8(i64 32, i8* %20) #43, !dbg !12432
   %21 = load %"class.hls::stream<ap_uint<256>, 0>"*, %"class.hls::stream<ap_uint<256>, 0>"** %fifo_A_serialize.addr, align 8, !dbg !12432
-  call void @_ZN3hls6streamI7ap_uintILi256EELi0EE4readEv(%"struct.ap_uint<256>"* sret %ref.tmp, %"class.hls::stream<ap_uint<256>, 0>"* %21), !dbg !12433
+  call void @_ZN3hls6streamI7ap_uintILi256EELi0EE4readEv(%"struct.ap_uint<256>"* sret(%"struct.ap_uint<256>") %ref.tmp, %"class.hls::stream<ap_uint<256>, 0>"* %21), !dbg !12433
   %22 = load %"struct.ap_uint<256>", %"struct.ap_uint<256>"* %ref.tmp, align 32, !dbg !12434
   store %"struct.ap_uint<256>" %22, %"struct.ap_uint<256>"* %in_data, align 32, !dbg !12434
   %23 = bitcast %"struct.ap_uint<256>"* %ref.tmp to i8*, !dbg !12435

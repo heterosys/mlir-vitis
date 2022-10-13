@@ -65,6 +65,8 @@ config.test_source_root = os.path.dirname(__file__)
 config.test_exec_root = os.path.join(config.vitis_obj_root, 'test')
 
 # Tweak the PATH to include the tools dir.
+llvm_config.with_environment('PATH', config.vitis_tools_dir, append_path=True)
+llvm_config.with_environment('PATH', config.mlir_tools_dir, append_path=True)
 llvm_config.with_environment('PATH', config.llvm_tools_dir, append_path=True)
 
 tool_dirs = [config.vitis_tools_dir, config.mlir_tools_dir, config.llvm_tools_dir]
