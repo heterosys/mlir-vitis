@@ -29,7 +29,7 @@ jobs:
       fail-fast: false
       matrix:
         build: ["Debug", "Release"]
-        os: [ubuntu-18.04, ubuntu-20.04, ubuntu-22.04]
+        os: [ubuntu-20.04, ubuntu-22.04]
 
     steps:
       - name: Checkout myself
