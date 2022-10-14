@@ -512,6 +512,7 @@ entry:
   call void @llvm.dbg.declare(metadata %"class.hls::stream<ap_uint<256>, 0>"** %fifo_A_serialize.addr, metadata !12352, metadata !DIExpression()), !dbg !12353
   store %"class.hls::stream<ap_uint<256>, 0>"* %fifo_A_local_out, %"class.hls::stream<ap_uint<256>, 0>"** %fifo_A_local_out.addr, align 8
   call void @llvm.dbg.declare(metadata %"class.hls::stream<ap_uint<256>, 0>"** %fifo_A_local_out.addr, metadata !12354, metadata !DIExpression()), !dbg !12355
+  ; CHECK-DAG: llvm.loop.name = "VITIS_LOOP_43_1"
   br label %VITIS_LOOP_43_1, !dbg !12356
 
 VITIS_LOOP_43_1:                                  ; preds = %entry

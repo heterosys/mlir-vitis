@@ -912,6 +912,21 @@ LogicalResult Importer::processInstruction(llvm::Instruction *inst) {
                          b.getDenseI32ArrayAttr(operandSegmentSizes));
     }
 
+    if (auto *md = brInst->getMetadata("llvm.loop")) {
+      auto opNum = md->getNumOperands();
+
+      for (size_t i = 1; i < opNum; i++) {
+        auto *subMd = cast<llvm::MDNode>(md->getOperand(i));
+        auto *subName = llvm::dyn_cast<llvm::MDString>(subMd->getOperand(0));
+
+        if (subName && subName->getString() == "llvm.loop.name") {
+          auto *loopName = llvm::dyn_cast<llvm::MDString>(subMd->getOperand(1));
+          state.addAttribute(subName->getString(),
+                             b.getStringAttr(loopName->getString()));
+        }
+      }
+    }
+
     b.create(state);
     return success();
   }
