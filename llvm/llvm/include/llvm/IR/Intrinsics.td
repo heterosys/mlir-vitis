@@ -2050,6 +2050,10 @@ def int_ptrauth_sign_generic : Intrinsic<[llvm_i64_ty],
                                          [llvm_i64_ty, llvm_i64_ty],
                                          [IntrNoMem]>;
 
+//===------------------------ Directive Intrinsics ------------------------===//
+def int_directive_scope_entry : Intrinsic<[llvm_token_ty], [], []>;
+def int_directive_scope_exit  : Intrinsic<[], [llvm_token_ty], []>;
+
 //===----------------------------------------------------------------------===//
 
 //===----------------------------------------------------------------------===//

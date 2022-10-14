@@ -2,7 +2,7 @@
 
 module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness", "little">, #dlti.dl_entry<i64, dense<64> : vector<2xi32>>, #dlti.dl_entry<i128, dense<128> : vector<2xi32>>, #dlti.dl_entry<i256, dense<256> : vector<2xi32>>, #dlti.dl_entry<i512, dense<512> : vector<2xi32>>, #dlti.dl_entry<i1024, dense<1024> : vector<2xi32>>, #dlti.dl_entry<i2048, dense<2048> : vector<2xi32>>, #dlti.dl_entry<i4096, dense<4096> : vector<2xi32>>, #dlti.dl_entry<i1, dense<8> : vector<2xi32>>, #dlti.dl_entry<i8, dense<8> : vector<2xi32>>, #dlti.dl_entry<i16, dense<16> : vector<2xi32>>, #dlti.dl_entry<i32, dense<32> : vector<2xi32>>, #dlti.dl_entry<f16, dense<16> : vector<2xi32>>, #dlti.dl_entry<f64, dense<64> : vector<2xi32>>, #dlti.dl_entry<f128, dense<128> : vector<2xi32>>>} {
 
-  // CHECK: define void @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_
+  // CHECK:      define void @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_
   llvm.func @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%arg0: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, %arg1: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) attributes {llvm.noinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "A_IO_L3_in", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
     %0 = llvm.mlir.constant(1 : i32) : i32
     %1 = llvm.mlir.constant(1 : i32) : i32
@@ -1631,20 +1631,20 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %50 = llvm.mlir.constant(0 : i32) : i32
     %51 = llvm.mlir.constant(1 : i64) : i64
     %52 = llvm.mlir.constant(1 : i32) : i32
-    %53 = llvm.mlir.constant(0 : i32) : i32
-    %54 = llvm.mlir.constant(0 : i32) : i32
-    %55 = llvm.mlir.constant(3 : i32) : i32
-    %56 = llvm.mlir.constant(0 : i32) : i32
-    %57 = llvm.mlir.constant(1 : i32) : i32
+    %53 = llvm.mlir.constant(false) : i1
+    %54 = llvm.mlir.constant(1 : i32) : i32
+    %55 = llvm.mlir.constant(0 : i32) : i32
+    %56 = llvm.mlir.constant(2 : i32) : i32
+    %57 = llvm.mlir.constant(0 : i32) : i32
     %58 = llvm.mlir.constant(0 : i32) : i32
-    %59 = llvm.mlir.constant(0 : i32) : i32
+    %59 = llvm.mlir.constant(3 : i32) : i32
     %60 = llvm.mlir.constant(0 : i32) : i32
-    %61 = llvm.mlir.constant(32 : i64) : i64
-    %62 = llvm.mlir.constant(4 : i64) : i64
-    %63 = llvm.mlir.constant(1 : i32) : i32
-    %64 = llvm.mlir.constant(1 : i32) : i32
-    %65 = llvm.mlir.constant(1 : i32) : i32
-    %66 = llvm.mlir.constant(1 : i32) : i32
+    %61 = llvm.mlir.constant(1 : i32) : i32
+    %62 = llvm.mlir.constant(0 : i32) : i32
+    %63 = llvm.mlir.constant(0 : i32) : i32
+    %64 = llvm.mlir.constant(0 : i32) : i32
+    %65 = llvm.mlir.constant(32 : i64) : i64
+    %66 = llvm.mlir.constant(4 : i64) : i64
     %67 = llvm.mlir.constant(1 : i32) : i32
     %68 = llvm.mlir.constant(1 : i32) : i32
     %69 = llvm.mlir.constant(1 : i32) : i32
@@ -1665,231 +1665,235 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %84 = llvm.mlir.constant(1 : i32) : i32
     %85 = llvm.mlir.constant(1 : i32) : i32
     %86 = llvm.mlir.constant(1 : i32) : i32
-    %87 = llvm.alloca %86 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %88 = llvm.alloca %85 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %89 = llvm.alloca %84 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %90 = llvm.alloca %83 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %91 = llvm.alloca %82 x !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %92 = llvm.alloca %81 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %93 = llvm.alloca %80 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %94 = llvm.alloca %79 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %95 = llvm.alloca %78 x !llvm.array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %96 = llvm.alloca %77 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %97 = llvm.alloca %76 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %98 = llvm.alloca %75 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %99 = llvm.alloca %74 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %100 = llvm.alloca %73 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %101 = llvm.alloca %72 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %102 = llvm.alloca %71 x !llvm.struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>
-    %103 = llvm.alloca %70 x !llvm.struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>
-    %104 = llvm.alloca %69 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %105 = llvm.alloca %68 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %106 = llvm.alloca %67 x !llvm.struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>
-    %107 = llvm.alloca %66 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %108 = llvm.alloca %65 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %109 = llvm.alloca %64 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %110 = llvm.alloca %63 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    llvm.store %arg0, %87 : !llvm.ptr<i32>
-    llvm.store %arg1, %88 : !llvm.ptr<i32>
-    llvm.store %arg2, %89 : !llvm.ptr<i32>
-    llvm.store %arg3, %90 : !llvm.ptr<i32>
-    llvm.store %arg4, %91 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    llvm.store %arg5, %92 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg6, %93 : !llvm.ptr<i1>
-    %111 = llvm.bitcast %94 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %62, %111 : !llvm.ptr<i8>
-    %112 = llvm.load %87 : !llvm.ptr<i32>
-    llvm.store %112, %94 : !llvm.ptr<i32>
-    %113 = llvm.bitcast %95 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %61, %113 : !llvm.ptr<i8>
-    %114 = llvm.getelementptr %95[%60, %59] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.br ^bb1(%58 : i32)
-  ^bb1(%115: i32):  // 2 preds: ^bb0, ^bb1
-    %116 = llvm.add %115, %57  : i32
-    %117 = llvm.getelementptr %95[%56, %115] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%117) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %118 = llvm.icmp "eq" %115, %55 : i32
-    llvm.cond_br %118, ^bb2, ^bb1(%116 : i32)
+    %87 = llvm.mlir.constant(1 : i32) : i32
+    %88 = llvm.mlir.constant(1 : i32) : i32
+    %89 = llvm.mlir.constant(1 : i32) : i32
+    %90 = llvm.mlir.constant(1 : i32) : i32
+    %91 = llvm.alloca %90 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %92 = llvm.alloca %89 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %93 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %94 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %95 = llvm.alloca %86 x !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %96 = llvm.alloca %85 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %97 = llvm.alloca %84 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %98 = llvm.alloca %83 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %99 = llvm.alloca %82 x !llvm.array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %100 = llvm.alloca %81 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %101 = llvm.alloca %80 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %102 = llvm.alloca %79 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %103 = llvm.alloca %78 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %104 = llvm.alloca %77 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %105 = llvm.alloca %76 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %106 = llvm.alloca %75 x !llvm.struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>
+    %107 = llvm.alloca %74 x !llvm.struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>
+    %108 = llvm.alloca %73 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %109 = llvm.alloca %72 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %110 = llvm.alloca %71 x !llvm.struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>
+    %111 = llvm.alloca %70 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %112 = llvm.alloca %69 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %113 = llvm.alloca %68 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %114 = llvm.alloca %67 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    llvm.store %arg0, %91 : !llvm.ptr<i32>
+    llvm.store %arg1, %92 : !llvm.ptr<i32>
+    llvm.store %arg2, %93 : !llvm.ptr<i32>
+    llvm.store %arg3, %94 : !llvm.ptr<i32>
+    llvm.store %arg4, %95 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    llvm.store %arg5, %96 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg6, %97 : !llvm.ptr<i1>
+    %115 = llvm.bitcast %98 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %66, %115 : !llvm.ptr<i8>
+    %116 = llvm.load %91 : !llvm.ptr<i32>
+    llvm.store %116, %98 : !llvm.ptr<i32>
+    %117 = llvm.bitcast %99 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %65, %117 : !llvm.ptr<i8>
+    %118 = llvm.getelementptr %99[%64, %63] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.br ^bb1(%62 : i32)
+  ^bb1(%119: i32):  // 2 preds: ^bb0, ^bb1
+    %120 = llvm.add %119, %61  : i32
+    %121 = llvm.getelementptr %99[%60, %119] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%121) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %122 = llvm.icmp "eq" %119, %59 : i32
+    llvm.cond_br %122, ^bb2, ^bb1(%120 : i32)
   ^bb2:  // pred: ^bb1
     llvm.br ^bb3
   ^bb3:  // pred: ^bb2
-    %119 = llvm.getelementptr %95[%54, %53] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @llvm.sideeffect() : () -> ()
-    %120 = llvm.load %93 : !llvm.ptr<i1>
-    llvm.cond_br %120, ^bb5, ^bb4
+    %123 = llvm.getelementptr %99[%58, %57] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.intr.sideeffect(%123, %56, %55, %54, %53) {llvm.bundle.xlx_array_partition = 5 : i64} : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, i32, i32, i32, i1
+    %124 = llvm.load %97 : !llvm.ptr<i1>
+    llvm.cond_br %124, ^bb5, ^bb4
   ^bb4:  // pred: ^bb3
-    llvm.store %52, %96 : !llvm.ptr<i32>
+    llvm.store %52, %100 : !llvm.ptr<i32>
     llvm.br ^bb30
   ^bb5:  // pred: ^bb3
     llvm.br ^bb6
   ^bb6:  // pred: ^bb5
-    %121 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %121 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%97, %50) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %125 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %125 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%101, %50) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb7
   ^bb7:  // 2 preds: ^bb6, ^bb28
-    %122 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %123 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%122, %49) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %123, ^bb9, ^bb8
+    %126 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %127 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%126, %49) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %127, ^bb9, ^bb8
   ^bb8:  // pred: ^bb7
-    llvm.store %48, %96 : !llvm.ptr<i32>
-    %124 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %47, %124 : !llvm.ptr<i8>
+    llvm.store %48, %100 : !llvm.ptr<i32>
+    %128 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %47, %128 : !llvm.ptr<i8>
     llvm.br ^bb29
   ^bb9:  // pred: ^bb7
     llvm.br ^bb10
   ^bb10:  // pred: ^bb9
-    %125 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %125 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%98, %45) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %129 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %129 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%102, %45) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb11
   ^bb11:  // 2 preds: ^bb10, ^bb26
-    %126 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %127 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%126, %44) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %127, ^bb13, ^bb12
+    %130 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %131 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%130, %44) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %131, ^bb13, ^bb12
   ^bb12:  // pred: ^bb11
-    llvm.store %43, %96 : !llvm.ptr<i32>
-    %128 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %42, %128 : !llvm.ptr<i8>
+    llvm.store %43, %100 : !llvm.ptr<i32>
+    %132 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %42, %132 : !llvm.ptr<i8>
     llvm.br ^bb27
   ^bb13:  // pred: ^bb11
     llvm.br ^bb14
   ^bb14:  // pred: ^bb13
-    %129 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %41, %129 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%99, %40) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %133 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %41, %133 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%103, %40) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb15
   ^bb15:  // 2 preds: ^bb14, ^bb24
-    %130 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %131 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%130, %39) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %131, ^bb17, ^bb16
+    %134 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %135 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%134, %39) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %135, ^bb17, ^bb16
   ^bb16:  // pred: ^bb15
-    llvm.store %38, %96 : !llvm.ptr<i32>
-    %132 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %37, %132 : !llvm.ptr<i8>
+    llvm.store %38, %100 : !llvm.ptr<i32>
+    %136 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %37, %136 : !llvm.ptr<i8>
     llvm.br ^bb25
   ^bb17:  // pred: ^bb15
-    %133 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %36, %133 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%100) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %134 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %134 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%101) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %135 = llvm.load %91 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %136 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %137 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%136) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %138 = llvm.getelementptr %135[%137] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %139 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %34, %139 : !llvm.ptr<i8>
-    %140 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZmlILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4multEiRKS1_(%102, %33, %140) : (!llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>, i32, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> ()
-    %141 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>
-    llvm.call @_ZdvILi36ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%103, %141, %32) : (!llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>, i32) -> ()
-    %142 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>
-    %143 = llvm.call @_ZNK11ap_int_baseILi37ELb1EEcvxEv(%142) : (!llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>) -> i64
-    %144 = llvm.getelementptr %138[%31, %143] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %145 = llvm.load %144 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.store %145, %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %146 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %30, %146 : !llvm.ptr<i8>
+    %137 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %36, %137 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%104) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %138 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %138 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%105) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %139 = llvm.load %95 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %140 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %141 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%140) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %142 = llvm.getelementptr %139[%141] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %143 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %34, %143 : !llvm.ptr<i8>
+    %144 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZmlILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4multEiRKS1_(%106, %33, %144) : (!llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>, i32, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> ()
+    %145 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>
+    llvm.call @_ZdvILi36ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%107, %145, %32) : (!llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>, i32) -> ()
+    %146 = llvm.bitcast %107 : !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>
+    %147 = llvm.call @_ZNK11ap_int_baseILi37ELb1EEcvxEv(%146) : (!llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>) -> i64
+    %148 = llvm.getelementptr %142[%31, %147] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %149 = llvm.load %148 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.store %149, %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %150 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %30, %150 : !llvm.ptr<i8>
     llvm.br ^bb18
   ^bb18:  // pred: ^bb17
-    %147 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %29, %147 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%104, %28) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %151 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %29, %151 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%108, %28) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb19
   ^bb19:  // 2 preds: ^bb18, ^bb22
-    %148 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %149 = llvm.call @_ZltILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%148, %27) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %149, ^bb21, ^bb20
+    %152 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %153 = llvm.call @_ZltILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%152, %27) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %153, ^bb21, ^bb20
   ^bb20:  // pred: ^bb19
-    llvm.store %26, %96 : !llvm.ptr<i32>
-    %150 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %25, %150 : !llvm.ptr<i8>
+    llvm.store %26, %100 : !llvm.ptr<i32>
+    %154 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %25, %154 : !llvm.ptr<i8>
     llvm.br ^bb23
   ^bb21:  // pred: ^bb19
-    %151 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %24, %151 : !llvm.ptr<i8>
-    %152 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %23, %152 : !llvm.ptr<i8>
-    %153 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
-    llvm.call @_ZN11ap_int_baseILi256ELb0EEclEii(%106, %153, %22, %21) : (!llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32) -> ()
-    llvm.call @_ZN7ap_uintILi64EEC2ILi256ELb0EEERK12ap_range_refIXT_EXT0_EE(%105, %106) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>) -> ()
-    %154 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %155 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%154) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %156 = llvm.getelementptr %95[%20, %155] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %157 = llvm.load %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %157, %156 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %158 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %19, %158 : !llvm.ptr<i8>
-    %159 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %18, %159 : !llvm.ptr<i8>
-    %160 = llvm.bitcast %107 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %17, %160 : !llvm.ptr<i8>
-    %161 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
-    llvm.call @_ZrsILi256ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%107, %161, %16) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32) -> ()
-    %162 = llvm.load %107 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.store %162, %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %163 = llvm.bitcast %107 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %15, %163 : !llvm.ptr<i8>
+    %155 = llvm.bitcast %109 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %24, %155 : !llvm.ptr<i8>
+    %156 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %23, %156 : !llvm.ptr<i8>
+    %157 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
+    llvm.call @_ZN11ap_int_baseILi256ELb0EEclEii(%110, %157, %22, %21) : (!llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32) -> ()
+    llvm.call @_ZN7ap_uintILi64EEC2ILi256ELb0EEERK12ap_range_refIXT_EXT0_EE(%109, %110) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>) -> ()
+    %158 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %159 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%158) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %160 = llvm.getelementptr %99[%20, %159] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %161 = llvm.load %109 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %161, %160 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %162 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %19, %162 : !llvm.ptr<i8>
+    %163 = llvm.bitcast %109 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %18, %163 : !llvm.ptr<i8>
+    %164 = llvm.bitcast %111 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %17, %164 : !llvm.ptr<i8>
+    %165 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
+    llvm.call @_ZrsILi256ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%111, %165, %16) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32) -> ()
+    %166 = llvm.load %111 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.store %166, %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %167 = llvm.bitcast %111 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %15, %167 : !llvm.ptr<i8>
     llvm.br ^bb22
   ^bb22:  // pred: ^bb21
-    %164 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %165 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %14, %165 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi3ELb0EEppEi(%108, %164, %13) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> ()
-    %166 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %12, %166 : !llvm.ptr<i8>
+    %168 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %169 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %14, %169 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi3ELb0EEppEi(%112, %168, %13) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> ()
+    %170 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %12, %170 : !llvm.ptr<i8>
     llvm.br ^bb19
   ^bb23:  // pred: ^bb20
-    %167 = llvm.bitcast %109 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %11, %167 : !llvm.ptr<i8>
-    %168 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZrmILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3modERKS1_i(%110, %168, %10) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
-    %169 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %170 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%169) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %171 = llvm.trunc %170 : i64 to i32
-    llvm.store %171, %109 : !llvm.ptr<i32>
-    %172 = llvm.load %109 : !llvm.ptr<i32>
-    %173 = llvm.sext %172 : i32 to i64
-    %174 = llvm.getelementptr %95[%9, %173] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %175 = llvm.load %174 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %175, %101 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %176 = llvm.load %92 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%176, %101) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %177 = llvm.bitcast %109 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %177 : !llvm.ptr<i8>
-    %178 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %178 : !llvm.ptr<i8>
-    %179 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %179 : !llvm.ptr<i8>
+    %171 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %11, %171 : !llvm.ptr<i8>
+    %172 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZrmILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3modERKS1_i(%114, %172, %10) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
+    %173 = llvm.bitcast %114 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %174 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%173) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %175 = llvm.trunc %174 : i64 to i32
+    llvm.store %175, %113 : !llvm.ptr<i32>
+    %176 = llvm.load %113 : !llvm.ptr<i32>
+    %177 = llvm.sext %176 : i32 to i64
+    %178 = llvm.getelementptr %99[%9, %177] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %179 = llvm.load %178 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %179, %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %180 = llvm.load %96 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%180, %105) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %181 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %181 : !llvm.ptr<i8>
+    %182 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %182 : !llvm.ptr<i8>
+    %183 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %183 : !llvm.ptr<i8>
     llvm.br ^bb24
   ^bb24:  // pred: ^bb23
-    %180 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %181 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%180, %5) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %184 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %185 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%184, %5) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb15
   ^bb25:  // pred: ^bb16
     llvm.br ^bb26
   ^bb26:  // pred: ^bb25
-    %182 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %183 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%182, %4) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %186 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %187 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%186, %4) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb11
   ^bb27:  // pred: ^bb12
     llvm.br ^bb28
   ^bb28:  // pred: ^bb27
-    %184 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %185 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%184, %3) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %188 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %189 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%188, %3) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb7
   ^bb29:  // pred: ^bb8
-    llvm.store %2, %96 : !llvm.ptr<i32>
+    llvm.store %2, %100 : !llvm.ptr<i32>
     llvm.br ^bb30
   ^bb30:  // 2 preds: ^bb4, ^bb29
-    %186 = llvm.bitcast %95 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %186 : !llvm.ptr<i8>
-    %187 = llvm.bitcast %94 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %187 : !llvm.ptr<i8>
-    %188 = llvm.load %96 : !llvm.ptr<i32>
-    llvm.switch %188 : i32, ^bb32 [
+    %190 = llvm.bitcast %99 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %190 : !llvm.ptr<i8>
+    %191 = llvm.bitcast %98 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %191 : !llvm.ptr<i8>
+    %192 = llvm.load %100 : !llvm.ptr<i32>
+    llvm.switch %192 : i32, ^bb32 [
       0: ^bb31,
       1: ^bb31
     ]
@@ -1907,7 +1911,6 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     llvm.call @_ZN11ap_int_baseILi64ELb0EEC2Ev(%3) : (!llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
     llvm.return
   }
-  llvm.func @llvm.sideeffect()
   llvm.func linkonce_odr @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%arg0: !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64 attributes {llvm.alwaysinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
     %0 = llvm.mlir.constant(0 : i32) : i32
     %1 = llvm.mlir.constant(0 : i32) : i32
@@ -3348,36 +3351,36 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %56 = llvm.mlir.constant(1 : i64) : i64
     %57 = llvm.mlir.constant(false) : i1
     %58 = llvm.mlir.constant(1 : i64) : i64
-    %59 = llvm.mlir.constant(7 : i32) : i32
-    %60 = llvm.mlir.constant(1 : i32) : i32
-    %61 = llvm.mlir.constant(0 : i32) : i32
-    %62 = llvm.mlir.constant(1 : i32) : i32
-    %63 = llvm.mlir.constant(0 : i32) : i32
+    %59 = llvm.mlir.constant(-1 : i32) : i32
+    %60 = llvm.mlir.constant(22 : i32) : i32
+    %61 = llvm.mlir.constant(666 : i32) : i32
+    %62 = llvm.mlir.constant(7 : i32) : i32
+    %63 = llvm.mlir.constant(1 : i32) : i32
     %64 = llvm.mlir.constant(0 : i32) : i32
     %65 = llvm.mlir.constant(1 : i32) : i32
     %66 = llvm.mlir.constant(0 : i32) : i32
     %67 = llvm.mlir.constant(0 : i32) : i32
-    %68 = llvm.mlir.constant(0 : i32) : i32
+    %68 = llvm.mlir.constant(1 : i32) : i32
     %69 = llvm.mlir.constant(0 : i32) : i32
-    %70 = llvm.mlir.constant(512 : i64) : i64
-    %71 = llvm.mlir.constant(1 : i32) : i32
+    %70 = llvm.mlir.constant(0 : i32) : i32
+    %71 = llvm.mlir.constant(0 : i32) : i32
     %72 = llvm.mlir.constant(0 : i32) : i32
-    %73 = llvm.mlir.constant(1 : i32) : i32
-    %74 = llvm.mlir.constant(0 : i32) : i32
-    %75 = llvm.mlir.constant(0 : i32) : i32
-    %76 = llvm.mlir.constant(1 : i32) : i32
-    %77 = llvm.mlir.constant(0 : i32) : i32
+    %73 = llvm.mlir.constant(512 : i64) : i64
+    %74 = llvm.mlir.constant(-1 : i32) : i32
+    %75 = llvm.mlir.constant(22 : i32) : i32
+    %76 = llvm.mlir.constant(666 : i32) : i32
+    %77 = llvm.mlir.constant(1 : i32) : i32
     %78 = llvm.mlir.constant(0 : i32) : i32
-    %79 = llvm.mlir.constant(0 : i32) : i32
+    %79 = llvm.mlir.constant(1 : i32) : i32
     %80 = llvm.mlir.constant(0 : i32) : i32
-    %81 = llvm.mlir.constant(512 : i64) : i64
-    %82 = llvm.mlir.constant(4 : i64) : i64
-    %83 = llvm.mlir.constant(1 : i32) : i32
-    %84 = llvm.mlir.constant(1 : i32) : i32
-    %85 = llvm.mlir.constant(1 : i32) : i32
-    %86 = llvm.mlir.constant(1 : i32) : i32
-    %87 = llvm.mlir.constant(1 : i32) : i32
-    %88 = llvm.mlir.constant(1 : i32) : i32
+    %81 = llvm.mlir.constant(0 : i32) : i32
+    %82 = llvm.mlir.constant(1 : i32) : i32
+    %83 = llvm.mlir.constant(0 : i32) : i32
+    %84 = llvm.mlir.constant(0 : i32) : i32
+    %85 = llvm.mlir.constant(0 : i32) : i32
+    %86 = llvm.mlir.constant(0 : i32) : i32
+    %87 = llvm.mlir.constant(512 : i64) : i64
+    %88 = llvm.mlir.constant(4 : i64) : i64
     %89 = llvm.mlir.constant(1 : i32) : i32
     %90 = llvm.mlir.constant(1 : i32) : i32
     %91 = llvm.mlir.constant(1 : i32) : i32
@@ -3392,287 +3395,293 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %100 = llvm.mlir.constant(1 : i32) : i32
     %101 = llvm.mlir.constant(1 : i32) : i32
     %102 = llvm.mlir.constant(1 : i32) : i32
-    %103 = llvm.alloca %102 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %104 = llvm.alloca %101 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %105 = llvm.alloca %100 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %106 = llvm.alloca %99 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %107 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %108 = llvm.alloca %97 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %109 = llvm.alloca %96 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %110 = llvm.alloca %95 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %111 = llvm.alloca %94 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %112 = llvm.alloca %93 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %113 = llvm.alloca %92 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %114 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %115 = llvm.alloca %90 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %116 = llvm.alloca %89 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %117 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %118 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %119 = llvm.alloca %86 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %120 = llvm.alloca %85 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %121 = llvm.alloca %84 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %122 = llvm.alloca %83 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    llvm.store %arg0, %103 : !llvm.ptr<i32>
-    llvm.store %arg1, %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    llvm.store %arg2, %105 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    llvm.store %arg3, %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %123 = llvm.bitcast %107 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %82, %123 : !llvm.ptr<i8>
-    %124 = llvm.load %103 : !llvm.ptr<i32>
-    llvm.store %124, %107 : !llvm.ptr<i32>
-    %125 = llvm.bitcast %108 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %81, %125 : !llvm.ptr<i8>
-    %126 = llvm.getelementptr %108[%80, %79, %78] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb1(%77 : i32)
-  ^bb1(%127: i32):  // 2 preds: ^bb0, ^bb10
-    %128 = llvm.add %127, %76  : i32
-    %129 = llvm.getelementptr %108[%75, %127] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb2(%74 : i32)
-  ^bb2(%130: i32):  // 2 preds: ^bb1, ^bb2
-    %131 = llvm.add %130, %73  : i32
-    %132 = llvm.getelementptr %129[%72, %130] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%132) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %133 = llvm.icmp "eq" %130, %71 : i32
-    llvm.cond_br %133, ^bb3, ^bb2(%131 : i32)
+    %103 = llvm.mlir.constant(1 : i32) : i32
+    %104 = llvm.mlir.constant(1 : i32) : i32
+    %105 = llvm.mlir.constant(1 : i32) : i32
+    %106 = llvm.mlir.constant(1 : i32) : i32
+    %107 = llvm.mlir.constant(1 : i32) : i32
+    %108 = llvm.mlir.constant(1 : i32) : i32
+    %109 = llvm.alloca %108 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %110 = llvm.alloca %107 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %111 = llvm.alloca %106 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %112 = llvm.alloca %105 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %113 = llvm.alloca %104 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %114 = llvm.alloca %103 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %115 = llvm.alloca %102 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %116 = llvm.alloca %101 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %117 = llvm.alloca %100 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %118 = llvm.alloca %99 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %119 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %120 = llvm.alloca %97 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %121 = llvm.alloca %96 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %122 = llvm.alloca %95 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %123 = llvm.alloca %94 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %124 = llvm.alloca %93 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %125 = llvm.alloca %92 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %126 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %127 = llvm.alloca %90 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %128 = llvm.alloca %89 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    llvm.store %arg0, %109 : !llvm.ptr<i32>
+    llvm.store %arg1, %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    llvm.store %arg2, %111 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    llvm.store %arg3, %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %129 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %88, %129 : !llvm.ptr<i8>
+    %130 = llvm.load %109 : !llvm.ptr<i32>
+    llvm.store %130, %113 : !llvm.ptr<i32>
+    %131 = llvm.bitcast %114 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %87, %131 : !llvm.ptr<i8>
+    %132 = llvm.getelementptr %114[%86, %85, %84] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb1(%83 : i32)
+  ^bb1(%133: i32):  // 2 preds: ^bb0, ^bb10
+    %134 = llvm.add %133, %82  : i32
+    %135 = llvm.getelementptr %114[%81, %133] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb2(%80 : i32)
+  ^bb2(%136: i32):  // 2 preds: ^bb1, ^bb2
+    %137 = llvm.add %136, %79  : i32
+    %138 = llvm.getelementptr %135[%78, %136] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%138) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %139 = llvm.icmp "eq" %136, %77 : i32
+    llvm.cond_br %139, ^bb3, ^bb2(%137 : i32)
   ^bb3:  // pred: ^bb2
     llvm.br ^bb10
   ^bb4:  // pred: ^bb10
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    llvm.call @llvm.sideeffect() : () -> ()
-    %134 = llvm.bitcast %109 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %70, %134 : !llvm.ptr<i8>
-    %135 = llvm.getelementptr %109[%69, %68, %67] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb6(%66 : i32)
-  ^bb6(%136: i32):  // 2 preds: ^bb5, ^bb15
-    %137 = llvm.add %136, %65  : i32
-    %138 = llvm.getelementptr %109[%64, %136] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb7(%63 : i32)
-  ^bb7(%139: i32):  // 2 preds: ^bb6, ^bb7
-    %140 = llvm.add %139, %62  : i32
-    %141 = llvm.getelementptr %138[%61, %139] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%141) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %142 = llvm.icmp "eq" %139, %60 : i32
-    llvm.cond_br %142, ^bb8, ^bb7(%140 : i32)
+    llvm.intr.sideeffect(%114, %76, %75, %74) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %140 = llvm.bitcast %115 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %73, %140 : !llvm.ptr<i8>
+    %141 = llvm.getelementptr %115[%72, %71, %70] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb6(%69 : i32)
+  ^bb6(%142: i32):  // 2 preds: ^bb5, ^bb15
+    %143 = llvm.add %142, %68  : i32
+    %144 = llvm.getelementptr %115[%67, %142] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb7(%66 : i32)
+  ^bb7(%145: i32):  // 2 preds: ^bb6, ^bb7
+    %146 = llvm.add %145, %65  : i32
+    %147 = llvm.getelementptr %144[%64, %145] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%147) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %148 = llvm.icmp "eq" %145, %63 : i32
+    llvm.cond_br %148, ^bb8, ^bb7(%146 : i32)
   ^bb8:  // pred: ^bb7
     llvm.br ^bb15
   ^bb9:  // pred: ^bb15
     llvm.br ^bb11
   ^bb10:  // pred: ^bb3
-    %143 = llvm.icmp "eq" %127, %59 : i32
-    llvm.cond_br %143, ^bb4, ^bb1(%128 : i32)
+    %149 = llvm.icmp "eq" %133, %62 : i32
+    llvm.cond_br %149, ^bb4, ^bb1(%134 : i32)
   ^bb11:  // pred: ^bb9
-    llvm.call @llvm.sideeffect() : () -> ()
-    %144 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %58, %144 : !llvm.ptr<i8>
-    llvm.store %57, %110 : !llvm.ptr<i1>
-    %145 = llvm.bitcast %111 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %56, %145 : !llvm.ptr<i8>
-    llvm.store %55, %111 : !llvm.ptr<i1>
-    %146 = llvm.bitcast %112 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %54, %146 : !llvm.ptr<i8>
-    llvm.store %53, %112 : !llvm.ptr<i1>
-    %147 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %52, %147 : !llvm.ptr<i8>
-    %148 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %148 : !llvm.ptr<i8>
-    %149 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %50, %149 : !llvm.ptr<i8>
-    %150 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %49, %150 : !llvm.ptr<i8>
-    %151 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %48, %151 : !llvm.ptr<i8>
-    %152 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %47, %152 : !llvm.ptr<i8>
+    llvm.intr.sideeffect(%115, %61, %60, %59) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %150 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %58, %150 : !llvm.ptr<i8>
+    llvm.store %57, %116 : !llvm.ptr<i1>
+    %151 = llvm.bitcast %117 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %56, %151 : !llvm.ptr<i8>
+    llvm.store %55, %117 : !llvm.ptr<i1>
+    %152 = llvm.bitcast %118 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %54, %152 : !llvm.ptr<i8>
+    llvm.store %53, %118 : !llvm.ptr<i1>
+    %153 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %52, %153 : !llvm.ptr<i8>
+    %154 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %154 : !llvm.ptr<i8>
+    %155 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %50, %155 : !llvm.ptr<i8>
+    %156 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %49, %156 : !llvm.ptr<i8>
+    %157 = llvm.bitcast %123 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %48, %157 : !llvm.ptr<i8>
+    %158 = llvm.bitcast %124 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %47, %158 : !llvm.ptr<i8>
     llvm.br ^bb12
   ^bb12:  // pred: ^bb11
-    %153 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %153 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%119, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %159 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %159 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%125, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb13
   ^bb13:  // 2 preds: ^bb12, ^bb32
-    %154 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %155 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%154, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %155, ^bb16, ^bb14
+    %160 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %161 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%160, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %161, ^bb16, ^bb14
   ^bb14:  // pred: ^bb13
-    llvm.store %43, %120 : !llvm.ptr<i32>
-    %156 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %42, %156 : !llvm.ptr<i8>
+    llvm.store %43, %126 : !llvm.ptr<i32>
+    %162 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %42, %162 : !llvm.ptr<i8>
     llvm.br ^bb33
   ^bb15:  // pred: ^bb8
-    %157 = llvm.icmp "eq" %136, %41 : i32
-    llvm.cond_br %157, ^bb9, ^bb6(%137 : i32)
+    %163 = llvm.icmp "eq" %142, %41 : i32
+    llvm.cond_br %163, ^bb9, ^bb6(%143 : i32)
   ^bb16:  // pred: ^bb13
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %158 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %40, %158 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%121, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %164 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %40, %164 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%127, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb18
   ^bb18:  // 2 preds: ^bb17, ^bb30
-    %159 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %160 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%159, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %160, ^bb20, ^bb19
+    %165 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %166 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%165, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %166, ^bb20, ^bb19
   ^bb19:  // pred: ^bb18
-    llvm.store %37, %120 : !llvm.ptr<i32>
-    %161 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %36, %161 : !llvm.ptr<i8>
+    llvm.store %37, %126 : !llvm.ptr<i32>
+    %167 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %36, %167 : !llvm.ptr<i8>
     llvm.br ^bb31
   ^bb20:  // pred: ^bb18
     llvm.br ^bb21
   ^bb21:  // pred: ^bb20
-    %162 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %162 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%122, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %168 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %168 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%128, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb22
   ^bb22:  // 2 preds: ^bb21, ^bb28
-    %163 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %164 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%163, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %164, ^bb24, ^bb23
+    %169 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %170 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%169, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %170, ^bb24, ^bb23
   ^bb23:  // pred: ^bb22
-    llvm.store %32, %120 : !llvm.ptr<i32>
-    %165 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %31, %165 : !llvm.ptr<i8>
+    llvm.store %32, %126 : !llvm.ptr<i32>
+    %171 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %31, %171 : !llvm.ptr<i8>
     llvm.br ^bb29
   ^bb24:  // pred: ^bb22
-    %166 = llvm.load %110 : !llvm.ptr<i1>
-    %167 = llvm.zext %166 : i1 to i32
-    %168 = llvm.icmp "eq" %167, %30 : i32
-    llvm.cond_br %168, ^bb25, ^bb26
+    %172 = llvm.load %116 : !llvm.ptr<i1>
+    %173 = llvm.zext %172 : i1 to i32
+    %174 = llvm.icmp "eq" %173, %30 : i32
+    llvm.cond_br %174, ^bb25, ^bb26
   ^bb25:  // pred: ^bb24
-    %169 = llvm.load %103 : !llvm.ptr<i32>
-    %170 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %171 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%170) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %172 = llvm.trunc %171 : i64 to i32
-    %173 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %174 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%173) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %175 = llvm.trunc %174 : i64 to i32
-    %176 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %175 = llvm.load %109 : !llvm.ptr<i32>
+    %176 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %177 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%176) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %178 = llvm.trunc %177 : i64 to i32
-    %179 = llvm.getelementptr %109[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %180 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %181 = llvm.load %105 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %182 = llvm.load %111 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%169, %172, %175, %178, %179, %180, %181, %182) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %183 = llvm.load %103 : !llvm.ptr<i32>
-    %184 = llvm.load %114 : !llvm.ptr<i32>
-    %185 = llvm.load %116 : !llvm.ptr<i32>
-    %186 = llvm.load %118 : !llvm.ptr<i32>
-    %187 = llvm.getelementptr %108[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %188 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %189 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%183, %184, %185, %186, %187, %188, %189) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %179 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %180 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%179) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %181 = llvm.trunc %180 : i64 to i32
+    %182 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %183 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%182) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %184 = llvm.trunc %183 : i64 to i32
+    %185 = llvm.getelementptr %115[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %186 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %187 = llvm.load %111 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %188 = llvm.load %117 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%175, %178, %181, %184, %185, %186, %187, %188) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %189 = llvm.load %109 : !llvm.ptr<i32>
+    %190 = llvm.load %120 : !llvm.ptr<i32>
+    %191 = llvm.load %122 : !llvm.ptr<i32>
+    %192 = llvm.load %124 : !llvm.ptr<i32>
+    %193 = llvm.getelementptr %114[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %194 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %195 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%189, %190, %191, %192, %193, %194, %195) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb26:  // pred: ^bb24
-    %190 = llvm.load %103 : !llvm.ptr<i32>
-    %191 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %192 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%191) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %193 = llvm.trunc %192 : i64 to i32
-    %194 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %195 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%194) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %196 = llvm.trunc %195 : i64 to i32
-    %197 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %196 = llvm.load %109 : !llvm.ptr<i32>
+    %197 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %198 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%197) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %199 = llvm.trunc %198 : i64 to i32
-    %200 = llvm.getelementptr %108[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %201 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %202 = llvm.load %105 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %203 = llvm.load %111 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%190, %193, %196, %199, %200, %201, %202, %203) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %204 = llvm.load %103 : !llvm.ptr<i32>
-    %205 = llvm.load %114 : !llvm.ptr<i32>
-    %206 = llvm.load %116 : !llvm.ptr<i32>
-    %207 = llvm.load %118 : !llvm.ptr<i32>
-    %208 = llvm.getelementptr %109[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %209 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %210 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%204, %205, %206, %207, %208, %209, %210) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %200 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %201 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%200) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %202 = llvm.trunc %201 : i64 to i32
+    %203 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %204 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%203) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %205 = llvm.trunc %204 : i64 to i32
+    %206 = llvm.getelementptr %114[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %207 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %208 = llvm.load %111 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %209 = llvm.load %117 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%196, %199, %202, %205, %206, %207, %208, %209) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %210 = llvm.load %109 : !llvm.ptr<i32>
+    %211 = llvm.load %120 : !llvm.ptr<i32>
+    %212 = llvm.load %122 : !llvm.ptr<i32>
+    %213 = llvm.load %124 : !llvm.ptr<i32>
+    %214 = llvm.getelementptr %115[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %215 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %216 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%210, %211, %212, %213, %214, %215, %216) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb27:  // 2 preds: ^bb25, ^bb26
-    llvm.store %21, %112 : !llvm.ptr<i1>
-    %211 = llvm.load %110 : !llvm.ptr<i1>
-    %212 = llvm.xor %211, %20  : i1
-    llvm.store %212, %110 : !llvm.ptr<i1>
-    %213 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %214 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%213) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %215 = llvm.trunc %214 : i64 to i32
-    llvm.store %215, %114 : !llvm.ptr<i32>
-    %216 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %217 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%216) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %218 = llvm.trunc %217 : i64 to i32
-    llvm.store %218, %116 : !llvm.ptr<i32>
-    %219 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    llvm.store %21, %118 : !llvm.ptr<i1>
+    %217 = llvm.load %116 : !llvm.ptr<i1>
+    %218 = llvm.xor %217, %20  : i1
+    llvm.store %218, %116 : !llvm.ptr<i1>
+    %219 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %220 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%219) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %221 = llvm.trunc %220 : i64 to i32
-    llvm.store %221, %118 : !llvm.ptr<i32>
+    llvm.store %221, %120 : !llvm.ptr<i32>
+    %222 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %223 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%222) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %224 = llvm.trunc %223 : i64 to i32
+    llvm.store %224, %122 : !llvm.ptr<i32>
+    %225 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %226 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%225) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %227 = llvm.trunc %226 : i64 to i32
+    llvm.store %227, %124 : !llvm.ptr<i32>
     llvm.br ^bb28
   ^bb28:  // pred: ^bb27
-    %222 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %223 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%222, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %228 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %229 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%228, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb22
   ^bb29:  // pred: ^bb23
     llvm.br ^bb30
   ^bb30:  // pred: ^bb29
-    %224 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %225 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%224, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %230 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %231 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%230, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb18
   ^bb31:  // pred: ^bb19
     llvm.br ^bb32
   ^bb32:  // pred: ^bb31
-    %226 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %227 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%226, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %232 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %233 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%232, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb13
   ^bb33:  // pred: ^bb14
-    %228 = llvm.load %110 : !llvm.ptr<i1>
-    %229 = llvm.zext %228 : i1 to i32
-    %230 = llvm.icmp "eq" %229, %16 : i32
-    llvm.cond_br %230, ^bb34, ^bb35
+    %234 = llvm.load %116 : !llvm.ptr<i1>
+    %235 = llvm.zext %234 : i1 to i32
+    %236 = llvm.icmp "eq" %235, %16 : i32
+    llvm.cond_br %236, ^bb34, ^bb35
   ^bb34:  // pred: ^bb33
-    %231 = llvm.load %103 : !llvm.ptr<i32>
-    %232 = llvm.load %114 : !llvm.ptr<i32>
-    %233 = llvm.load %116 : !llvm.ptr<i32>
-    %234 = llvm.load %118 : !llvm.ptr<i32>
-    %235 = llvm.getelementptr %108[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %236 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %237 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%231, %232, %233, %234, %235, %236, %237) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %237 = llvm.load %109 : !llvm.ptr<i32>
+    %238 = llvm.load %120 : !llvm.ptr<i32>
+    %239 = llvm.load %122 : !llvm.ptr<i32>
+    %240 = llvm.load %124 : !llvm.ptr<i32>
+    %241 = llvm.getelementptr %114[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %242 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %243 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%237, %238, %239, %240, %241, %242, %243) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb35:  // pred: ^bb33
-    %238 = llvm.load %103 : !llvm.ptr<i32>
-    %239 = llvm.load %114 : !llvm.ptr<i32>
-    %240 = llvm.load %116 : !llvm.ptr<i32>
-    %241 = llvm.load %118 : !llvm.ptr<i32>
-    %242 = llvm.getelementptr %109[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %243 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %244 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%238, %239, %240, %241, %242, %243, %244) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %244 = llvm.load %109 : !llvm.ptr<i32>
+    %245 = llvm.load %120 : !llvm.ptr<i32>
+    %246 = llvm.load %122 : !llvm.ptr<i32>
+    %247 = llvm.load %124 : !llvm.ptr<i32>
+    %248 = llvm.getelementptr %115[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %249 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %250 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%244, %245, %246, %247, %248, %249, %250) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb36:  // 2 preds: ^bb34, ^bb35
-    %245 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %245 : !llvm.ptr<i8>
-    %246 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %10, %246 : !llvm.ptr<i8>
-    %247 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %247 : !llvm.ptr<i8>
-    %248 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %248 : !llvm.ptr<i8>
-    %249 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %249 : !llvm.ptr<i8>
-    %250 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %250 : !llvm.ptr<i8>
-    %251 = llvm.bitcast %112 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %251 : !llvm.ptr<i8>
-    %252 = llvm.bitcast %111 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %252 : !llvm.ptr<i8>
-    %253 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %253 : !llvm.ptr<i8>
-    %254 = llvm.bitcast %109 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %254 : !llvm.ptr<i8>
-    %255 = llvm.bitcast %108 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %255 : !llvm.ptr<i8>
-    %256 = llvm.bitcast %107 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %256 : !llvm.ptr<i8>
+    %251 = llvm.bitcast %124 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %251 : !llvm.ptr<i8>
+    %252 = llvm.bitcast %123 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %10, %252 : !llvm.ptr<i8>
+    %253 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %253 : !llvm.ptr<i8>
+    %254 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %254 : !llvm.ptr<i8>
+    %255 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %255 : !llvm.ptr<i8>
+    %256 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %256 : !llvm.ptr<i8>
+    %257 = llvm.bitcast %118 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %257 : !llvm.ptr<i8>
+    %258 = llvm.bitcast %117 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %258 : !llvm.ptr<i8>
+    %259 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %259 : !llvm.ptr<i8>
+    %260 = llvm.bitcast %115 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %260 : !llvm.ptr<i8>
+    %261 = llvm.bitcast %114 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %261 : !llvm.ptr<i8>
+    %262 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %262 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func @_Z19A_IO_L2_in_boundaryiRN3hls6streamI7ap_uintILi256EELi0EEERNS0_IS1_ILi64EELi0EEE(%arg0: i32, %arg1: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, %arg2: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) attributes {llvm.noinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "A_IO_L2_in_boundary", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -3735,36 +3744,36 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %56 = llvm.mlir.constant(1 : i64) : i64
     %57 = llvm.mlir.constant(false) : i1
     %58 = llvm.mlir.constant(1 : i64) : i64
-    %59 = llvm.mlir.constant(7 : i32) : i32
-    %60 = llvm.mlir.constant(1 : i32) : i32
-    %61 = llvm.mlir.constant(0 : i32) : i32
-    %62 = llvm.mlir.constant(1 : i32) : i32
-    %63 = llvm.mlir.constant(0 : i32) : i32
+    %59 = llvm.mlir.constant(-1 : i32) : i32
+    %60 = llvm.mlir.constant(22 : i32) : i32
+    %61 = llvm.mlir.constant(666 : i32) : i32
+    %62 = llvm.mlir.constant(7 : i32) : i32
+    %63 = llvm.mlir.constant(1 : i32) : i32
     %64 = llvm.mlir.constant(0 : i32) : i32
     %65 = llvm.mlir.constant(1 : i32) : i32
     %66 = llvm.mlir.constant(0 : i32) : i32
     %67 = llvm.mlir.constant(0 : i32) : i32
-    %68 = llvm.mlir.constant(0 : i32) : i32
+    %68 = llvm.mlir.constant(1 : i32) : i32
     %69 = llvm.mlir.constant(0 : i32) : i32
-    %70 = llvm.mlir.constant(512 : i64) : i64
-    %71 = llvm.mlir.constant(1 : i32) : i32
+    %70 = llvm.mlir.constant(0 : i32) : i32
+    %71 = llvm.mlir.constant(0 : i32) : i32
     %72 = llvm.mlir.constant(0 : i32) : i32
-    %73 = llvm.mlir.constant(1 : i32) : i32
-    %74 = llvm.mlir.constant(0 : i32) : i32
-    %75 = llvm.mlir.constant(0 : i32) : i32
-    %76 = llvm.mlir.constant(1 : i32) : i32
-    %77 = llvm.mlir.constant(0 : i32) : i32
+    %73 = llvm.mlir.constant(512 : i64) : i64
+    %74 = llvm.mlir.constant(-1 : i32) : i32
+    %75 = llvm.mlir.constant(22 : i32) : i32
+    %76 = llvm.mlir.constant(666 : i32) : i32
+    %77 = llvm.mlir.constant(1 : i32) : i32
     %78 = llvm.mlir.constant(0 : i32) : i32
-    %79 = llvm.mlir.constant(0 : i32) : i32
+    %79 = llvm.mlir.constant(1 : i32) : i32
     %80 = llvm.mlir.constant(0 : i32) : i32
-    %81 = llvm.mlir.constant(512 : i64) : i64
-    %82 = llvm.mlir.constant(4 : i64) : i64
-    %83 = llvm.mlir.constant(1 : i32) : i32
-    %84 = llvm.mlir.constant(1 : i32) : i32
-    %85 = llvm.mlir.constant(1 : i32) : i32
-    %86 = llvm.mlir.constant(1 : i32) : i32
-    %87 = llvm.mlir.constant(1 : i32) : i32
-    %88 = llvm.mlir.constant(1 : i32) : i32
+    %81 = llvm.mlir.constant(0 : i32) : i32
+    %82 = llvm.mlir.constant(1 : i32) : i32
+    %83 = llvm.mlir.constant(0 : i32) : i32
+    %84 = llvm.mlir.constant(0 : i32) : i32
+    %85 = llvm.mlir.constant(0 : i32) : i32
+    %86 = llvm.mlir.constant(0 : i32) : i32
+    %87 = llvm.mlir.constant(512 : i64) : i64
+    %88 = llvm.mlir.constant(4 : i64) : i64
     %89 = llvm.mlir.constant(1 : i32) : i32
     %90 = llvm.mlir.constant(1 : i32) : i32
     %91 = llvm.mlir.constant(1 : i32) : i32
@@ -3778,283 +3787,289 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %99 = llvm.mlir.constant(1 : i32) : i32
     %100 = llvm.mlir.constant(1 : i32) : i32
     %101 = llvm.mlir.constant(1 : i32) : i32
-    %102 = llvm.alloca %101 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %103 = llvm.alloca %100 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %104 = llvm.alloca %99 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %105 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %106 = llvm.alloca %97 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %107 = llvm.alloca %96 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %108 = llvm.alloca %95 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %109 = llvm.alloca %94 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %110 = llvm.alloca %93 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %111 = llvm.alloca %92 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %112 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %113 = llvm.alloca %90 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %114 = llvm.alloca %89 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %115 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %116 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %117 = llvm.alloca %86 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %118 = llvm.alloca %85 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %119 = llvm.alloca %84 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %120 = llvm.alloca %83 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    llvm.store %arg0, %102 : !llvm.ptr<i32>
-    llvm.store %arg1, %103 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    llvm.store %arg2, %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %121 = llvm.bitcast %105 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %82, %121 : !llvm.ptr<i8>
-    %122 = llvm.load %102 : !llvm.ptr<i32>
-    llvm.store %122, %105 : !llvm.ptr<i32>
-    %123 = llvm.bitcast %106 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %81, %123 : !llvm.ptr<i8>
-    %124 = llvm.getelementptr %106[%80, %79, %78] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb1(%77 : i32)
-  ^bb1(%125: i32):  // 2 preds: ^bb0, ^bb10
-    %126 = llvm.add %125, %76  : i32
-    %127 = llvm.getelementptr %106[%75, %125] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb2(%74 : i32)
-  ^bb2(%128: i32):  // 2 preds: ^bb1, ^bb2
-    %129 = llvm.add %128, %73  : i32
-    %130 = llvm.getelementptr %127[%72, %128] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%130) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %131 = llvm.icmp "eq" %128, %71 : i32
-    llvm.cond_br %131, ^bb3, ^bb2(%129 : i32)
+    %102 = llvm.mlir.constant(1 : i32) : i32
+    %103 = llvm.mlir.constant(1 : i32) : i32
+    %104 = llvm.mlir.constant(1 : i32) : i32
+    %105 = llvm.mlir.constant(1 : i32) : i32
+    %106 = llvm.mlir.constant(1 : i32) : i32
+    %107 = llvm.mlir.constant(1 : i32) : i32
+    %108 = llvm.alloca %107 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %109 = llvm.alloca %106 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %110 = llvm.alloca %105 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %111 = llvm.alloca %104 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %112 = llvm.alloca %103 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %113 = llvm.alloca %102 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %114 = llvm.alloca %101 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %115 = llvm.alloca %100 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %116 = llvm.alloca %99 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %117 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %118 = llvm.alloca %97 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %119 = llvm.alloca %96 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %120 = llvm.alloca %95 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %121 = llvm.alloca %94 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %122 = llvm.alloca %93 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %123 = llvm.alloca %92 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %124 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %125 = llvm.alloca %90 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %126 = llvm.alloca %89 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    llvm.store %arg0, %108 : !llvm.ptr<i32>
+    llvm.store %arg1, %109 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    llvm.store %arg2, %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %127 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %88, %127 : !llvm.ptr<i8>
+    %128 = llvm.load %108 : !llvm.ptr<i32>
+    llvm.store %128, %111 : !llvm.ptr<i32>
+    %129 = llvm.bitcast %112 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %87, %129 : !llvm.ptr<i8>
+    %130 = llvm.getelementptr %112[%86, %85, %84] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb1(%83 : i32)
+  ^bb1(%131: i32):  // 2 preds: ^bb0, ^bb10
+    %132 = llvm.add %131, %82  : i32
+    %133 = llvm.getelementptr %112[%81, %131] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb2(%80 : i32)
+  ^bb2(%134: i32):  // 2 preds: ^bb1, ^bb2
+    %135 = llvm.add %134, %79  : i32
+    %136 = llvm.getelementptr %133[%78, %134] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%136) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %137 = llvm.icmp "eq" %134, %77 : i32
+    llvm.cond_br %137, ^bb3, ^bb2(%135 : i32)
   ^bb3:  // pred: ^bb2
     llvm.br ^bb10
   ^bb4:  // pred: ^bb10
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    llvm.call @llvm.sideeffect() : () -> ()
-    %132 = llvm.bitcast %107 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %70, %132 : !llvm.ptr<i8>
-    %133 = llvm.getelementptr %107[%69, %68, %67] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb6(%66 : i32)
-  ^bb6(%134: i32):  // 2 preds: ^bb5, ^bb15
-    %135 = llvm.add %134, %65  : i32
-    %136 = llvm.getelementptr %107[%64, %134] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb7(%63 : i32)
-  ^bb7(%137: i32):  // 2 preds: ^bb6, ^bb7
-    %138 = llvm.add %137, %62  : i32
-    %139 = llvm.getelementptr %136[%61, %137] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%139) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %140 = llvm.icmp "eq" %137, %60 : i32
-    llvm.cond_br %140, ^bb8, ^bb7(%138 : i32)
+    llvm.intr.sideeffect(%112, %76, %75, %74) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %138 = llvm.bitcast %113 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %73, %138 : !llvm.ptr<i8>
+    %139 = llvm.getelementptr %113[%72, %71, %70] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb6(%69 : i32)
+  ^bb6(%140: i32):  // 2 preds: ^bb5, ^bb15
+    %141 = llvm.add %140, %68  : i32
+    %142 = llvm.getelementptr %113[%67, %140] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb7(%66 : i32)
+  ^bb7(%143: i32):  // 2 preds: ^bb6, ^bb7
+    %144 = llvm.add %143, %65  : i32
+    %145 = llvm.getelementptr %142[%64, %143] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%145) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %146 = llvm.icmp "eq" %143, %63 : i32
+    llvm.cond_br %146, ^bb8, ^bb7(%144 : i32)
   ^bb8:  // pred: ^bb7
     llvm.br ^bb15
   ^bb9:  // pred: ^bb15
     llvm.br ^bb11
   ^bb10:  // pred: ^bb3
-    %141 = llvm.icmp "eq" %125, %59 : i32
-    llvm.cond_br %141, ^bb4, ^bb1(%126 : i32)
+    %147 = llvm.icmp "eq" %131, %62 : i32
+    llvm.cond_br %147, ^bb4, ^bb1(%132 : i32)
   ^bb11:  // pred: ^bb9
-    llvm.call @llvm.sideeffect() : () -> ()
-    %142 = llvm.bitcast %108 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %58, %142 : !llvm.ptr<i8>
-    llvm.store %57, %108 : !llvm.ptr<i1>
-    %143 = llvm.bitcast %109 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %56, %143 : !llvm.ptr<i8>
-    llvm.store %55, %109 : !llvm.ptr<i1>
-    %144 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %54, %144 : !llvm.ptr<i8>
-    llvm.store %53, %110 : !llvm.ptr<i1>
-    %145 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %52, %145 : !llvm.ptr<i8>
-    %146 = llvm.bitcast %112 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %146 : !llvm.ptr<i8>
-    %147 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %50, %147 : !llvm.ptr<i8>
-    %148 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %49, %148 : !llvm.ptr<i8>
-    %149 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %48, %149 : !llvm.ptr<i8>
-    %150 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %47, %150 : !llvm.ptr<i8>
+    llvm.intr.sideeffect(%113, %61, %60, %59) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %148 = llvm.bitcast %114 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %58, %148 : !llvm.ptr<i8>
+    llvm.store %57, %114 : !llvm.ptr<i1>
+    %149 = llvm.bitcast %115 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %56, %149 : !llvm.ptr<i8>
+    llvm.store %55, %115 : !llvm.ptr<i1>
+    %150 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %54, %150 : !llvm.ptr<i8>
+    llvm.store %53, %116 : !llvm.ptr<i1>
+    %151 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %52, %151 : !llvm.ptr<i8>
+    %152 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %152 : !llvm.ptr<i8>
+    %153 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %50, %153 : !llvm.ptr<i8>
+    %154 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %49, %154 : !llvm.ptr<i8>
+    %155 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %48, %155 : !llvm.ptr<i8>
+    %156 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %47, %156 : !llvm.ptr<i8>
     llvm.br ^bb12
   ^bb12:  // pred: ^bb11
-    %151 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %151 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%117, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %157 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %157 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%123, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb13
   ^bb13:  // 2 preds: ^bb12, ^bb32
-    %152 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %153 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%152, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %153, ^bb16, ^bb14
+    %158 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %159 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%158, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %159, ^bb16, ^bb14
   ^bb14:  // pred: ^bb13
-    llvm.store %43, %118 : !llvm.ptr<i32>
-    %154 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %42, %154 : !llvm.ptr<i8>
+    llvm.store %43, %124 : !llvm.ptr<i32>
+    %160 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %42, %160 : !llvm.ptr<i8>
     llvm.br ^bb33
   ^bb15:  // pred: ^bb8
-    %155 = llvm.icmp "eq" %134, %41 : i32
-    llvm.cond_br %155, ^bb9, ^bb6(%135 : i32)
+    %161 = llvm.icmp "eq" %140, %41 : i32
+    llvm.cond_br %161, ^bb9, ^bb6(%141 : i32)
   ^bb16:  // pred: ^bb13
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %156 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %40, %156 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%119, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %162 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %40, %162 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%125, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb18
   ^bb18:  // 2 preds: ^bb17, ^bb30
-    %157 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %158 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%157, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %158, ^bb20, ^bb19
+    %163 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %164 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%163, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %164, ^bb20, ^bb19
   ^bb19:  // pred: ^bb18
-    llvm.store %37, %118 : !llvm.ptr<i32>
-    %159 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %36, %159 : !llvm.ptr<i8>
+    llvm.store %37, %124 : !llvm.ptr<i32>
+    %165 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %36, %165 : !llvm.ptr<i8>
     llvm.br ^bb31
   ^bb20:  // pred: ^bb18
     llvm.br ^bb21
   ^bb21:  // pred: ^bb20
-    %160 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %160 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%120, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %166 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %166 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%126, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb22
   ^bb22:  // 2 preds: ^bb21, ^bb28
-    %161 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %162 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%161, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %162, ^bb24, ^bb23
+    %167 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %168 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%167, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %168, ^bb24, ^bb23
   ^bb23:  // pred: ^bb22
-    llvm.store %32, %118 : !llvm.ptr<i32>
-    %163 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %31, %163 : !llvm.ptr<i8>
+    llvm.store %32, %124 : !llvm.ptr<i32>
+    %169 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %31, %169 : !llvm.ptr<i8>
     llvm.br ^bb29
   ^bb24:  // pred: ^bb22
-    %164 = llvm.load %108 : !llvm.ptr<i1>
-    %165 = llvm.zext %164 : i1 to i32
-    %166 = llvm.icmp "eq" %165, %30 : i32
-    llvm.cond_br %166, ^bb25, ^bb26
+    %170 = llvm.load %114 : !llvm.ptr<i1>
+    %171 = llvm.zext %170 : i1 to i32
+    %172 = llvm.icmp "eq" %171, %30 : i32
+    llvm.cond_br %172, ^bb25, ^bb26
   ^bb25:  // pred: ^bb24
-    %167 = llvm.load %102 : !llvm.ptr<i32>
-    %168 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %169 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%168) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %170 = llvm.trunc %169 : i64 to i32
-    %171 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %172 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%171) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %173 = llvm.trunc %172 : i64 to i32
-    %174 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %173 = llvm.load %108 : !llvm.ptr<i32>
+    %174 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %175 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%174) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %176 = llvm.trunc %175 : i64 to i32
-    %177 = llvm.getelementptr %107[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %178 = llvm.load %103 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %179 = llvm.load %109 : !llvm.ptr<i1>
-    llvm.call @_Z31A_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%167, %170, %173, %176, %177, %178, %179) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %180 = llvm.load %102 : !llvm.ptr<i32>
-    %181 = llvm.load %112 : !llvm.ptr<i32>
-    %182 = llvm.load %114 : !llvm.ptr<i32>
-    %183 = llvm.load %116 : !llvm.ptr<i32>
-    %184 = llvm.getelementptr %106[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %185 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %186 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%180, %181, %182, %183, %184, %185, %186) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %177 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %178 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%177) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %179 = llvm.trunc %178 : i64 to i32
+    %180 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %181 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%180) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %182 = llvm.trunc %181 : i64 to i32
+    %183 = llvm.getelementptr %113[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %184 = llvm.load %109 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %185 = llvm.load %115 : !llvm.ptr<i1>
+    llvm.call @_Z31A_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%173, %176, %179, %182, %183, %184, %185) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %186 = llvm.load %108 : !llvm.ptr<i32>
+    %187 = llvm.load %118 : !llvm.ptr<i32>
+    %188 = llvm.load %120 : !llvm.ptr<i32>
+    %189 = llvm.load %122 : !llvm.ptr<i32>
+    %190 = llvm.getelementptr %112[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %191 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %192 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%186, %187, %188, %189, %190, %191, %192) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb26:  // pred: ^bb24
-    %187 = llvm.load %102 : !llvm.ptr<i32>
-    %188 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %189 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%188) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %190 = llvm.trunc %189 : i64 to i32
-    %191 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %192 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%191) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %193 = llvm.trunc %192 : i64 to i32
-    %194 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %193 = llvm.load %108 : !llvm.ptr<i32>
+    %194 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %195 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%194) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %196 = llvm.trunc %195 : i64 to i32
-    %197 = llvm.getelementptr %106[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %198 = llvm.load %103 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %199 = llvm.load %109 : !llvm.ptr<i1>
-    llvm.call @_Z31A_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%187, %190, %193, %196, %197, %198, %199) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %200 = llvm.load %102 : !llvm.ptr<i32>
-    %201 = llvm.load %112 : !llvm.ptr<i32>
-    %202 = llvm.load %114 : !llvm.ptr<i32>
-    %203 = llvm.load %116 : !llvm.ptr<i32>
-    %204 = llvm.getelementptr %107[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %205 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %206 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%200, %201, %202, %203, %204, %205, %206) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %197 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %198 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%197) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %199 = llvm.trunc %198 : i64 to i32
+    %200 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %201 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%200) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %202 = llvm.trunc %201 : i64 to i32
+    %203 = llvm.getelementptr %112[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %204 = llvm.load %109 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %205 = llvm.load %115 : !llvm.ptr<i1>
+    llvm.call @_Z31A_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%193, %196, %199, %202, %203, %204, %205) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %206 = llvm.load %108 : !llvm.ptr<i32>
+    %207 = llvm.load %118 : !llvm.ptr<i32>
+    %208 = llvm.load %120 : !llvm.ptr<i32>
+    %209 = llvm.load %122 : !llvm.ptr<i32>
+    %210 = llvm.getelementptr %113[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %211 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %212 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%206, %207, %208, %209, %210, %211, %212) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb27:  // 2 preds: ^bb25, ^bb26
-    llvm.store %21, %110 : !llvm.ptr<i1>
-    %207 = llvm.load %108 : !llvm.ptr<i1>
-    %208 = llvm.xor %207, %20  : i1
-    llvm.store %208, %108 : !llvm.ptr<i1>
-    %209 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %210 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%209) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %211 = llvm.trunc %210 : i64 to i32
-    llvm.store %211, %112 : !llvm.ptr<i32>
-    %212 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %213 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%212) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %214 = llvm.trunc %213 : i64 to i32
-    llvm.store %214, %114 : !llvm.ptr<i32>
-    %215 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    llvm.store %21, %116 : !llvm.ptr<i1>
+    %213 = llvm.load %114 : !llvm.ptr<i1>
+    %214 = llvm.xor %213, %20  : i1
+    llvm.store %214, %114 : !llvm.ptr<i1>
+    %215 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %216 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%215) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %217 = llvm.trunc %216 : i64 to i32
-    llvm.store %217, %116 : !llvm.ptr<i32>
+    llvm.store %217, %118 : !llvm.ptr<i32>
+    %218 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %219 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%218) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %220 = llvm.trunc %219 : i64 to i32
+    llvm.store %220, %120 : !llvm.ptr<i32>
+    %221 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %222 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%221) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %223 = llvm.trunc %222 : i64 to i32
+    llvm.store %223, %122 : !llvm.ptr<i32>
     llvm.br ^bb28
   ^bb28:  // pred: ^bb27
-    %218 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %219 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%218, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %224 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %225 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%224, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb22
   ^bb29:  // pred: ^bb23
     llvm.br ^bb30
   ^bb30:  // pred: ^bb29
-    %220 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %221 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%220, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %226 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %227 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%226, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb18
   ^bb31:  // pred: ^bb19
     llvm.br ^bb32
   ^bb32:  // pred: ^bb31
-    %222 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %223 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%222, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %228 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %229 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%228, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb13
   ^bb33:  // pred: ^bb14
-    %224 = llvm.load %108 : !llvm.ptr<i1>
-    %225 = llvm.zext %224 : i1 to i32
-    %226 = llvm.icmp "eq" %225, %16 : i32
-    llvm.cond_br %226, ^bb34, ^bb35
+    %230 = llvm.load %114 : !llvm.ptr<i1>
+    %231 = llvm.zext %230 : i1 to i32
+    %232 = llvm.icmp "eq" %231, %16 : i32
+    llvm.cond_br %232, ^bb34, ^bb35
   ^bb34:  // pred: ^bb33
-    %227 = llvm.load %102 : !llvm.ptr<i32>
-    %228 = llvm.load %112 : !llvm.ptr<i32>
-    %229 = llvm.load %114 : !llvm.ptr<i32>
-    %230 = llvm.load %116 : !llvm.ptr<i32>
-    %231 = llvm.getelementptr %106[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %232 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %233 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%227, %228, %229, %230, %231, %232, %233) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %233 = llvm.load %108 : !llvm.ptr<i32>
+    %234 = llvm.load %118 : !llvm.ptr<i32>
+    %235 = llvm.load %120 : !llvm.ptr<i32>
+    %236 = llvm.load %122 : !llvm.ptr<i32>
+    %237 = llvm.getelementptr %112[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %238 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %239 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%233, %234, %235, %236, %237, %238, %239) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb35:  // pred: ^bb33
-    %234 = llvm.load %102 : !llvm.ptr<i32>
-    %235 = llvm.load %112 : !llvm.ptr<i32>
-    %236 = llvm.load %114 : !llvm.ptr<i32>
-    %237 = llvm.load %116 : !llvm.ptr<i32>
-    %238 = llvm.getelementptr %107[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %239 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %240 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%234, %235, %236, %237, %238, %239, %240) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %240 = llvm.load %108 : !llvm.ptr<i32>
+    %241 = llvm.load %118 : !llvm.ptr<i32>
+    %242 = llvm.load %120 : !llvm.ptr<i32>
+    %243 = llvm.load %122 : !llvm.ptr<i32>
+    %244 = llvm.getelementptr %113[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %245 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %246 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22A_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%240, %241, %242, %243, %244, %245, %246) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb36:  // 2 preds: ^bb34, ^bb35
-    %241 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %241 : !llvm.ptr<i8>
-    %242 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %10, %242 : !llvm.ptr<i8>
-    %243 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %243 : !llvm.ptr<i8>
-    %244 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %244 : !llvm.ptr<i8>
-    %245 = llvm.bitcast %112 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %245 : !llvm.ptr<i8>
-    %246 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %246 : !llvm.ptr<i8>
-    %247 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %247 : !llvm.ptr<i8>
-    %248 = llvm.bitcast %109 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %248 : !llvm.ptr<i8>
-    %249 = llvm.bitcast %108 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %249 : !llvm.ptr<i8>
-    %250 = llvm.bitcast %107 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %250 : !llvm.ptr<i8>
-    %251 = llvm.bitcast %106 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %251 : !llvm.ptr<i8>
-    %252 = llvm.bitcast %105 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %252 : !llvm.ptr<i8>
+    %247 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %247 : !llvm.ptr<i8>
+    %248 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %10, %248 : !llvm.ptr<i8>
+    %249 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %249 : !llvm.ptr<i8>
+    %250 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %250 : !llvm.ptr<i8>
+    %251 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %251 : !llvm.ptr<i8>
+    %252 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %252 : !llvm.ptr<i8>
+    %253 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %253 : !llvm.ptr<i8>
+    %254 = llvm.bitcast %115 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %254 : !llvm.ptr<i8>
+    %255 = llvm.bitcast %114 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %255 : !llvm.ptr<i8>
+    %256 = llvm.bitcast %113 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %256 : !llvm.ptr<i8>
+    %257 = llvm.bitcast %112 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %257 : !llvm.ptr<i8>
+    %258 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %258 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func @_Z10B_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%arg0: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, %arg1: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) attributes {llvm.noinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "B_IO_L3_in", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -4485,20 +4500,20 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %50 = llvm.mlir.constant(0 : i32) : i32
     %51 = llvm.mlir.constant(1 : i64) : i64
     %52 = llvm.mlir.constant(1 : i32) : i32
-    %53 = llvm.mlir.constant(0 : i32) : i32
-    %54 = llvm.mlir.constant(0 : i32) : i32
-    %55 = llvm.mlir.constant(3 : i32) : i32
-    %56 = llvm.mlir.constant(0 : i32) : i32
-    %57 = llvm.mlir.constant(1 : i32) : i32
+    %53 = llvm.mlir.constant(false) : i1
+    %54 = llvm.mlir.constant(1 : i32) : i32
+    %55 = llvm.mlir.constant(0 : i32) : i32
+    %56 = llvm.mlir.constant(2 : i32) : i32
+    %57 = llvm.mlir.constant(0 : i32) : i32
     %58 = llvm.mlir.constant(0 : i32) : i32
-    %59 = llvm.mlir.constant(0 : i32) : i32
+    %59 = llvm.mlir.constant(3 : i32) : i32
     %60 = llvm.mlir.constant(0 : i32) : i32
-    %61 = llvm.mlir.constant(32 : i64) : i64
-    %62 = llvm.mlir.constant(4 : i64) : i64
-    %63 = llvm.mlir.constant(1 : i32) : i32
-    %64 = llvm.mlir.constant(1 : i32) : i32
-    %65 = llvm.mlir.constant(1 : i32) : i32
-    %66 = llvm.mlir.constant(1 : i32) : i32
+    %61 = llvm.mlir.constant(1 : i32) : i32
+    %62 = llvm.mlir.constant(0 : i32) : i32
+    %63 = llvm.mlir.constant(0 : i32) : i32
+    %64 = llvm.mlir.constant(0 : i32) : i32
+    %65 = llvm.mlir.constant(32 : i64) : i64
+    %66 = llvm.mlir.constant(4 : i64) : i64
     %67 = llvm.mlir.constant(1 : i32) : i32
     %68 = llvm.mlir.constant(1 : i32) : i32
     %69 = llvm.mlir.constant(1 : i32) : i32
@@ -4519,231 +4534,235 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %84 = llvm.mlir.constant(1 : i32) : i32
     %85 = llvm.mlir.constant(1 : i32) : i32
     %86 = llvm.mlir.constant(1 : i32) : i32
-    %87 = llvm.alloca %86 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %88 = llvm.alloca %85 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %89 = llvm.alloca %84 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %90 = llvm.alloca %83 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %91 = llvm.alloca %82 x !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %92 = llvm.alloca %81 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %93 = llvm.alloca %80 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %94 = llvm.alloca %79 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %95 = llvm.alloca %78 x !llvm.array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %96 = llvm.alloca %77 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %97 = llvm.alloca %76 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %98 = llvm.alloca %75 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %99 = llvm.alloca %74 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %100 = llvm.alloca %73 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %101 = llvm.alloca %72 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %102 = llvm.alloca %71 x !llvm.struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>
-    %103 = llvm.alloca %70 x !llvm.struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>
-    %104 = llvm.alloca %69 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %105 = llvm.alloca %68 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %106 = llvm.alloca %67 x !llvm.struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>
-    %107 = llvm.alloca %66 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %108 = llvm.alloca %65 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %109 = llvm.alloca %64 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %110 = llvm.alloca %63 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    llvm.store %arg0, %87 : !llvm.ptr<i32>
-    llvm.store %arg1, %88 : !llvm.ptr<i32>
-    llvm.store %arg2, %89 : !llvm.ptr<i32>
-    llvm.store %arg3, %90 : !llvm.ptr<i32>
-    llvm.store %arg4, %91 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    llvm.store %arg5, %92 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg6, %93 : !llvm.ptr<i1>
-    %111 = llvm.bitcast %94 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %62, %111 : !llvm.ptr<i8>
-    %112 = llvm.load %87 : !llvm.ptr<i32>
-    llvm.store %112, %94 : !llvm.ptr<i32>
-    %113 = llvm.bitcast %95 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %61, %113 : !llvm.ptr<i8>
-    %114 = llvm.getelementptr %95[%60, %59] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.br ^bb1(%58 : i32)
-  ^bb1(%115: i32):  // 2 preds: ^bb0, ^bb1
-    %116 = llvm.add %115, %57  : i32
-    %117 = llvm.getelementptr %95[%56, %115] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%117) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %118 = llvm.icmp "eq" %115, %55 : i32
-    llvm.cond_br %118, ^bb2, ^bb1(%116 : i32)
+    %87 = llvm.mlir.constant(1 : i32) : i32
+    %88 = llvm.mlir.constant(1 : i32) : i32
+    %89 = llvm.mlir.constant(1 : i32) : i32
+    %90 = llvm.mlir.constant(1 : i32) : i32
+    %91 = llvm.alloca %90 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %92 = llvm.alloca %89 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %93 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %94 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %95 = llvm.alloca %86 x !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %96 = llvm.alloca %85 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %97 = llvm.alloca %84 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %98 = llvm.alloca %83 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %99 = llvm.alloca %82 x !llvm.array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %100 = llvm.alloca %81 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %101 = llvm.alloca %80 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %102 = llvm.alloca %79 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %103 = llvm.alloca %78 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %104 = llvm.alloca %77 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %105 = llvm.alloca %76 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %106 = llvm.alloca %75 x !llvm.struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>
+    %107 = llvm.alloca %74 x !llvm.struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>
+    %108 = llvm.alloca %73 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %109 = llvm.alloca %72 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %110 = llvm.alloca %71 x !llvm.struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>
+    %111 = llvm.alloca %70 x !llvm.struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %112 = llvm.alloca %69 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %113 = llvm.alloca %68 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %114 = llvm.alloca %67 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    llvm.store %arg0, %91 : !llvm.ptr<i32>
+    llvm.store %arg1, %92 : !llvm.ptr<i32>
+    llvm.store %arg2, %93 : !llvm.ptr<i32>
+    llvm.store %arg3, %94 : !llvm.ptr<i32>
+    llvm.store %arg4, %95 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    llvm.store %arg5, %96 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg6, %97 : !llvm.ptr<i1>
+    %115 = llvm.bitcast %98 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %66, %115 : !llvm.ptr<i8>
+    %116 = llvm.load %91 : !llvm.ptr<i32>
+    llvm.store %116, %98 : !llvm.ptr<i32>
+    %117 = llvm.bitcast %99 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %65, %117 : !llvm.ptr<i8>
+    %118 = llvm.getelementptr %99[%64, %63] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.br ^bb1(%62 : i32)
+  ^bb1(%119: i32):  // 2 preds: ^bb0, ^bb1
+    %120 = llvm.add %119, %61  : i32
+    %121 = llvm.getelementptr %99[%60, %119] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%121) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %122 = llvm.icmp "eq" %119, %59 : i32
+    llvm.cond_br %122, ^bb2, ^bb1(%120 : i32)
   ^bb2:  // pred: ^bb1
     llvm.br ^bb3
   ^bb3:  // pred: ^bb2
-    %119 = llvm.getelementptr %95[%54, %53] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @llvm.sideeffect() : () -> ()
-    %120 = llvm.load %93 : !llvm.ptr<i1>
-    llvm.cond_br %120, ^bb5, ^bb4
+    %123 = llvm.getelementptr %99[%58, %57] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.intr.sideeffect(%123, %56, %55, %54, %53) {llvm.bundle.xlx_array_partition = 5 : i64} : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, i32, i32, i32, i1
+    %124 = llvm.load %97 : !llvm.ptr<i1>
+    llvm.cond_br %124, ^bb5, ^bb4
   ^bb4:  // pred: ^bb3
-    llvm.store %52, %96 : !llvm.ptr<i32>
+    llvm.store %52, %100 : !llvm.ptr<i32>
     llvm.br ^bb30
   ^bb5:  // pred: ^bb3
     llvm.br ^bb6
   ^bb6:  // pred: ^bb5
-    %121 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %121 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%97, %50) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %125 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %125 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%101, %50) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb7
   ^bb7:  // 2 preds: ^bb6, ^bb28
-    %122 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %123 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%122, %49) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %123, ^bb9, ^bb8
+    %126 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %127 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%126, %49) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %127, ^bb9, ^bb8
   ^bb8:  // pred: ^bb7
-    llvm.store %48, %96 : !llvm.ptr<i32>
-    %124 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %47, %124 : !llvm.ptr<i8>
+    llvm.store %48, %100 : !llvm.ptr<i32>
+    %128 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %47, %128 : !llvm.ptr<i8>
     llvm.br ^bb29
   ^bb9:  // pred: ^bb7
     llvm.br ^bb10
   ^bb10:  // pred: ^bb9
-    %125 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %125 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%98, %45) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %129 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %129 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%102, %45) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb11
   ^bb11:  // 2 preds: ^bb10, ^bb26
-    %126 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %127 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%126, %44) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %127, ^bb13, ^bb12
+    %130 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %131 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%130, %44) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %131, ^bb13, ^bb12
   ^bb12:  // pred: ^bb11
-    llvm.store %43, %96 : !llvm.ptr<i32>
-    %128 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %42, %128 : !llvm.ptr<i8>
+    llvm.store %43, %100 : !llvm.ptr<i32>
+    %132 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %42, %132 : !llvm.ptr<i8>
     llvm.br ^bb27
   ^bb13:  // pred: ^bb11
     llvm.br ^bb14
   ^bb14:  // pred: ^bb13
-    %129 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %41, %129 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%99, %40) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %133 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %41, %133 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%103, %40) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb15
   ^bb15:  // 2 preds: ^bb14, ^bb24
-    %130 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %131 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%130, %39) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %131, ^bb17, ^bb16
+    %134 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %135 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%134, %39) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %135, ^bb17, ^bb16
   ^bb16:  // pred: ^bb15
-    llvm.store %38, %96 : !llvm.ptr<i32>
-    %132 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %37, %132 : !llvm.ptr<i8>
+    llvm.store %38, %100 : !llvm.ptr<i32>
+    %136 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %37, %136 : !llvm.ptr<i8>
     llvm.br ^bb25
   ^bb17:  // pred: ^bb15
-    %133 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %36, %133 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%100) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %134 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %134 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%101) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %135 = llvm.load %91 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %136 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %137 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%136) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %138 = llvm.getelementptr %135[%137] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %139 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %34, %139 : !llvm.ptr<i8>
-    %140 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZmlILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4multEiRKS1_(%102, %33, %140) : (!llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>, i32, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> ()
-    %141 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>
-    llvm.call @_ZdvILi36ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%103, %141, %32) : (!llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>, i32) -> ()
-    %142 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>
-    %143 = llvm.call @_ZNK11ap_int_baseILi37ELb1EEcvxEv(%142) : (!llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>) -> i64
-    %144 = llvm.getelementptr %138[%31, %143] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %145 = llvm.load %144 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.store %145, %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %146 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %30, %146 : !llvm.ptr<i8>
+    %137 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %36, %137 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%104) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %138 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %138 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%105) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %139 = llvm.load %95 : !llvm.ptr<ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %140 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %141 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%140) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %142 = llvm.getelementptr %139[%141] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %143 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %34, %143 : !llvm.ptr<i8>
+    %144 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZmlILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4multEiRKS1_(%106, %33, %144) : (!llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>>, i32, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> ()
+    %145 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>
+    llvm.call @_ZdvILi36ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%107, %145, %32) : (!llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>>, i32) -> ()
+    %146 = llvm.bitcast %107 : !llvm.ptr<struct<"struct.ap_int<37>", (struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>
+    %147 = llvm.call @_ZNK11ap_int_baseILi37ELb1EEcvxEv(%146) : (!llvm.ptr<struct<"struct.ap_int_base<37, true>", (struct<"struct.ssdm_int<37, true>", (i37)>)>>) -> i64
+    %148 = llvm.getelementptr %142[%31, %147] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %149 = llvm.load %148 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.store %149, %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %150 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_int<36>", (struct<"struct.ap_int_base<36, true>", (struct<"struct.ssdm_int<36, true>", (i36)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %30, %150 : !llvm.ptr<i8>
     llvm.br ^bb18
   ^bb18:  // pred: ^bb17
-    %147 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %29, %147 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%104, %28) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %151 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %29, %151 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%108, %28) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb19
   ^bb19:  // 2 preds: ^bb18, ^bb22
-    %148 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %149 = llvm.call @_ZltILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%148, %27) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %149, ^bb21, ^bb20
+    %152 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %153 = llvm.call @_ZltILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%152, %27) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %153, ^bb21, ^bb20
   ^bb20:  // pred: ^bb19
-    llvm.store %26, %96 : !llvm.ptr<i32>
-    %150 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %25, %150 : !llvm.ptr<i8>
+    llvm.store %26, %100 : !llvm.ptr<i32>
+    %154 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %25, %154 : !llvm.ptr<i8>
     llvm.br ^bb23
   ^bb21:  // pred: ^bb19
-    %151 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %24, %151 : !llvm.ptr<i8>
-    %152 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %23, %152 : !llvm.ptr<i8>
-    %153 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
-    llvm.call @_ZN11ap_int_baseILi256ELb0EEclEii(%106, %153, %22, %21) : (!llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32) -> ()
-    llvm.call @_ZN7ap_uintILi64EEC2ILi256ELb0EEERK12ap_range_refIXT_EXT0_EE(%105, %106) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>) -> ()
-    %154 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %155 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%154) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %156 = llvm.getelementptr %95[%20, %155] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %157 = llvm.load %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %157, %156 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %158 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %19, %158 : !llvm.ptr<i8>
-    %159 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %18, %159 : !llvm.ptr<i8>
-    %160 = llvm.bitcast %107 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %17, %160 : !llvm.ptr<i8>
-    %161 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
-    llvm.call @_ZrsILi256ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%107, %161, %16) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32) -> ()
-    %162 = llvm.load %107 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.store %162, %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    %163 = llvm.bitcast %107 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %15, %163 : !llvm.ptr<i8>
+    %155 = llvm.bitcast %109 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %24, %155 : !llvm.ptr<i8>
+    %156 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %23, %156 : !llvm.ptr<i8>
+    %157 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
+    llvm.call @_ZN11ap_int_baseILi256ELb0EEclEii(%110, %157, %22, %21) : (!llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32) -> ()
+    llvm.call @_ZN7ap_uintILi64EEC2ILi256ELb0EEERK12ap_range_refIXT_EXT0_EE(%109, %110) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>>) -> ()
+    %158 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %159 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%158) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %160 = llvm.getelementptr %99[%20, %159] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %161 = llvm.load %109 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %161, %160 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %162 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_range_ref<256, false>", (ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32, i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %19, %162 : !llvm.ptr<i8>
+    %163 = llvm.bitcast %109 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %18, %163 : !llvm.ptr<i8>
+    %164 = llvm.bitcast %111 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %17, %164 : !llvm.ptr<i8>
+    %165 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>
+    llvm.call @_ZrsILi256ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%111, %165, %16) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>>, i32) -> ()
+    %166 = llvm.load %111 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.store %166, %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    %167 = llvm.bitcast %111 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %15, %167 : !llvm.ptr<i8>
     llvm.br ^bb22
   ^bb22:  // pred: ^bb21
-    %164 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %165 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %14, %165 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi3ELb0EEppEi(%108, %164, %13) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> ()
-    %166 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %12, %166 : !llvm.ptr<i8>
+    %168 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %169 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %14, %169 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi3ELb0EEppEi(%112, %168, %13) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> ()
+    %170 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %12, %170 : !llvm.ptr<i8>
     llvm.br ^bb19
   ^bb23:  // pred: ^bb20
-    %167 = llvm.bitcast %109 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %11, %167 : !llvm.ptr<i8>
-    %168 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZrmILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3modERKS1_i(%110, %168, %10) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
-    %169 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %170 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%169) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %171 = llvm.trunc %170 : i64 to i32
-    llvm.store %171, %109 : !llvm.ptr<i32>
-    %172 = llvm.load %109 : !llvm.ptr<i32>
-    %173 = llvm.sext %172 : i32 to i64
-    %174 = llvm.getelementptr %95[%9, %173] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %175 = llvm.load %174 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %175, %101 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %176 = llvm.load %92 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%176, %101) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %177 = llvm.bitcast %109 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %177 : !llvm.ptr<i8>
-    %178 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %178 : !llvm.ptr<i8>
-    %179 = llvm.bitcast %100 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %179 : !llvm.ptr<i8>
+    %171 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %11, %171 : !llvm.ptr<i8>
+    %172 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZrmILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3modERKS1_i(%114, %172, %10) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
+    %173 = llvm.bitcast %114 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %174 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%173) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %175 = llvm.trunc %174 : i64 to i32
+    llvm.store %175, %113 : !llvm.ptr<i32>
+    %176 = llvm.load %113 : !llvm.ptr<i32>
+    %177 = llvm.sext %176 : i32 to i64
+    %178 = llvm.getelementptr %99[%9, %177] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %179 = llvm.load %178 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %179, %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %180 = llvm.load %96 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%180, %105) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %181 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %181 : !llvm.ptr<i8>
+    %182 = llvm.bitcast %105 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %182 : !llvm.ptr<i8>
+    %183 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %183 : !llvm.ptr<i8>
     llvm.br ^bb24
   ^bb24:  // pred: ^bb23
-    %180 = llvm.bitcast %99 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %181 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%180, %5) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %184 = llvm.bitcast %103 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %185 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%184, %5) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb15
   ^bb25:  // pred: ^bb16
     llvm.br ^bb26
   ^bb26:  // pred: ^bb25
-    %182 = llvm.bitcast %98 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %183 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%182, %4) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %186 = llvm.bitcast %102 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %187 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%186, %4) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb11
   ^bb27:  // pred: ^bb12
     llvm.br ^bb28
   ^bb28:  // pred: ^bb27
-    %184 = llvm.bitcast %97 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %185 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%184, %3) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %188 = llvm.bitcast %101 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %189 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%188, %3) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb7
   ^bb29:  // pred: ^bb8
-    llvm.store %2, %96 : !llvm.ptr<i32>
+    llvm.store %2, %100 : !llvm.ptr<i32>
     llvm.br ^bb30
   ^bb30:  // 2 preds: ^bb4, ^bb29
-    %186 = llvm.bitcast %95 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %186 : !llvm.ptr<i8>
-    %187 = llvm.bitcast %94 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %187 : !llvm.ptr<i8>
-    %188 = llvm.load %96 : !llvm.ptr<i32>
-    llvm.switch %188 : i32, ^bb32 [
+    %190 = llvm.bitcast %99 : !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %190 : !llvm.ptr<i8>
+    %191 = llvm.bitcast %98 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %191 : !llvm.ptr<i8>
+    %192 = llvm.load %100 : !llvm.ptr<i32>
+    llvm.switch %192 : i32, ^bb32 [
       0: ^bb31,
       1: ^bb31
     ]
@@ -5299,36 +5318,36 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %56 = llvm.mlir.constant(1 : i64) : i64
     %57 = llvm.mlir.constant(false) : i1
     %58 = llvm.mlir.constant(1 : i64) : i64
-    %59 = llvm.mlir.constant(7 : i32) : i32
-    %60 = llvm.mlir.constant(1 : i32) : i32
-    %61 = llvm.mlir.constant(0 : i32) : i32
-    %62 = llvm.mlir.constant(1 : i32) : i32
-    %63 = llvm.mlir.constant(0 : i32) : i32
+    %59 = llvm.mlir.constant(-1 : i32) : i32
+    %60 = llvm.mlir.constant(22 : i32) : i32
+    %61 = llvm.mlir.constant(666 : i32) : i32
+    %62 = llvm.mlir.constant(7 : i32) : i32
+    %63 = llvm.mlir.constant(1 : i32) : i32
     %64 = llvm.mlir.constant(0 : i32) : i32
     %65 = llvm.mlir.constant(1 : i32) : i32
     %66 = llvm.mlir.constant(0 : i32) : i32
     %67 = llvm.mlir.constant(0 : i32) : i32
-    %68 = llvm.mlir.constant(0 : i32) : i32
+    %68 = llvm.mlir.constant(1 : i32) : i32
     %69 = llvm.mlir.constant(0 : i32) : i32
-    %70 = llvm.mlir.constant(512 : i64) : i64
-    %71 = llvm.mlir.constant(1 : i32) : i32
+    %70 = llvm.mlir.constant(0 : i32) : i32
+    %71 = llvm.mlir.constant(0 : i32) : i32
     %72 = llvm.mlir.constant(0 : i32) : i32
-    %73 = llvm.mlir.constant(1 : i32) : i32
-    %74 = llvm.mlir.constant(0 : i32) : i32
-    %75 = llvm.mlir.constant(0 : i32) : i32
-    %76 = llvm.mlir.constant(1 : i32) : i32
-    %77 = llvm.mlir.constant(0 : i32) : i32
+    %73 = llvm.mlir.constant(512 : i64) : i64
+    %74 = llvm.mlir.constant(-1 : i32) : i32
+    %75 = llvm.mlir.constant(22 : i32) : i32
+    %76 = llvm.mlir.constant(666 : i32) : i32
+    %77 = llvm.mlir.constant(1 : i32) : i32
     %78 = llvm.mlir.constant(0 : i32) : i32
-    %79 = llvm.mlir.constant(0 : i32) : i32
+    %79 = llvm.mlir.constant(1 : i32) : i32
     %80 = llvm.mlir.constant(0 : i32) : i32
-    %81 = llvm.mlir.constant(512 : i64) : i64
-    %82 = llvm.mlir.constant(4 : i64) : i64
-    %83 = llvm.mlir.constant(1 : i32) : i32
-    %84 = llvm.mlir.constant(1 : i32) : i32
-    %85 = llvm.mlir.constant(1 : i32) : i32
-    %86 = llvm.mlir.constant(1 : i32) : i32
-    %87 = llvm.mlir.constant(1 : i32) : i32
-    %88 = llvm.mlir.constant(1 : i32) : i32
+    %81 = llvm.mlir.constant(0 : i32) : i32
+    %82 = llvm.mlir.constant(1 : i32) : i32
+    %83 = llvm.mlir.constant(0 : i32) : i32
+    %84 = llvm.mlir.constant(0 : i32) : i32
+    %85 = llvm.mlir.constant(0 : i32) : i32
+    %86 = llvm.mlir.constant(0 : i32) : i32
+    %87 = llvm.mlir.constant(512 : i64) : i64
+    %88 = llvm.mlir.constant(4 : i64) : i64
     %89 = llvm.mlir.constant(1 : i32) : i32
     %90 = llvm.mlir.constant(1 : i32) : i32
     %91 = llvm.mlir.constant(1 : i32) : i32
@@ -5343,287 +5362,293 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %100 = llvm.mlir.constant(1 : i32) : i32
     %101 = llvm.mlir.constant(1 : i32) : i32
     %102 = llvm.mlir.constant(1 : i32) : i32
-    %103 = llvm.alloca %102 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %104 = llvm.alloca %101 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %105 = llvm.alloca %100 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %106 = llvm.alloca %99 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %107 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %108 = llvm.alloca %97 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %109 = llvm.alloca %96 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %110 = llvm.alloca %95 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %111 = llvm.alloca %94 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %112 = llvm.alloca %93 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %113 = llvm.alloca %92 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %114 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %115 = llvm.alloca %90 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %116 = llvm.alloca %89 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %117 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %118 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %119 = llvm.alloca %86 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %120 = llvm.alloca %85 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %121 = llvm.alloca %84 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %122 = llvm.alloca %83 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    llvm.store %arg0, %103 : !llvm.ptr<i32>
-    llvm.store %arg1, %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    llvm.store %arg2, %105 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    llvm.store %arg3, %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %123 = llvm.bitcast %107 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %82, %123 : !llvm.ptr<i8>
-    %124 = llvm.load %103 : !llvm.ptr<i32>
-    llvm.store %124, %107 : !llvm.ptr<i32>
-    %125 = llvm.bitcast %108 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %81, %125 : !llvm.ptr<i8>
-    %126 = llvm.getelementptr %108[%80, %79, %78] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb1(%77 : i32)
-  ^bb1(%127: i32):  // 2 preds: ^bb0, ^bb10
-    %128 = llvm.add %127, %76  : i32
-    %129 = llvm.getelementptr %108[%75, %127] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb2(%74 : i32)
-  ^bb2(%130: i32):  // 2 preds: ^bb1, ^bb2
-    %131 = llvm.add %130, %73  : i32
-    %132 = llvm.getelementptr %129[%72, %130] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%132) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %133 = llvm.icmp "eq" %130, %71 : i32
-    llvm.cond_br %133, ^bb3, ^bb2(%131 : i32)
+    %103 = llvm.mlir.constant(1 : i32) : i32
+    %104 = llvm.mlir.constant(1 : i32) : i32
+    %105 = llvm.mlir.constant(1 : i32) : i32
+    %106 = llvm.mlir.constant(1 : i32) : i32
+    %107 = llvm.mlir.constant(1 : i32) : i32
+    %108 = llvm.mlir.constant(1 : i32) : i32
+    %109 = llvm.alloca %108 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %110 = llvm.alloca %107 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %111 = llvm.alloca %106 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %112 = llvm.alloca %105 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %113 = llvm.alloca %104 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %114 = llvm.alloca %103 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %115 = llvm.alloca %102 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %116 = llvm.alloca %101 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %117 = llvm.alloca %100 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %118 = llvm.alloca %99 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %119 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %120 = llvm.alloca %97 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %121 = llvm.alloca %96 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %122 = llvm.alloca %95 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %123 = llvm.alloca %94 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %124 = llvm.alloca %93 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %125 = llvm.alloca %92 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %126 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %127 = llvm.alloca %90 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %128 = llvm.alloca %89 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    llvm.store %arg0, %109 : !llvm.ptr<i32>
+    llvm.store %arg1, %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    llvm.store %arg2, %111 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    llvm.store %arg3, %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %129 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %88, %129 : !llvm.ptr<i8>
+    %130 = llvm.load %109 : !llvm.ptr<i32>
+    llvm.store %130, %113 : !llvm.ptr<i32>
+    %131 = llvm.bitcast %114 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %87, %131 : !llvm.ptr<i8>
+    %132 = llvm.getelementptr %114[%86, %85, %84] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb1(%83 : i32)
+  ^bb1(%133: i32):  // 2 preds: ^bb0, ^bb10
+    %134 = llvm.add %133, %82  : i32
+    %135 = llvm.getelementptr %114[%81, %133] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb2(%80 : i32)
+  ^bb2(%136: i32):  // 2 preds: ^bb1, ^bb2
+    %137 = llvm.add %136, %79  : i32
+    %138 = llvm.getelementptr %135[%78, %136] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%138) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %139 = llvm.icmp "eq" %136, %77 : i32
+    llvm.cond_br %139, ^bb3, ^bb2(%137 : i32)
   ^bb3:  // pred: ^bb2
     llvm.br ^bb10
   ^bb4:  // pred: ^bb10
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    llvm.call @llvm.sideeffect() : () -> ()
-    %134 = llvm.bitcast %109 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %70, %134 : !llvm.ptr<i8>
-    %135 = llvm.getelementptr %109[%69, %68, %67] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb6(%66 : i32)
-  ^bb6(%136: i32):  // 2 preds: ^bb5, ^bb15
-    %137 = llvm.add %136, %65  : i32
-    %138 = llvm.getelementptr %109[%64, %136] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb7(%63 : i32)
-  ^bb7(%139: i32):  // 2 preds: ^bb6, ^bb7
-    %140 = llvm.add %139, %62  : i32
-    %141 = llvm.getelementptr %138[%61, %139] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%141) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %142 = llvm.icmp "eq" %139, %60 : i32
-    llvm.cond_br %142, ^bb8, ^bb7(%140 : i32)
+    llvm.intr.sideeffect(%114, %76, %75, %74) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %140 = llvm.bitcast %115 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %73, %140 : !llvm.ptr<i8>
+    %141 = llvm.getelementptr %115[%72, %71, %70] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb6(%69 : i32)
+  ^bb6(%142: i32):  // 2 preds: ^bb5, ^bb15
+    %143 = llvm.add %142, %68  : i32
+    %144 = llvm.getelementptr %115[%67, %142] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb7(%66 : i32)
+  ^bb7(%145: i32):  // 2 preds: ^bb6, ^bb7
+    %146 = llvm.add %145, %65  : i32
+    %147 = llvm.getelementptr %144[%64, %145] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%147) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %148 = llvm.icmp "eq" %145, %63 : i32
+    llvm.cond_br %148, ^bb8, ^bb7(%146 : i32)
   ^bb8:  // pred: ^bb7
     llvm.br ^bb15
   ^bb9:  // pred: ^bb15
     llvm.br ^bb11
   ^bb10:  // pred: ^bb3
-    %143 = llvm.icmp "eq" %127, %59 : i32
-    llvm.cond_br %143, ^bb4, ^bb1(%128 : i32)
+    %149 = llvm.icmp "eq" %133, %62 : i32
+    llvm.cond_br %149, ^bb4, ^bb1(%134 : i32)
   ^bb11:  // pred: ^bb9
-    llvm.call @llvm.sideeffect() : () -> ()
-    %144 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %58, %144 : !llvm.ptr<i8>
-    llvm.store %57, %110 : !llvm.ptr<i1>
-    %145 = llvm.bitcast %111 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %56, %145 : !llvm.ptr<i8>
-    llvm.store %55, %111 : !llvm.ptr<i1>
-    %146 = llvm.bitcast %112 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %54, %146 : !llvm.ptr<i8>
-    llvm.store %53, %112 : !llvm.ptr<i1>
-    %147 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %52, %147 : !llvm.ptr<i8>
-    %148 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %148 : !llvm.ptr<i8>
-    %149 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %50, %149 : !llvm.ptr<i8>
-    %150 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %49, %150 : !llvm.ptr<i8>
-    %151 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %48, %151 : !llvm.ptr<i8>
-    %152 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %47, %152 : !llvm.ptr<i8>
+    llvm.intr.sideeffect(%115, %61, %60, %59) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %150 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %58, %150 : !llvm.ptr<i8>
+    llvm.store %57, %116 : !llvm.ptr<i1>
+    %151 = llvm.bitcast %117 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %56, %151 : !llvm.ptr<i8>
+    llvm.store %55, %117 : !llvm.ptr<i1>
+    %152 = llvm.bitcast %118 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %54, %152 : !llvm.ptr<i8>
+    llvm.store %53, %118 : !llvm.ptr<i1>
+    %153 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %52, %153 : !llvm.ptr<i8>
+    %154 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %154 : !llvm.ptr<i8>
+    %155 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %50, %155 : !llvm.ptr<i8>
+    %156 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %49, %156 : !llvm.ptr<i8>
+    %157 = llvm.bitcast %123 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %48, %157 : !llvm.ptr<i8>
+    %158 = llvm.bitcast %124 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %47, %158 : !llvm.ptr<i8>
     llvm.br ^bb12
   ^bb12:  // pred: ^bb11
-    %153 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %153 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%119, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %159 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %159 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%125, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb13
   ^bb13:  // 2 preds: ^bb12, ^bb32
-    %154 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %155 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%154, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %155, ^bb16, ^bb14
+    %160 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %161 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%160, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %161, ^bb16, ^bb14
   ^bb14:  // pred: ^bb13
-    llvm.store %43, %120 : !llvm.ptr<i32>
-    %156 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %42, %156 : !llvm.ptr<i8>
+    llvm.store %43, %126 : !llvm.ptr<i32>
+    %162 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %42, %162 : !llvm.ptr<i8>
     llvm.br ^bb33
   ^bb15:  // pred: ^bb8
-    %157 = llvm.icmp "eq" %136, %41 : i32
-    llvm.cond_br %157, ^bb9, ^bb6(%137 : i32)
+    %163 = llvm.icmp "eq" %142, %41 : i32
+    llvm.cond_br %163, ^bb9, ^bb6(%143 : i32)
   ^bb16:  // pred: ^bb13
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %158 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %40, %158 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%121, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %164 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %40, %164 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%127, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb18
   ^bb18:  // 2 preds: ^bb17, ^bb30
-    %159 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %160 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%159, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %160, ^bb20, ^bb19
+    %165 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %166 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%165, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %166, ^bb20, ^bb19
   ^bb19:  // pred: ^bb18
-    llvm.store %37, %120 : !llvm.ptr<i32>
-    %161 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %36, %161 : !llvm.ptr<i8>
+    llvm.store %37, %126 : !llvm.ptr<i32>
+    %167 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %36, %167 : !llvm.ptr<i8>
     llvm.br ^bb31
   ^bb20:  // pred: ^bb18
     llvm.br ^bb21
   ^bb21:  // pred: ^bb20
-    %162 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %162 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%122, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %168 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %168 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%128, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb22
   ^bb22:  // 2 preds: ^bb21, ^bb28
-    %163 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %164 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%163, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %164, ^bb24, ^bb23
+    %169 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %170 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%169, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %170, ^bb24, ^bb23
   ^bb23:  // pred: ^bb22
-    llvm.store %32, %120 : !llvm.ptr<i32>
-    %165 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %31, %165 : !llvm.ptr<i8>
+    llvm.store %32, %126 : !llvm.ptr<i32>
+    %171 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %31, %171 : !llvm.ptr<i8>
     llvm.br ^bb29
   ^bb24:  // pred: ^bb22
-    %166 = llvm.load %110 : !llvm.ptr<i1>
-    %167 = llvm.zext %166 : i1 to i32
-    %168 = llvm.icmp "eq" %167, %30 : i32
-    llvm.cond_br %168, ^bb25, ^bb26
+    %172 = llvm.load %116 : !llvm.ptr<i1>
+    %173 = llvm.zext %172 : i1 to i32
+    %174 = llvm.icmp "eq" %173, %30 : i32
+    llvm.cond_br %174, ^bb25, ^bb26
   ^bb25:  // pred: ^bb24
-    %169 = llvm.load %103 : !llvm.ptr<i32>
-    %170 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %171 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%170) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %172 = llvm.trunc %171 : i64 to i32
-    %173 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %174 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%173) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %175 = llvm.trunc %174 : i64 to i32
-    %176 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %175 = llvm.load %109 : !llvm.ptr<i32>
+    %176 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %177 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%176) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %178 = llvm.trunc %177 : i64 to i32
-    %179 = llvm.getelementptr %109[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %180 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %181 = llvm.load %105 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %182 = llvm.load %111 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%169, %172, %175, %178, %179, %180, %181, %182) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %183 = llvm.load %103 : !llvm.ptr<i32>
-    %184 = llvm.load %114 : !llvm.ptr<i32>
-    %185 = llvm.load %116 : !llvm.ptr<i32>
-    %186 = llvm.load %118 : !llvm.ptr<i32>
-    %187 = llvm.getelementptr %108[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %188 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %189 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%183, %184, %185, %186, %187, %188, %189) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %179 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %180 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%179) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %181 = llvm.trunc %180 : i64 to i32
+    %182 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %183 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%182) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %184 = llvm.trunc %183 : i64 to i32
+    %185 = llvm.getelementptr %115[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %186 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %187 = llvm.load %111 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %188 = llvm.load %117 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%175, %178, %181, %184, %185, %186, %187, %188) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %189 = llvm.load %109 : !llvm.ptr<i32>
+    %190 = llvm.load %120 : !llvm.ptr<i32>
+    %191 = llvm.load %122 : !llvm.ptr<i32>
+    %192 = llvm.load %124 : !llvm.ptr<i32>
+    %193 = llvm.getelementptr %114[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %194 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %195 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%189, %190, %191, %192, %193, %194, %195) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb26:  // pred: ^bb24
-    %190 = llvm.load %103 : !llvm.ptr<i32>
-    %191 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %192 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%191) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %193 = llvm.trunc %192 : i64 to i32
-    %194 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %195 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%194) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %196 = llvm.trunc %195 : i64 to i32
-    %197 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %196 = llvm.load %109 : !llvm.ptr<i32>
+    %197 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %198 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%197) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %199 = llvm.trunc %198 : i64 to i32
-    %200 = llvm.getelementptr %108[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %201 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %202 = llvm.load %105 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %203 = llvm.load %111 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%190, %193, %196, %199, %200, %201, %202, %203) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %204 = llvm.load %103 : !llvm.ptr<i32>
-    %205 = llvm.load %114 : !llvm.ptr<i32>
-    %206 = llvm.load %116 : !llvm.ptr<i32>
-    %207 = llvm.load %118 : !llvm.ptr<i32>
-    %208 = llvm.getelementptr %109[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %209 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %210 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%204, %205, %206, %207, %208, %209, %210) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %200 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %201 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%200) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %202 = llvm.trunc %201 : i64 to i32
+    %203 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %204 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%203) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %205 = llvm.trunc %204 : i64 to i32
+    %206 = llvm.getelementptr %114[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %207 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %208 = llvm.load %111 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %209 = llvm.load %117 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_inter_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEES6_b(%196, %199, %202, %205, %206, %207, %208, %209) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %210 = llvm.load %109 : !llvm.ptr<i32>
+    %211 = llvm.load %120 : !llvm.ptr<i32>
+    %212 = llvm.load %122 : !llvm.ptr<i32>
+    %213 = llvm.load %124 : !llvm.ptr<i32>
+    %214 = llvm.getelementptr %115[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %215 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %216 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%210, %211, %212, %213, %214, %215, %216) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb27:  // 2 preds: ^bb25, ^bb26
-    llvm.store %21, %112 : !llvm.ptr<i1>
-    %211 = llvm.load %110 : !llvm.ptr<i1>
-    %212 = llvm.xor %211, %20  : i1
-    llvm.store %212, %110 : !llvm.ptr<i1>
-    %213 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %214 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%213) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %215 = llvm.trunc %214 : i64 to i32
-    llvm.store %215, %114 : !llvm.ptr<i32>
-    %216 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %217 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%216) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %218 = llvm.trunc %217 : i64 to i32
-    llvm.store %218, %116 : !llvm.ptr<i32>
-    %219 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    llvm.store %21, %118 : !llvm.ptr<i1>
+    %217 = llvm.load %116 : !llvm.ptr<i1>
+    %218 = llvm.xor %217, %20  : i1
+    llvm.store %218, %116 : !llvm.ptr<i1>
+    %219 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %220 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%219) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %221 = llvm.trunc %220 : i64 to i32
-    llvm.store %221, %118 : !llvm.ptr<i32>
+    llvm.store %221, %120 : !llvm.ptr<i32>
+    %222 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %223 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%222) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %224 = llvm.trunc %223 : i64 to i32
+    llvm.store %224, %122 : !llvm.ptr<i32>
+    %225 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %226 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%225) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %227 = llvm.trunc %226 : i64 to i32
+    llvm.store %227, %124 : !llvm.ptr<i32>
     llvm.br ^bb28
   ^bb28:  // pred: ^bb27
-    %222 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %223 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%222, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %228 = llvm.bitcast %128 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %229 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%228, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb22
   ^bb29:  // pred: ^bb23
     llvm.br ^bb30
   ^bb30:  // pred: ^bb29
-    %224 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %225 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%224, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %230 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %231 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%230, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb18
   ^bb31:  // pred: ^bb19
     llvm.br ^bb32
   ^bb32:  // pred: ^bb31
-    %226 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %227 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%226, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %232 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %233 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%232, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb13
   ^bb33:  // pred: ^bb14
-    %228 = llvm.load %110 : !llvm.ptr<i1>
-    %229 = llvm.zext %228 : i1 to i32
-    %230 = llvm.icmp "eq" %229, %16 : i32
-    llvm.cond_br %230, ^bb34, ^bb35
+    %234 = llvm.load %116 : !llvm.ptr<i1>
+    %235 = llvm.zext %234 : i1 to i32
+    %236 = llvm.icmp "eq" %235, %16 : i32
+    llvm.cond_br %236, ^bb34, ^bb35
   ^bb34:  // pred: ^bb33
-    %231 = llvm.load %103 : !llvm.ptr<i32>
-    %232 = llvm.load %114 : !llvm.ptr<i32>
-    %233 = llvm.load %116 : !llvm.ptr<i32>
-    %234 = llvm.load %118 : !llvm.ptr<i32>
-    %235 = llvm.getelementptr %108[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %236 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %237 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%231, %232, %233, %234, %235, %236, %237) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %237 = llvm.load %109 : !llvm.ptr<i32>
+    %238 = llvm.load %120 : !llvm.ptr<i32>
+    %239 = llvm.load %122 : !llvm.ptr<i32>
+    %240 = llvm.load %124 : !llvm.ptr<i32>
+    %241 = llvm.getelementptr %114[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %242 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %243 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%237, %238, %239, %240, %241, %242, %243) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb35:  // pred: ^bb33
-    %238 = llvm.load %103 : !llvm.ptr<i32>
-    %239 = llvm.load %114 : !llvm.ptr<i32>
-    %240 = llvm.load %116 : !llvm.ptr<i32>
-    %241 = llvm.load %118 : !llvm.ptr<i32>
-    %242 = llvm.getelementptr %109[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %243 = llvm.load %106 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %244 = llvm.load %112 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%238, %239, %240, %241, %242, %243, %244) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %244 = llvm.load %109 : !llvm.ptr<i32>
+    %245 = llvm.load %120 : !llvm.ptr<i32>
+    %246 = llvm.load %122 : !llvm.ptr<i32>
+    %247 = llvm.load %124 : !llvm.ptr<i32>
+    %248 = llvm.getelementptr %115[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %249 = llvm.load %112 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %250 = llvm.load %118 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%244, %245, %246, %247, %248, %249, %250) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb36:  // 2 preds: ^bb34, ^bb35
-    %245 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %245 : !llvm.ptr<i8>
-    %246 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %10, %246 : !llvm.ptr<i8>
-    %247 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %247 : !llvm.ptr<i8>
-    %248 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %248 : !llvm.ptr<i8>
-    %249 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %249 : !llvm.ptr<i8>
-    %250 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %250 : !llvm.ptr<i8>
-    %251 = llvm.bitcast %112 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %251 : !llvm.ptr<i8>
-    %252 = llvm.bitcast %111 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %252 : !llvm.ptr<i8>
-    %253 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %253 : !llvm.ptr<i8>
-    %254 = llvm.bitcast %109 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %254 : !llvm.ptr<i8>
-    %255 = llvm.bitcast %108 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %255 : !llvm.ptr<i8>
-    %256 = llvm.bitcast %107 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %256 : !llvm.ptr<i8>
+    %251 = llvm.bitcast %124 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %251 : !llvm.ptr<i8>
+    %252 = llvm.bitcast %123 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %10, %252 : !llvm.ptr<i8>
+    %253 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %253 : !llvm.ptr<i8>
+    %254 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %254 : !llvm.ptr<i8>
+    %255 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %255 : !llvm.ptr<i8>
+    %256 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %256 : !llvm.ptr<i8>
+    %257 = llvm.bitcast %118 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %257 : !llvm.ptr<i8>
+    %258 = llvm.bitcast %117 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %258 : !llvm.ptr<i8>
+    %259 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %259 : !llvm.ptr<i8>
+    %260 = llvm.bitcast %115 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %260 : !llvm.ptr<i8>
+    %261 = llvm.bitcast %114 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %261 : !llvm.ptr<i8>
+    %262 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %262 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func @_Z19B_IO_L2_in_boundaryiRN3hls6streamI7ap_uintILi256EELi0EEERNS0_IS1_ILi64EELi0EEE(%arg0: i32, %arg1: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, %arg2: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) attributes {llvm.noinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "B_IO_L2_in_boundary", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -5686,36 +5711,36 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %56 = llvm.mlir.constant(1 : i64) : i64
     %57 = llvm.mlir.constant(false) : i1
     %58 = llvm.mlir.constant(1 : i64) : i64
-    %59 = llvm.mlir.constant(7 : i32) : i32
-    %60 = llvm.mlir.constant(1 : i32) : i32
-    %61 = llvm.mlir.constant(0 : i32) : i32
-    %62 = llvm.mlir.constant(1 : i32) : i32
-    %63 = llvm.mlir.constant(0 : i32) : i32
+    %59 = llvm.mlir.constant(-1 : i32) : i32
+    %60 = llvm.mlir.constant(22 : i32) : i32
+    %61 = llvm.mlir.constant(666 : i32) : i32
+    %62 = llvm.mlir.constant(7 : i32) : i32
+    %63 = llvm.mlir.constant(1 : i32) : i32
     %64 = llvm.mlir.constant(0 : i32) : i32
     %65 = llvm.mlir.constant(1 : i32) : i32
     %66 = llvm.mlir.constant(0 : i32) : i32
     %67 = llvm.mlir.constant(0 : i32) : i32
-    %68 = llvm.mlir.constant(0 : i32) : i32
+    %68 = llvm.mlir.constant(1 : i32) : i32
     %69 = llvm.mlir.constant(0 : i32) : i32
-    %70 = llvm.mlir.constant(512 : i64) : i64
-    %71 = llvm.mlir.constant(1 : i32) : i32
+    %70 = llvm.mlir.constant(0 : i32) : i32
+    %71 = llvm.mlir.constant(0 : i32) : i32
     %72 = llvm.mlir.constant(0 : i32) : i32
-    %73 = llvm.mlir.constant(1 : i32) : i32
-    %74 = llvm.mlir.constant(0 : i32) : i32
-    %75 = llvm.mlir.constant(0 : i32) : i32
-    %76 = llvm.mlir.constant(1 : i32) : i32
-    %77 = llvm.mlir.constant(0 : i32) : i32
+    %73 = llvm.mlir.constant(512 : i64) : i64
+    %74 = llvm.mlir.constant(-1 : i32) : i32
+    %75 = llvm.mlir.constant(22 : i32) : i32
+    %76 = llvm.mlir.constant(666 : i32) : i32
+    %77 = llvm.mlir.constant(1 : i32) : i32
     %78 = llvm.mlir.constant(0 : i32) : i32
-    %79 = llvm.mlir.constant(0 : i32) : i32
+    %79 = llvm.mlir.constant(1 : i32) : i32
     %80 = llvm.mlir.constant(0 : i32) : i32
-    %81 = llvm.mlir.constant(512 : i64) : i64
-    %82 = llvm.mlir.constant(4 : i64) : i64
-    %83 = llvm.mlir.constant(1 : i32) : i32
-    %84 = llvm.mlir.constant(1 : i32) : i32
-    %85 = llvm.mlir.constant(1 : i32) : i32
-    %86 = llvm.mlir.constant(1 : i32) : i32
-    %87 = llvm.mlir.constant(1 : i32) : i32
-    %88 = llvm.mlir.constant(1 : i32) : i32
+    %81 = llvm.mlir.constant(0 : i32) : i32
+    %82 = llvm.mlir.constant(1 : i32) : i32
+    %83 = llvm.mlir.constant(0 : i32) : i32
+    %84 = llvm.mlir.constant(0 : i32) : i32
+    %85 = llvm.mlir.constant(0 : i32) : i32
+    %86 = llvm.mlir.constant(0 : i32) : i32
+    %87 = llvm.mlir.constant(512 : i64) : i64
+    %88 = llvm.mlir.constant(4 : i64) : i64
     %89 = llvm.mlir.constant(1 : i32) : i32
     %90 = llvm.mlir.constant(1 : i32) : i32
     %91 = llvm.mlir.constant(1 : i32) : i32
@@ -5729,283 +5754,289 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %99 = llvm.mlir.constant(1 : i32) : i32
     %100 = llvm.mlir.constant(1 : i32) : i32
     %101 = llvm.mlir.constant(1 : i32) : i32
-    %102 = llvm.alloca %101 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %103 = llvm.alloca %100 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %104 = llvm.alloca %99 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %105 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %106 = llvm.alloca %97 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %107 = llvm.alloca %96 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
-    %108 = llvm.alloca %95 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %109 = llvm.alloca %94 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %110 = llvm.alloca %93 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
-    %111 = llvm.alloca %92 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %112 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %113 = llvm.alloca %90 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %114 = llvm.alloca %89 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %115 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %116 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %117 = llvm.alloca %86 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %118 = llvm.alloca %85 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %119 = llvm.alloca %84 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %120 = llvm.alloca %83 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    llvm.store %arg0, %102 : !llvm.ptr<i32>
-    llvm.store %arg1, %103 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    llvm.store %arg2, %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %121 = llvm.bitcast %105 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %82, %121 : !llvm.ptr<i8>
-    %122 = llvm.load %102 : !llvm.ptr<i32>
-    llvm.store %122, %105 : !llvm.ptr<i32>
-    %123 = llvm.bitcast %106 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %81, %123 : !llvm.ptr<i8>
-    %124 = llvm.getelementptr %106[%80, %79, %78] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb1(%77 : i32)
-  ^bb1(%125: i32):  // 2 preds: ^bb0, ^bb10
-    %126 = llvm.add %125, %76  : i32
-    %127 = llvm.getelementptr %106[%75, %125] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb2(%74 : i32)
-  ^bb2(%128: i32):  // 2 preds: ^bb1, ^bb2
-    %129 = llvm.add %128, %73  : i32
-    %130 = llvm.getelementptr %127[%72, %128] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%130) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %131 = llvm.icmp "eq" %128, %71 : i32
-    llvm.cond_br %131, ^bb3, ^bb2(%129 : i32)
+    %102 = llvm.mlir.constant(1 : i32) : i32
+    %103 = llvm.mlir.constant(1 : i32) : i32
+    %104 = llvm.mlir.constant(1 : i32) : i32
+    %105 = llvm.mlir.constant(1 : i32) : i32
+    %106 = llvm.mlir.constant(1 : i32) : i32
+    %107 = llvm.mlir.constant(1 : i32) : i32
+    %108 = llvm.alloca %107 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %109 = llvm.alloca %106 x !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %110 = llvm.alloca %105 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %111 = llvm.alloca %104 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %112 = llvm.alloca %103 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %113 = llvm.alloca %102 x !llvm.array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>> {alignment = 32 : i64} : (i32) -> !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>
+    %114 = llvm.alloca %101 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %115 = llvm.alloca %100 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %116 = llvm.alloca %99 x i1 {alignment = 1 : i64} : (i32) -> !llvm.ptr<i1>
+    %117 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %118 = llvm.alloca %97 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %119 = llvm.alloca %96 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %120 = llvm.alloca %95 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %121 = llvm.alloca %94 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %122 = llvm.alloca %93 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %123 = llvm.alloca %92 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %124 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %125 = llvm.alloca %90 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %126 = llvm.alloca %89 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    llvm.store %arg0, %108 : !llvm.ptr<i32>
+    llvm.store %arg1, %109 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    llvm.store %arg2, %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %127 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %88, %127 : !llvm.ptr<i8>
+    %128 = llvm.load %108 : !llvm.ptr<i32>
+    llvm.store %128, %111 : !llvm.ptr<i32>
+    %129 = llvm.bitcast %112 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %87, %129 : !llvm.ptr<i8>
+    %130 = llvm.getelementptr %112[%86, %85, %84] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb1(%83 : i32)
+  ^bb1(%131: i32):  // 2 preds: ^bb0, ^bb10
+    %132 = llvm.add %131, %82  : i32
+    %133 = llvm.getelementptr %112[%81, %131] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb2(%80 : i32)
+  ^bb2(%134: i32):  // 2 preds: ^bb1, ^bb2
+    %135 = llvm.add %134, %79  : i32
+    %136 = llvm.getelementptr %133[%78, %134] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%136) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %137 = llvm.icmp "eq" %134, %77 : i32
+    llvm.cond_br %137, ^bb3, ^bb2(%135 : i32)
   ^bb3:  // pred: ^bb2
     llvm.br ^bb10
   ^bb4:  // pred: ^bb10
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    llvm.call @llvm.sideeffect() : () -> ()
-    %132 = llvm.bitcast %107 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %70, %132 : !llvm.ptr<i8>
-    %133 = llvm.getelementptr %107[%69, %68, %67] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.br ^bb6(%66 : i32)
-  ^bb6(%134: i32):  // 2 preds: ^bb5, ^bb15
-    %135 = llvm.add %134, %65  : i32
-    %136 = llvm.getelementptr %107[%64, %134] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    llvm.br ^bb7(%63 : i32)
-  ^bb7(%137: i32):  // 2 preds: ^bb6, ^bb7
-    %138 = llvm.add %137, %62  : i32
-    %139 = llvm.getelementptr %136[%61, %137] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
-    llvm.call @_ZN7ap_uintILi256EEC2Ev(%139) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
-    %140 = llvm.icmp "eq" %137, %60 : i32
-    llvm.cond_br %140, ^bb8, ^bb7(%138 : i32)
+    llvm.intr.sideeffect(%112, %76, %75, %74) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %138 = llvm.bitcast %113 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %73, %138 : !llvm.ptr<i8>
+    %139 = llvm.getelementptr %113[%72, %71, %70] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.br ^bb6(%69 : i32)
+  ^bb6(%140: i32):  // 2 preds: ^bb5, ^bb15
+    %141 = llvm.add %140, %68  : i32
+    %142 = llvm.getelementptr %113[%67, %140] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    llvm.br ^bb7(%66 : i32)
+  ^bb7(%143: i32):  // 2 preds: ^bb6, ^bb7
+    %144 = llvm.add %143, %65  : i32
+    %145 = llvm.getelementptr %142[%64, %143] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>
+    llvm.call @_ZN7ap_uintILi256EEC2Ev(%145) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>) -> ()
+    %146 = llvm.icmp "eq" %143, %63 : i32
+    llvm.cond_br %146, ^bb8, ^bb7(%144 : i32)
   ^bb8:  // pred: ^bb7
     llvm.br ^bb15
   ^bb9:  // pred: ^bb15
     llvm.br ^bb11
   ^bb10:  // pred: ^bb3
-    %141 = llvm.icmp "eq" %125, %59 : i32
-    llvm.cond_br %141, ^bb4, ^bb1(%126 : i32)
+    %147 = llvm.icmp "eq" %131, %62 : i32
+    llvm.cond_br %147, ^bb4, ^bb1(%132 : i32)
   ^bb11:  // pred: ^bb9
-    llvm.call @llvm.sideeffect() : () -> ()
-    %142 = llvm.bitcast %108 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %58, %142 : !llvm.ptr<i8>
-    llvm.store %57, %108 : !llvm.ptr<i1>
-    %143 = llvm.bitcast %109 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %56, %143 : !llvm.ptr<i8>
-    llvm.store %55, %109 : !llvm.ptr<i1>
-    %144 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %54, %144 : !llvm.ptr<i8>
-    llvm.store %53, %110 : !llvm.ptr<i1>
-    %145 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %52, %145 : !llvm.ptr<i8>
-    %146 = llvm.bitcast %112 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %146 : !llvm.ptr<i8>
-    %147 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %50, %147 : !llvm.ptr<i8>
-    %148 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %49, %148 : !llvm.ptr<i8>
-    %149 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %48, %149 : !llvm.ptr<i8>
-    %150 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %47, %150 : !llvm.ptr<i8>
+    llvm.intr.sideeffect(%113, %61, %60, %59) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32, i32
+    %148 = llvm.bitcast %114 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %58, %148 : !llvm.ptr<i8>
+    llvm.store %57, %114 : !llvm.ptr<i1>
+    %149 = llvm.bitcast %115 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %56, %149 : !llvm.ptr<i8>
+    llvm.store %55, %115 : !llvm.ptr<i1>
+    %150 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %54, %150 : !llvm.ptr<i8>
+    llvm.store %53, %116 : !llvm.ptr<i1>
+    %151 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %52, %151 : !llvm.ptr<i8>
+    %152 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %152 : !llvm.ptr<i8>
+    %153 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %50, %153 : !llvm.ptr<i8>
+    %154 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %49, %154 : !llvm.ptr<i8>
+    %155 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %48, %155 : !llvm.ptr<i8>
+    %156 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %47, %156 : !llvm.ptr<i8>
     llvm.br ^bb12
   ^bb12:  // pred: ^bb11
-    %151 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %151 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%117, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %157 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %157 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%123, %45) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb13
   ^bb13:  // 2 preds: ^bb12, ^bb32
-    %152 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %153 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%152, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %153, ^bb16, ^bb14
+    %158 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %159 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%158, %44) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %159, ^bb16, ^bb14
   ^bb14:  // pred: ^bb13
-    llvm.store %43, %118 : !llvm.ptr<i32>
-    %154 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %42, %154 : !llvm.ptr<i8>
+    llvm.store %43, %124 : !llvm.ptr<i32>
+    %160 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %42, %160 : !llvm.ptr<i8>
     llvm.br ^bb33
   ^bb15:  // pred: ^bb8
-    %155 = llvm.icmp "eq" %134, %41 : i32
-    llvm.cond_br %155, ^bb9, ^bb6(%135 : i32)
+    %161 = llvm.icmp "eq" %140, %41 : i32
+    llvm.cond_br %161, ^bb9, ^bb6(%141 : i32)
   ^bb16:  // pred: ^bb13
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %156 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %40, %156 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%119, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %162 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %40, %162 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%125, %39) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb18
   ^bb18:  // 2 preds: ^bb17, ^bb30
-    %157 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %158 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%157, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %158, ^bb20, ^bb19
+    %163 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %164 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%163, %38) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %164, ^bb20, ^bb19
   ^bb19:  // pred: ^bb18
-    llvm.store %37, %118 : !llvm.ptr<i32>
-    %159 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %36, %159 : !llvm.ptr<i8>
+    llvm.store %37, %124 : !llvm.ptr<i32>
+    %165 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %36, %165 : !llvm.ptr<i8>
     llvm.br ^bb31
   ^bb20:  // pred: ^bb18
     llvm.br ^bb21
   ^bb21:  // pred: ^bb20
-    %160 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %160 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%120, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %166 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %166 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%126, %34) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb22
   ^bb22:  // 2 preds: ^bb21, ^bb28
-    %161 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %162 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%161, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %162, ^bb24, ^bb23
+    %167 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %168 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%167, %33) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %168, ^bb24, ^bb23
   ^bb23:  // pred: ^bb22
-    llvm.store %32, %118 : !llvm.ptr<i32>
-    %163 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %31, %163 : !llvm.ptr<i8>
+    llvm.store %32, %124 : !llvm.ptr<i32>
+    %169 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %31, %169 : !llvm.ptr<i8>
     llvm.br ^bb29
   ^bb24:  // pred: ^bb22
-    %164 = llvm.load %108 : !llvm.ptr<i1>
-    %165 = llvm.zext %164 : i1 to i32
-    %166 = llvm.icmp "eq" %165, %30 : i32
-    llvm.cond_br %166, ^bb25, ^bb26
+    %170 = llvm.load %114 : !llvm.ptr<i1>
+    %171 = llvm.zext %170 : i1 to i32
+    %172 = llvm.icmp "eq" %171, %30 : i32
+    llvm.cond_br %172, ^bb25, ^bb26
   ^bb25:  // pred: ^bb24
-    %167 = llvm.load %102 : !llvm.ptr<i32>
-    %168 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %169 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%168) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %170 = llvm.trunc %169 : i64 to i32
-    %171 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %172 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%171) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %173 = llvm.trunc %172 : i64 to i32
-    %174 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %173 = llvm.load %108 : !llvm.ptr<i32>
+    %174 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %175 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%174) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %176 = llvm.trunc %175 : i64 to i32
-    %177 = llvm.getelementptr %107[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %178 = llvm.load %103 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %179 = llvm.load %109 : !llvm.ptr<i1>
-    llvm.call @_Z31B_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%167, %170, %173, %176, %177, %178, %179) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %180 = llvm.load %102 : !llvm.ptr<i32>
-    %181 = llvm.load %112 : !llvm.ptr<i32>
-    %182 = llvm.load %114 : !llvm.ptr<i32>
-    %183 = llvm.load %116 : !llvm.ptr<i32>
-    %184 = llvm.getelementptr %106[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %185 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %186 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%180, %181, %182, %183, %184, %185, %186) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %177 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %178 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%177) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %179 = llvm.trunc %178 : i64 to i32
+    %180 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %181 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%180) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %182 = llvm.trunc %181 : i64 to i32
+    %183 = llvm.getelementptr %113[%29, %28] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %184 = llvm.load %109 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %185 = llvm.load %115 : !llvm.ptr<i1>
+    llvm.call @_Z31B_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%173, %176, %179, %182, %183, %184, %185) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %186 = llvm.load %108 : !llvm.ptr<i32>
+    %187 = llvm.load %118 : !llvm.ptr<i32>
+    %188 = llvm.load %120 : !llvm.ptr<i32>
+    %189 = llvm.load %122 : !llvm.ptr<i32>
+    %190 = llvm.getelementptr %112[%27, %26] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %191 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %192 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%186, %187, %188, %189, %190, %191, %192) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb26:  // pred: ^bb24
-    %187 = llvm.load %102 : !llvm.ptr<i32>
-    %188 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %189 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%188) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %190 = llvm.trunc %189 : i64 to i32
-    %191 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %192 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%191) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %193 = llvm.trunc %192 : i64 to i32
-    %194 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %193 = llvm.load %108 : !llvm.ptr<i32>
+    %194 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %195 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%194) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %196 = llvm.trunc %195 : i64 to i32
-    %197 = llvm.getelementptr %106[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %198 = llvm.load %103 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
-    %199 = llvm.load %109 : !llvm.ptr<i1>
-    llvm.call @_Z31B_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%187, %190, %193, %196, %197, %198, %199) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
-    %200 = llvm.load %102 : !llvm.ptr<i32>
-    %201 = llvm.load %112 : !llvm.ptr<i32>
-    %202 = llvm.load %114 : !llvm.ptr<i32>
-    %203 = llvm.load %116 : !llvm.ptr<i32>
-    %204 = llvm.getelementptr %107[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %205 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %206 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%200, %201, %202, %203, %204, %205, %206) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %197 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %198 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%197) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %199 = llvm.trunc %198 : i64 to i32
+    %200 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %201 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%200) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %202 = llvm.trunc %201 : i64 to i32
+    %203 = llvm.getelementptr %112[%25, %24] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %204 = llvm.load %109 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>>
+    %205 = llvm.load %115 : !llvm.ptr<i1>
+    llvm.call @_Z31B_IO_L2_in_inter_trans_boundaryiiiiPA2_7ap_uintILi256EERN3hls6streamIS0_Li0EEEb(%193, %196, %199, %202, %203, %204, %205) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i1) -> ()
+    %206 = llvm.load %108 : !llvm.ptr<i32>
+    %207 = llvm.load %118 : !llvm.ptr<i32>
+    %208 = llvm.load %120 : !llvm.ptr<i32>
+    %209 = llvm.load %122 : !llvm.ptr<i32>
+    %210 = llvm.getelementptr %113[%23, %22] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %211 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %212 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%206, %207, %208, %209, %210, %211, %212) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb27
   ^bb27:  // 2 preds: ^bb25, ^bb26
-    llvm.store %21, %110 : !llvm.ptr<i1>
-    %207 = llvm.load %108 : !llvm.ptr<i1>
-    %208 = llvm.xor %207, %20  : i1
-    llvm.store %208, %108 : !llvm.ptr<i1>
-    %209 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %210 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%209) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %211 = llvm.trunc %210 : i64 to i32
-    llvm.store %211, %112 : !llvm.ptr<i32>
-    %212 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %213 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%212) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %214 = llvm.trunc %213 : i64 to i32
-    llvm.store %214, %114 : !llvm.ptr<i32>
-    %215 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    llvm.store %21, %116 : !llvm.ptr<i1>
+    %213 = llvm.load %114 : !llvm.ptr<i1>
+    %214 = llvm.xor %213, %20  : i1
+    llvm.store %214, %114 : !llvm.ptr<i1>
+    %215 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %216 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%215) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %217 = llvm.trunc %216 : i64 to i32
-    llvm.store %217, %116 : !llvm.ptr<i32>
+    llvm.store %217, %118 : !llvm.ptr<i32>
+    %218 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %219 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%218) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %220 = llvm.trunc %219 : i64 to i32
+    llvm.store %220, %120 : !llvm.ptr<i32>
+    %221 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %222 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%221) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %223 = llvm.trunc %222 : i64 to i32
+    llvm.store %223, %122 : !llvm.ptr<i32>
     llvm.br ^bb28
   ^bb28:  // pred: ^bb27
-    %218 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %219 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%218, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %224 = llvm.bitcast %126 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %225 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%224, %19) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb22
   ^bb29:  // pred: ^bb23
     llvm.br ^bb30
   ^bb30:  // pred: ^bb29
-    %220 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %221 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%220, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %226 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %227 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%226, %18) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb18
   ^bb31:  // pred: ^bb19
     llvm.br ^bb32
   ^bb32:  // pred: ^bb31
-    %222 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %223 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%222, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %228 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %229 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%228, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb13
   ^bb33:  // pred: ^bb14
-    %224 = llvm.load %108 : !llvm.ptr<i1>
-    %225 = llvm.zext %224 : i1 to i32
-    %226 = llvm.icmp "eq" %225, %16 : i32
-    llvm.cond_br %226, ^bb34, ^bb35
+    %230 = llvm.load %114 : !llvm.ptr<i1>
+    %231 = llvm.zext %230 : i1 to i32
+    %232 = llvm.icmp "eq" %231, %16 : i32
+    llvm.cond_br %232, ^bb34, ^bb35
   ^bb34:  // pred: ^bb33
-    %227 = llvm.load %102 : !llvm.ptr<i32>
-    %228 = llvm.load %112 : !llvm.ptr<i32>
-    %229 = llvm.load %114 : !llvm.ptr<i32>
-    %230 = llvm.load %116 : !llvm.ptr<i32>
-    %231 = llvm.getelementptr %106[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %232 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %233 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%227, %228, %229, %230, %231, %232, %233) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %233 = llvm.load %108 : !llvm.ptr<i32>
+    %234 = llvm.load %118 : !llvm.ptr<i32>
+    %235 = llvm.load %120 : !llvm.ptr<i32>
+    %236 = llvm.load %122 : !llvm.ptr<i32>
+    %237 = llvm.getelementptr %112[%15, %14] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %238 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %239 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%233, %234, %235, %236, %237, %238, %239) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb35:  // pred: ^bb33
-    %234 = llvm.load %102 : !llvm.ptr<i32>
-    %235 = llvm.load %112 : !llvm.ptr<i32>
-    %236 = llvm.load %114 : !llvm.ptr<i32>
-    %237 = llvm.load %116 : !llvm.ptr<i32>
-    %238 = llvm.getelementptr %107[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
-    %239 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %240 = llvm.load %110 : !llvm.ptr<i1>
-    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%234, %235, %236, %237, %238, %239, %240) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
+    %240 = llvm.load %108 : !llvm.ptr<i32>
+    %241 = llvm.load %118 : !llvm.ptr<i32>
+    %242 = llvm.load %120 : !llvm.ptr<i32>
+    %243 = llvm.load %122 : !llvm.ptr<i32>
+    %244 = llvm.getelementptr %113[%13, %12] : (!llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>>, i32, i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>
+    %245 = llvm.load %110 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %246 = llvm.load %116 : !llvm.ptr<i1>
+    llvm.call @_Z22B_IO_L2_in_intra_transiiiiPA2_7ap_uintILi256EERN3hls6streamIS_ILi64EELi0EEEb(%240, %241, %242, %243, %244, %245, %246) : (i32, i32, i32, i32, !llvm.ptr<array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i1) -> ()
     llvm.br ^bb36
   ^bb36:  // 2 preds: ^bb34, ^bb35
-    %241 = llvm.bitcast %116 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %241 : !llvm.ptr<i8>
-    %242 = llvm.bitcast %115 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %10, %242 : !llvm.ptr<i8>
-    %243 = llvm.bitcast %114 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %243 : !llvm.ptr<i8>
-    %244 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %244 : !llvm.ptr<i8>
-    %245 = llvm.bitcast %112 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %245 : !llvm.ptr<i8>
-    %246 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %246 : !llvm.ptr<i8>
-    %247 = llvm.bitcast %110 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %247 : !llvm.ptr<i8>
-    %248 = llvm.bitcast %109 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %248 : !llvm.ptr<i8>
-    %249 = llvm.bitcast %108 : !llvm.ptr<i1> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %249 : !llvm.ptr<i8>
-    %250 = llvm.bitcast %107 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %250 : !llvm.ptr<i8>
-    %251 = llvm.bitcast %106 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %251 : !llvm.ptr<i8>
-    %252 = llvm.bitcast %105 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %252 : !llvm.ptr<i8>
+    %247 = llvm.bitcast %122 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %247 : !llvm.ptr<i8>
+    %248 = llvm.bitcast %121 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %10, %248 : !llvm.ptr<i8>
+    %249 = llvm.bitcast %120 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %249 : !llvm.ptr<i8>
+    %250 = llvm.bitcast %119 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %250 : !llvm.ptr<i8>
+    %251 = llvm.bitcast %118 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %251 : !llvm.ptr<i8>
+    %252 = llvm.bitcast %117 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %252 : !llvm.ptr<i8>
+    %253 = llvm.bitcast %116 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %253 : !llvm.ptr<i8>
+    %254 = llvm.bitcast %115 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %254 : !llvm.ptr<i8>
+    %255 = llvm.bitcast %114 : !llvm.ptr<i1> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %255 : !llvm.ptr<i8>
+    %256 = llvm.bitcast %113 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %256 : !llvm.ptr<i8>
+    %257 = llvm.bitcast %112 : !llvm.ptr<array<8 x array<2 x struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %257 : !llvm.ptr<i8>
+    %258 = llvm.bitcast %111 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %258 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func @_Z2PEiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%arg0: i32, %arg1: i32, %arg2: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg3: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg4: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg5: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg6: !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) attributes {llvm.noinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "PE", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -6169,26 +6200,26 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %157 = llvm.mlir.constant(3 : i32) : i32
     %158 = llvm.mlir.constant(0 : i32) : i32
     %159 = llvm.mlir.constant(1 : i64) : i64
-    %160 = llvm.mlir.constant(256 : i64) : i64
-    %161 = llvm.mlir.constant(0 : i32) : i32
-    %162 = llvm.mlir.constant(0 : i32) : i32
-    %163 = llvm.mlir.constant(8 : i64) : i64
-    %164 = llvm.mlir.constant(0 : i32) : i32
+    %160 = llvm.mlir.constant(-1 : i32) : i32
+    %161 = llvm.mlir.constant(22 : i32) : i32
+    %162 = llvm.mlir.constant(666 : i32) : i32
+    %163 = llvm.mlir.constant(256 : i64) : i64
+    %164 = llvm.mlir.constant(false) : i1
     %165 = llvm.mlir.constant(0 : i32) : i32
-    %166 = llvm.mlir.constant(8 : i64) : i64
-    %167 = llvm.mlir.constant(4 : i64) : i64
-    %168 = llvm.mlir.constant(4 : i64) : i64
-    %169 = llvm.mlir.constant(1 : i32) : i32
-    %170 = llvm.mlir.constant(1 : i32) : i32
-    %171 = llvm.mlir.constant(1 : i32) : i32
-    %172 = llvm.mlir.constant(1 : i32) : i32
-    %173 = llvm.mlir.constant(1 : i32) : i32
-    %174 = llvm.mlir.constant(1 : i32) : i32
-    %175 = llvm.mlir.constant(1 : i32) : i32
-    %176 = llvm.mlir.constant(1 : i32) : i32
-    %177 = llvm.mlir.constant(1 : i32) : i32
-    %178 = llvm.mlir.constant(1 : i32) : i32
-    %179 = llvm.mlir.constant(1 : i32) : i32
+    %166 = llvm.mlir.constant(0 : i32) : i32
+    %167 = llvm.mlir.constant(2 : i32) : i32
+    %168 = llvm.mlir.constant(0 : i32) : i32
+    %169 = llvm.mlir.constant(0 : i32) : i32
+    %170 = llvm.mlir.constant(8 : i64) : i64
+    %171 = llvm.mlir.constant(false) : i1
+    %172 = llvm.mlir.constant(0 : i32) : i32
+    %173 = llvm.mlir.constant(0 : i32) : i32
+    %174 = llvm.mlir.constant(2 : i32) : i32
+    %175 = llvm.mlir.constant(0 : i32) : i32
+    %176 = llvm.mlir.constant(0 : i32) : i32
+    %177 = llvm.mlir.constant(8 : i64) : i64
+    %178 = llvm.mlir.constant(4 : i64) : i64
+    %179 = llvm.mlir.constant(4 : i64) : i64
     %180 = llvm.mlir.constant(1 : i32) : i32
     %181 = llvm.mlir.constant(1 : i32) : i32
     %182 = llvm.mlir.constant(1 : i32) : i32
@@ -6228,567 +6259,578 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %216 = llvm.mlir.constant(1 : i32) : i32
     %217 = llvm.mlir.constant(1 : i32) : i32
     %218 = llvm.mlir.constant(1 : i32) : i32
-    %219 = llvm.alloca %218 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %220 = llvm.alloca %217 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %221 = llvm.alloca %216 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %222 = llvm.alloca %215 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %223 = llvm.alloca %214 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %224 = llvm.alloca %213 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %225 = llvm.alloca %212 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %226 = llvm.alloca %211 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %227 = llvm.alloca %210 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %228 = llvm.alloca %209 x !llvm.array<1 x array<2 x f32>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<1 x array<2 x f32>>>
-    %229 = llvm.alloca %208 x !llvm.array<1 x array<2 x f32>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<1 x array<2 x f32>>>
-    %230 = llvm.alloca %207 x !llvm.array<8 x array<8 x f32>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<8 x array<8 x f32>>>
-    %231 = llvm.alloca %206 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %232 = llvm.alloca %205 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %233 = llvm.alloca %204 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %234 = llvm.alloca %203 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %235 = llvm.alloca %202 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %236 = llvm.alloca %201 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %237 = llvm.alloca %200 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %238 = llvm.alloca %199 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %239 = llvm.alloca %198 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %240 = llvm.alloca %197 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %241 = llvm.alloca %196 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %242 = llvm.alloca %195 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %243 = llvm.alloca %194 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %244 = llvm.alloca %193 x !llvm.struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>
-    %245 = llvm.alloca %192 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %246 = llvm.alloca %191 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %247 = llvm.alloca %190 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %248 = llvm.alloca %189 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %249 = llvm.alloca %188 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %250 = llvm.alloca %187 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %251 = llvm.alloca %186 x !llvm.struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>
-    %252 = llvm.alloca %185 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %253 = llvm.alloca %184 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %254 = llvm.alloca %183 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %255 = llvm.alloca %182 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %256 = llvm.alloca %181 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %257 = llvm.alloca %180 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %258 = llvm.alloca %179 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %259 = llvm.alloca %178 x !llvm.struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>
-    %260 = llvm.alloca %177 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %261 = llvm.alloca %176 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %262 = llvm.alloca %175 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %263 = llvm.alloca %174 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %264 = llvm.alloca %173 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %265 = llvm.alloca %172 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %266 = llvm.alloca %171 x !llvm.struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>
-    %267 = llvm.alloca %170 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %268 = llvm.alloca %169 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    llvm.store %arg0, %219 : !llvm.ptr<i32>
-    llvm.store %arg1, %220 : !llvm.ptr<i32>
-    llvm.store %arg2, %221 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg3, %222 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg4, %223 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg5, %224 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg6, %225 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %269 = llvm.bitcast %226 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %168, %269 : !llvm.ptr<i8>
-    %270 = llvm.load %219 : !llvm.ptr<i32>
-    llvm.store %270, %226 : !llvm.ptr<i32>
-    %271 = llvm.bitcast %227 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %167, %271 : !llvm.ptr<i8>
-    %272 = llvm.load %220 : !llvm.ptr<i32>
-    llvm.store %272, %227 : !llvm.ptr<i32>
-    %273 = llvm.bitcast %228 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %166, %273 : !llvm.ptr<i8>
-    %274 = llvm.getelementptr %228[%165, %164] : (!llvm.ptr<array<1 x array<2 x f32>>>, i32, i32) -> !llvm.ptr<array<2 x f32>>
-    llvm.call @llvm.sideeffect() : () -> ()
-    %275 = llvm.bitcast %229 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %163, %275 : !llvm.ptr<i8>
-    %276 = llvm.getelementptr %229[%162, %161] : (!llvm.ptr<array<1 x array<2 x f32>>>, i32, i32) -> !llvm.ptr<array<2 x f32>>
-    llvm.call @llvm.sideeffect() : () -> ()
-    %277 = llvm.bitcast %230 : !llvm.ptr<array<8 x array<8 x f32>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %160, %277 : !llvm.ptr<i8>
-    llvm.call @llvm.sideeffect() : () -> ()
+    %219 = llvm.mlir.constant(1 : i32) : i32
+    %220 = llvm.mlir.constant(1 : i32) : i32
+    %221 = llvm.mlir.constant(1 : i32) : i32
+    %222 = llvm.mlir.constant(1 : i32) : i32
+    %223 = llvm.mlir.constant(1 : i32) : i32
+    %224 = llvm.mlir.constant(1 : i32) : i32
+    %225 = llvm.mlir.constant(1 : i32) : i32
+    %226 = llvm.mlir.constant(1 : i32) : i32
+    %227 = llvm.mlir.constant(1 : i32) : i32
+    %228 = llvm.mlir.constant(1 : i32) : i32
+    %229 = llvm.mlir.constant(1 : i32) : i32
+    %230 = llvm.alloca %229 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %231 = llvm.alloca %228 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %232 = llvm.alloca %227 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %233 = llvm.alloca %226 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %234 = llvm.alloca %225 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %235 = llvm.alloca %224 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %236 = llvm.alloca %223 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %237 = llvm.alloca %222 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %238 = llvm.alloca %221 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %239 = llvm.alloca %220 x !llvm.array<1 x array<2 x f32>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<1 x array<2 x f32>>>
+    %240 = llvm.alloca %219 x !llvm.array<1 x array<2 x f32>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<1 x array<2 x f32>>>
+    %241 = llvm.alloca %218 x !llvm.array<8 x array<8 x f32>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<8 x array<8 x f32>>>
+    %242 = llvm.alloca %217 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %243 = llvm.alloca %216 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %244 = llvm.alloca %215 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %245 = llvm.alloca %214 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %246 = llvm.alloca %213 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %247 = llvm.alloca %212 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %248 = llvm.alloca %211 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %249 = llvm.alloca %210 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %250 = llvm.alloca %209 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %251 = llvm.alloca %208 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %252 = llvm.alloca %207 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %253 = llvm.alloca %206 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %254 = llvm.alloca %205 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %255 = llvm.alloca %204 x !llvm.struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>
+    %256 = llvm.alloca %203 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %257 = llvm.alloca %202 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %258 = llvm.alloca %201 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %259 = llvm.alloca %200 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %260 = llvm.alloca %199 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %261 = llvm.alloca %198 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %262 = llvm.alloca %197 x !llvm.struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>
+    %263 = llvm.alloca %196 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %264 = llvm.alloca %195 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %265 = llvm.alloca %194 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %266 = llvm.alloca %193 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %267 = llvm.alloca %192 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %268 = llvm.alloca %191 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %269 = llvm.alloca %190 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %270 = llvm.alloca %189 x !llvm.struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>
+    %271 = llvm.alloca %188 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %272 = llvm.alloca %187 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %273 = llvm.alloca %186 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %274 = llvm.alloca %185 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %275 = llvm.alloca %184 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %276 = llvm.alloca %183 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %277 = llvm.alloca %182 x !llvm.struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>
+    %278 = llvm.alloca %181 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %279 = llvm.alloca %180 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    llvm.store %arg0, %230 : !llvm.ptr<i32>
+    llvm.store %arg1, %231 : !llvm.ptr<i32>
+    llvm.store %arg2, %232 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg3, %233 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg4, %234 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg5, %235 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg6, %236 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %280 = llvm.bitcast %237 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %179, %280 : !llvm.ptr<i8>
+    %281 = llvm.load %230 : !llvm.ptr<i32>
+    llvm.store %281, %237 : !llvm.ptr<i32>
+    %282 = llvm.bitcast %238 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %178, %282 : !llvm.ptr<i8>
+    %283 = llvm.load %231 : !llvm.ptr<i32>
+    llvm.store %283, %238 : !llvm.ptr<i32>
+    %284 = llvm.bitcast %239 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %177, %284 : !llvm.ptr<i8>
+    %285 = llvm.getelementptr %239[%176, %175] : (!llvm.ptr<array<1 x array<2 x f32>>>, i32, i32) -> !llvm.ptr<array<2 x f32>>
+    llvm.intr.sideeffect(%285, %174, %173, %172, %171) {llvm.bundle.xlx_array_partition = 5 : i64} : !llvm.ptr<array<2 x f32>>, i32, i32, i32, i1
+    %286 = llvm.bitcast %240 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %170, %286 : !llvm.ptr<i8>
+    %287 = llvm.getelementptr %240[%169, %168] : (!llvm.ptr<array<1 x array<2 x f32>>>, i32, i32) -> !llvm.ptr<array<2 x f32>>
+    llvm.intr.sideeffect(%287, %167, %166, %165, %164) {llvm.bundle.xlx_array_partition = 5 : i64} : !llvm.ptr<array<2 x f32>>, i32, i32, i32, i1
+    %288 = llvm.bitcast %241 : !llvm.ptr<array<8 x array<8 x f32>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %163, %288 : !llvm.ptr<i8>
+    llvm.intr.sideeffect(%241, %162, %161, %160) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<8 x f32>>>, i32, i32, i32
     llvm.br ^bb1
   ^bb1:  // pred: ^bb0
-    %278 = llvm.bitcast %231 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %159, %278 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%231, %158) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %289 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %159, %289 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%242, %158) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb2
   ^bb2:  // 2 preds: ^bb1, ^bb68
-    %279 = llvm.bitcast %231 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %280 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%279, %157) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %280, ^bb4, ^bb3
+    %290 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %291 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%290, %157) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %291, ^bb4, ^bb3
   ^bb3:  // pred: ^bb2
-    llvm.store %156, %232 : !llvm.ptr<i32>
-    %281 = llvm.bitcast %231 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %155, %281 : !llvm.ptr<i8>
+    llvm.store %156, %243 : !llvm.ptr<i32>
+    %292 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %155, %292 : !llvm.ptr<i8>
     llvm.br ^bb69
   ^bb4:  // pred: ^bb2
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    %282 = llvm.bitcast %233 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %154, %282 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%233, %153) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %293 = llvm.bitcast %244 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %154, %293 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%244, %153) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb6
   ^bb6:  // 2 preds: ^bb5, ^bb66
-    %283 = llvm.bitcast %233 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %284 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%283, %152) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %284, ^bb8, ^bb7
+    %294 = llvm.bitcast %244 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %295 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%294, %152) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %295, ^bb8, ^bb7
   ^bb7:  // pred: ^bb6
-    llvm.store %151, %232 : !llvm.ptr<i32>
-    %285 = llvm.bitcast %233 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %150, %285 : !llvm.ptr<i8>
+    llvm.store %151, %243 : !llvm.ptr<i32>
+    %296 = llvm.bitcast %244 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %150, %296 : !llvm.ptr<i8>
     llvm.br ^bb67
   ^bb8:  // pred: ^bb6
     llvm.br ^bb9
   ^bb9:  // pred: ^bb8
-    %286 = llvm.bitcast %234 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %149, %286 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%234, %148) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %297 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %149, %297 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%245, %148) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb10
   ^bb10:  // 2 preds: ^bb9, ^bb19
-    %287 = llvm.bitcast %234 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %288 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%287, %147) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %288, ^bb12, ^bb11
+    %298 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %299 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%298, %147) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %299, ^bb12, ^bb11
   ^bb11:  // pred: ^bb10
-    llvm.store %146, %232 : !llvm.ptr<i32>
-    %289 = llvm.bitcast %234 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %145, %289 : !llvm.ptr<i8>
+    llvm.store %146, %243 : !llvm.ptr<i32>
+    %300 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %145, %300 : !llvm.ptr<i8>
     llvm.br ^bb20
   ^bb12:  // pred: ^bb10
     llvm.br ^bb13
   ^bb13:  // pred: ^bb12
-    %290 = llvm.bitcast %235 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %144, %290 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%235, %143) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %301 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %144, %301 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%246, %143) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb14
   ^bb14:  // 2 preds: ^bb13, ^bb17
-    %291 = llvm.bitcast %235 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %292 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%291, %142) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %292, ^bb16, ^bb15
+    %302 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %303 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%302, %142) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %303, ^bb16, ^bb15
   ^bb15:  // pred: ^bb14
-    llvm.store %141, %232 : !llvm.ptr<i32>
-    %293 = llvm.bitcast %235 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %140, %293 : !llvm.ptr<i8>
+    llvm.store %141, %243 : !llvm.ptr<i32>
+    %304 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %140, %304 : !llvm.ptr<i8>
     llvm.br ^bb18
   ^bb16:  // pred: ^bb14
-    %294 = llvm.bitcast %235 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %295 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%294) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %296 = llvm.getelementptr %230[%139, %295] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
-    %297 = llvm.bitcast %234 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %298 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%297) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %299 = llvm.getelementptr %296[%138, %298] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    llvm.store %137, %299 : !llvm.ptr<f32>
+    %305 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %306 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%305) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %307 = llvm.getelementptr %241[%139, %306] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
+    %308 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %309 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%308) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %310 = llvm.getelementptr %307[%138, %309] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    llvm.store %137, %310 : !llvm.ptr<f32>
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %300 = llvm.bitcast %235 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %301 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%300, %136) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %311 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %312 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%311, %136) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb14
   ^bb18:  // pred: ^bb15
     llvm.br ^bb19
   ^bb19:  // pred: ^bb18
-    %302 = llvm.bitcast %234 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %303 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%302, %135) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %313 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %314 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%313, %135) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb10
   ^bb20:  // pred: ^bb11
     llvm.br ^bb21
   ^bb21:  // pred: ^bb20
-    %304 = llvm.bitcast %236 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %134, %304 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%236, %133) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %315 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %134, %315 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%247, %133) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb22
   ^bb22:  // 2 preds: ^bb21, ^bb64
-    %305 = llvm.bitcast %236 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %306 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%305, %132) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %306, ^bb24, ^bb23
+    %316 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %317 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%316, %132) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %317, ^bb24, ^bb23
   ^bb23:  // pred: ^bb22
-    llvm.store %131, %232 : !llvm.ptr<i32>
-    %307 = llvm.bitcast %236 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %130, %307 : !llvm.ptr<i8>
+    llvm.store %131, %243 : !llvm.ptr<i32>
+    %318 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %130, %318 : !llvm.ptr<i8>
     llvm.br ^bb65
   ^bb24:  // pred: ^bb22
     llvm.br ^bb25
   ^bb25:  // pred: ^bb24
-    %308 = llvm.bitcast %237 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %129, %308 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%237, %128) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %319 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %129, %319 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%248, %128) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb26
   ^bb26:  // 2 preds: ^bb25, ^bb62
-    %309 = llvm.bitcast %237 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %310 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%309, %127) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %310, ^bb28, ^bb27
+    %320 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %321 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%320, %127) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %321, ^bb28, ^bb27
   ^bb27:  // pred: ^bb26
-    llvm.store %126, %232 : !llvm.ptr<i32>
-    %311 = llvm.bitcast %237 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %125, %311 : !llvm.ptr<i8>
+    llvm.store %126, %243 : !llvm.ptr<i32>
+    %322 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %125, %322 : !llvm.ptr<i8>
     llvm.br ^bb63
   ^bb28:  // pred: ^bb26
     llvm.br ^bb29
   ^bb29:  // pred: ^bb28
-    %312 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %124, %312 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%238, %123) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %323 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %124, %323 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%249, %123) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb30
   ^bb30:  // 2 preds: ^bb29, ^bb60
-    %313 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %314 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%313, %122) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %314, ^bb32, ^bb31
+    %324 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %325 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%324, %122) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %325, ^bb32, ^bb31
   ^bb31:  // pred: ^bb30
-    llvm.store %121, %232 : !llvm.ptr<i32>
-    %315 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %120, %315 : !llvm.ptr<i8>
+    llvm.store %121, %243 : !llvm.ptr<i32>
+    %326 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %120, %326 : !llvm.ptr<i8>
     llvm.br ^bb61
   ^bb32:  // pred: ^bb30
     llvm.br ^bb33
   ^bb33:  // pred: ^bb32
-    %316 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %119, %316 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%239, %118) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %327 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %119, %327 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%250, %118) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb34
   ^bb34:  // 2 preds: ^bb33, ^bb58
-    %317 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %318 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%317, %117) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %318, ^bb36, ^bb35
+    %328 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %329 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%328, %117) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %329, ^bb36, ^bb35
   ^bb35:  // pred: ^bb34
-    llvm.store %116, %232 : !llvm.ptr<i32>
-    %319 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %115, %319 : !llvm.ptr<i8>
+    llvm.store %116, %243 : !llvm.ptr<i32>
+    %330 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %115, %330 : !llvm.ptr<i8>
     llvm.br ^bb59
   ^bb36:  // pred: ^bb34
-    %320 = llvm.bitcast %240 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %114, %320 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%240) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %321 = llvm.bitcast %241 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %113, %321 : !llvm.ptr<i8>
-    %322 = llvm.load %221 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%241, %322) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    %323 = llvm.load %241 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %323, %240 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %324 = llvm.bitcast %241 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %112, %324 : !llvm.ptr<i8>
+    %331 = llvm.bitcast %251 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %114, %331 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%251) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %332 = llvm.bitcast %252 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %113, %332 : !llvm.ptr<i8>
+    %333 = llvm.load %232 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%252, %333) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    %334 = llvm.load %252 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %334, %251 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %335 = llvm.bitcast %252 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %112, %335 : !llvm.ptr<i8>
     llvm.br ^bb37
   ^bb37:  // pred: ^bb36
-    %325 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %111, %325 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi2EEC2Ei(%242, %110) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
+    %336 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %111, %336 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi2EEC2Ei(%253, %110) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
     llvm.br ^bb38
   ^bb38:  // 2 preds: ^bb37, ^bb41
-    %326 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %327 = llvm.call @_ZltILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%326, %109) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
-    llvm.cond_br %327, ^bb40, ^bb39
+    %337 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %338 = llvm.call @_ZltILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%337, %109) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
+    llvm.cond_br %338, ^bb40, ^bb39
   ^bb39:  // pred: ^bb38
-    llvm.store %108, %232 : !llvm.ptr<i32>
-    %328 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %107, %328 : !llvm.ptr<i8>
+    llvm.store %108, %243 : !llvm.ptr<i32>
+    %339 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %107, %339 : !llvm.ptr<i8>
     llvm.br ^bb42
   ^bb40:  // pred: ^bb38
-    %329 = llvm.bitcast %243 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %106, %329 : !llvm.ptr<i8>
-    %330 = llvm.bitcast %240 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN11ap_int_baseILi64ELb0EEclEii(%244, %330, %105, %104) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32) -> ()
-    %331 = llvm.call @_ZNK12ap_range_refILi64ELb0EEcvyEv(%244) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>) -> i64
-    %332 = llvm.trunc %331 : i64 to i32
-    %333 = llvm.bitcast %243 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    llvm.store %332, %333 : !llvm.ptr<i32>
-    %334 = llvm.bitcast %243 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    %335 = llvm.load %334 : !llvm.ptr<f32>
-    %336 = llvm.getelementptr %228[%103, %102] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %337 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %338 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%337) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
-    %339 = llvm.getelementptr %336[%101, %338] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    llvm.store %335, %339 : !llvm.ptr<f32>
-    %340 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %100, %340 : !llvm.ptr<i8>
-    %341 = llvm.bitcast %240 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZrsILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%245, %341, %99) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32) -> ()
-    %342 = llvm.load %245 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %342, %240 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %343 = llvm.bitcast %245 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %98, %343 : !llvm.ptr<i8>
-    %344 = llvm.bitcast %243 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %97, %344 : !llvm.ptr<i8>
+    %340 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %106, %340 : !llvm.ptr<i8>
+    %341 = llvm.bitcast %251 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZN11ap_int_baseILi64ELb0EEclEii(%255, %341, %105, %104) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32) -> ()
+    %342 = llvm.call @_ZNK12ap_range_refILi64ELb0EEcvyEv(%255) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>) -> i64
+    %343 = llvm.trunc %342 : i64 to i32
+    %344 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    llvm.store %343, %344 : !llvm.ptr<i32>
+    %345 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    %346 = llvm.load %345 : !llvm.ptr<f32>
+    %347 = llvm.getelementptr %239[%103, %102] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %348 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %349 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%348) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
+    %350 = llvm.getelementptr %347[%101, %349] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    llvm.store %346, %350 : !llvm.ptr<f32>
+    %351 = llvm.bitcast %256 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %100, %351 : !llvm.ptr<i8>
+    %352 = llvm.bitcast %251 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZrsILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%256, %352, %99) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32) -> ()
+    %353 = llvm.load %256 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %353, %251 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %354 = llvm.bitcast %256 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %98, %354 : !llvm.ptr<i8>
+    %355 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %97, %355 : !llvm.ptr<i8>
     llvm.br ^bb41
   ^bb41:  // pred: ^bb40
-    %345 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %346 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %96, %346 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi2ELb0EEppEi(%246, %345, %95) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> ()
-    %347 = llvm.bitcast %246 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %94, %347 : !llvm.ptr<i8>
+    %356 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %357 = llvm.bitcast %257 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %96, %357 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi2ELb0EEppEi(%257, %356, %95) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> ()
+    %358 = llvm.bitcast %257 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %94, %358 : !llvm.ptr<i8>
     llvm.br ^bb38
   ^bb42:  // pred: ^bb39
-    %348 = llvm.bitcast %240 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %93, %348 : !llvm.ptr<i8>
-    %349 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %92, %349 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%247) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %350 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %91, %350 : !llvm.ptr<i8>
-    %351 = llvm.load %223 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%248, %351) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    %352 = llvm.load %248 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %352, %247 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %353 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %90, %353 : !llvm.ptr<i8>
+    %359 = llvm.bitcast %251 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %93, %359 : !llvm.ptr<i8>
+    %360 = llvm.bitcast %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %92, %360 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%258) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %361 = llvm.bitcast %259 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %91, %361 : !llvm.ptr<i8>
+    %362 = llvm.load %234 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%259, %362) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    %363 = llvm.load %259 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %363, %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %364 = llvm.bitcast %259 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %90, %364 : !llvm.ptr<i8>
     llvm.br ^bb43
   ^bb43:  // pred: ^bb42
-    %354 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %89, %354 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi2EEC2Ei(%249, %88) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
+    %365 = llvm.bitcast %260 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %89, %365 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi2EEC2Ei(%260, %88) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
     llvm.br ^bb44
   ^bb44:  // 2 preds: ^bb43, ^bb47
-    %355 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %356 = llvm.call @_ZltILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%355, %87) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
-    llvm.cond_br %356, ^bb46, ^bb45
+    %366 = llvm.bitcast %260 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %367 = llvm.call @_ZltILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%366, %87) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
+    llvm.cond_br %367, ^bb46, ^bb45
   ^bb45:  // pred: ^bb44
-    llvm.store %86, %232 : !llvm.ptr<i32>
-    %357 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %85, %357 : !llvm.ptr<i8>
+    llvm.store %86, %243 : !llvm.ptr<i32>
+    %368 = llvm.bitcast %260 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %85, %368 : !llvm.ptr<i8>
     llvm.br ^bb48
   ^bb46:  // pred: ^bb44
-    %358 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %84, %358 : !llvm.ptr<i8>
-    %359 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN11ap_int_baseILi64ELb0EEclEii(%251, %359, %83, %82) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32) -> ()
-    %360 = llvm.call @_ZNK12ap_range_refILi64ELb0EEcvyEv(%251) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>) -> i64
-    %361 = llvm.trunc %360 : i64 to i32
-    %362 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    llvm.store %361, %362 : !llvm.ptr<i32>
-    %363 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    %364 = llvm.load %363 : !llvm.ptr<f32>
-    %365 = llvm.getelementptr %229[%81, %80] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %366 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %367 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%366) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
-    %368 = llvm.getelementptr %365[%79, %367] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    llvm.store %364, %368 : !llvm.ptr<f32>
-    %369 = llvm.bitcast %252 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %78, %369 : !llvm.ptr<i8>
-    %370 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZrsILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%252, %370, %77) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32) -> ()
-    %371 = llvm.load %252 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %371, %247 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %372 = llvm.bitcast %252 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %76, %372 : !llvm.ptr<i8>
-    %373 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %75, %373 : !llvm.ptr<i8>
+    %369 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %84, %369 : !llvm.ptr<i8>
+    %370 = llvm.bitcast %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZN11ap_int_baseILi64ELb0EEclEii(%262, %370, %83, %82) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32) -> ()
+    %371 = llvm.call @_ZNK12ap_range_refILi64ELb0EEcvyEv(%262) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>) -> i64
+    %372 = llvm.trunc %371 : i64 to i32
+    %373 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    llvm.store %372, %373 : !llvm.ptr<i32>
+    %374 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    %375 = llvm.load %374 : !llvm.ptr<f32>
+    %376 = llvm.getelementptr %240[%81, %80] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %377 = llvm.bitcast %260 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %378 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%377) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
+    %379 = llvm.getelementptr %376[%79, %378] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    llvm.store %375, %379 : !llvm.ptr<f32>
+    %380 = llvm.bitcast %263 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %78, %380 : !llvm.ptr<i8>
+    %381 = llvm.bitcast %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZrsILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%263, %381, %77) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32) -> ()
+    %382 = llvm.load %263 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %382, %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %383 = llvm.bitcast %263 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %76, %383 : !llvm.ptr<i8>
+    %384 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %75, %384 : !llvm.ptr<i8>
     llvm.br ^bb47
   ^bb47:  // pred: ^bb46
-    %374 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %375 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %74, %375 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi2ELb0EEppEi(%253, %374, %73) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> ()
-    %376 = llvm.bitcast %253 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %72, %376 : !llvm.ptr<i8>
+    %385 = llvm.bitcast %260 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %386 = llvm.bitcast %264 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %74, %386 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi2ELb0EEppEi(%264, %385, %73) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> ()
+    %387 = llvm.bitcast %264 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %72, %387 : !llvm.ptr<i8>
     llvm.br ^bb44
   ^bb48:  // pred: ^bb45
-    %377 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %71, %377 : !llvm.ptr<i8>
+    %388 = llvm.bitcast %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %71, %388 : !llvm.ptr<i8>
     llvm.br ^bb49
   ^bb49:  // pred: ^bb48
-    %378 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %70, %378 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi2EEC2Ei(%254, %69) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
+    %389 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %70, %389 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi2EEC2Ei(%265, %69) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
     llvm.br ^bb50
   ^bb50:  // 2 preds: ^bb49, ^bb53
-    %379 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %380 = llvm.call @_ZleILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%379, %68) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
-    llvm.cond_br %380, ^bb52, ^bb51
+    %390 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %391 = llvm.call @_ZleILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%390, %68) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
+    llvm.cond_br %391, ^bb52, ^bb51
   ^bb51:  // pred: ^bb50
-    llvm.store %67, %232 : !llvm.ptr<i32>
-    %381 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %66, %381 : !llvm.ptr<i8>
+    llvm.store %67, %243 : !llvm.ptr<i32>
+    %392 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %66, %392 : !llvm.ptr<i8>
     llvm.br ^bb54
   ^bb52:  // pred: ^bb50
-    %382 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %383 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%382) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %384 = llvm.getelementptr %230[%65, %383] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
-    %385 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %386 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%385) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %387 = llvm.getelementptr %384[%64, %386] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %388 = llvm.load %387 : !llvm.ptr<f32>
-    %389 = llvm.getelementptr %228[%63, %62] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %390 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %391 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%390) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
-    %392 = llvm.getelementptr %389[%61, %391] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %393 = llvm.load %392 : !llvm.ptr<f32>
-    %394 = llvm.getelementptr %229[%60, %59] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %395 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %396 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%395) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
-    %397 = llvm.getelementptr %394[%58, %396] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %398 = llvm.load %397 : !llvm.ptr<f32>
-    %399 = llvm.fmul %393, %398  : f32
-    %400 = llvm.fadd %388, %399  : f32
-    %401 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %402 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%401) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %403 = llvm.getelementptr %230[%57, %402] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
-    %404 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %405 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%404) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %406 = llvm.getelementptr %403[%56, %405] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    llvm.store %400, %406 : !llvm.ptr<f32>
+    %393 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %394 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%393) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %395 = llvm.getelementptr %241[%65, %394] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
+    %396 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %397 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%396) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %398 = llvm.getelementptr %395[%64, %397] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %399 = llvm.load %398 : !llvm.ptr<f32>
+    %400 = llvm.getelementptr %239[%63, %62] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %401 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %402 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%401) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
+    %403 = llvm.getelementptr %400[%61, %402] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %404 = llvm.load %403 : !llvm.ptr<f32>
+    %405 = llvm.getelementptr %240[%60, %59] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %406 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %407 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%406) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
+    %408 = llvm.getelementptr %405[%58, %407] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %409 = llvm.load %408 : !llvm.ptr<f32>
+    %410 = llvm.fmul %404, %409  : f32
+    %411 = llvm.fadd %399, %410  : f32
+    %412 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %413 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%412) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %414 = llvm.getelementptr %241[%57, %413] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
+    %415 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %416 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%415) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %417 = llvm.getelementptr %414[%56, %416] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    llvm.store %411, %417 : !llvm.ptr<f32>
     llvm.br ^bb53
   ^bb53:  // pred: ^bb52
-    %407 = llvm.bitcast %254 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %408 = llvm.call @_ZpLILi2ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%407, %55) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %418 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %419 = llvm.call @_ZpLILi2ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%418, %55) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
     llvm.br ^bb50
   ^bb54:  // pred: ^bb51
-    %409 = llvm.bitcast %236 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %410 = llvm.call @_ZeqILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%409, %54) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %410, ^bb55, ^bb57
+    %420 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %421 = llvm.call @_ZeqILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%420, %54) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %421, ^bb55, ^bb57
   ^bb55:  // pred: ^bb54
-    %411 = llvm.bitcast %237 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %412 = llvm.call @_ZeqILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%411, %53) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %412, ^bb56, ^bb57
+    %422 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %423 = llvm.call @_ZeqILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%422, %53) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %423, ^bb56, ^bb57
   ^bb56:  // pred: ^bb55
-    %413 = llvm.load %225 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %414 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %415 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%414) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %416 = llvm.getelementptr %230[%52, %415] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
-    %417 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %418 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%417) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %419 = llvm.getelementptr %416[%51, %418] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    llvm.call @_ZN3hls6streamIfLi0EE5writeERKf(%413, %419) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, !llvm.ptr<f32>) -> ()
+    %424 = llvm.load %236 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %425 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %426 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%425) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %427 = llvm.getelementptr %241[%52, %426] : (!llvm.ptr<array<8 x array<8 x f32>>>, i64, i64) -> !llvm.ptr<array<8 x f32>>
+    %428 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %429 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%428) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %430 = llvm.getelementptr %427[%51, %429] : (!llvm.ptr<array<8 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    llvm.call @_ZN3hls6streamIfLi0EE5writeERKf(%424, %430) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, !llvm.ptr<f32>) -> ()
     llvm.br ^bb57
   ^bb57:  // 3 preds: ^bb54, ^bb55, ^bb56
-    %420 = llvm.bitcast %255 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %50, %420 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%255) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %421 = llvm.bitcast %256 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %49, %421 : !llvm.ptr<i8>
-    %422 = llvm.bitcast %257 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %48, %422 : !llvm.ptr<i8>
-    %423 = llvm.getelementptr %229[%47, %46] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %424 = llvm.getelementptr %423[%45, %44] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %425 = llvm.load %424 : !llvm.ptr<f32>
-    %426 = llvm.bitcast %256 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    llvm.store %425, %426 : !llvm.ptr<f32>
-    %427 = llvm.getelementptr %229[%43, %42] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %428 = llvm.getelementptr %427[%41, %40] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %429 = llvm.load %428 : !llvm.ptr<f32>
-    %430 = llvm.bitcast %257 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    llvm.store %429, %430 : !llvm.ptr<f32>
-    %431 = llvm.bitcast %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %39, %431 : !llvm.ptr<i8>
-    %432 = llvm.bitcast %259 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %38, %432 : !llvm.ptr<i8>
-    %433 = llvm.bitcast %256 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    %434 = llvm.load %433 : !llvm.ptr<i32>
-    llvm.call @_ZN7ap_uintILi32EEC2Ej(%260, %434) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
-    %435 = llvm.bitcast %260 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
-    %436 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %37, %436 : !llvm.ptr<i8>
-    %437 = llvm.bitcast %257 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    %438 = llvm.load %437 : !llvm.ptr<i32>
-    llvm.call @_ZN7ap_uintILi32EEC2Ej(%261, %438) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
-    %439 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
-    llvm.call @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERKS3_(%259, %435, %439) : (!llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>) -> ()
-    llvm.call @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%258, %259) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>) -> ()
-    %440 = llvm.load %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %440, %255 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %441 = llvm.bitcast %261 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %36, %441 : !llvm.ptr<i8>
-    %442 = llvm.bitcast %259 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %35, %442 : !llvm.ptr<i8>
-    %443 = llvm.bitcast %258 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %34, %443 : !llvm.ptr<i8>
-    %444 = llvm.load %224 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%444, %255) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %445 = llvm.bitcast %257 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %33, %445 : !llvm.ptr<i8>
-    %446 = llvm.bitcast %256 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %32, %446 : !llvm.ptr<i8>
-    %447 = llvm.bitcast %255 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %31, %447 : !llvm.ptr<i8>
-    %448 = llvm.bitcast %262 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %30, %448 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%262) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %449 = llvm.bitcast %263 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %29, %449 : !llvm.ptr<i8>
-    %450 = llvm.bitcast %264 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %28, %450 : !llvm.ptr<i8>
-    %451 = llvm.getelementptr %228[%27, %26] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %452 = llvm.getelementptr %451[%25, %24] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %453 = llvm.load %452 : !llvm.ptr<f32>
-    %454 = llvm.bitcast %263 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    llvm.store %453, %454 : !llvm.ptr<f32>
-    %455 = llvm.getelementptr %228[%23, %22] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
-    %456 = llvm.getelementptr %455[%21, %20] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
-    %457 = llvm.load %456 : !llvm.ptr<f32>
-    %458 = llvm.bitcast %264 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    llvm.store %457, %458 : !llvm.ptr<f32>
-    %459 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %19, %459 : !llvm.ptr<i8>
-    %460 = llvm.bitcast %266 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %18, %460 : !llvm.ptr<i8>
-    %461 = llvm.bitcast %263 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    %462 = llvm.load %461 : !llvm.ptr<i32>
-    llvm.call @_ZN7ap_uintILi32EEC2Ej(%267, %462) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
-    %463 = llvm.bitcast %267 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
-    %464 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %17, %464 : !llvm.ptr<i8>
-    %465 = llvm.bitcast %264 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    %466 = llvm.load %465 : !llvm.ptr<i32>
-    llvm.call @_ZN7ap_uintILi32EEC2Ej(%268, %466) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
-    %467 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
-    llvm.call @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERKS3_(%266, %463, %467) : (!llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>) -> ()
-    llvm.call @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%265, %266) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>) -> ()
-    %468 = llvm.load %265 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %468, %262 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %469 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %16, %469 : !llvm.ptr<i8>
-    %470 = llvm.bitcast %266 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %15, %470 : !llvm.ptr<i8>
-    %471 = llvm.bitcast %265 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %14, %471 : !llvm.ptr<i8>
-    %472 = llvm.load %222 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%472, %262) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %473 = llvm.bitcast %264 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %13, %473 : !llvm.ptr<i8>
-    %474 = llvm.bitcast %263 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %12, %474 : !llvm.ptr<i8>
-    %475 = llvm.bitcast %262 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %475 : !llvm.ptr<i8>
+    %431 = llvm.bitcast %266 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %50, %431 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%266) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %432 = llvm.bitcast %267 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %49, %432 : !llvm.ptr<i8>
+    %433 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %48, %433 : !llvm.ptr<i8>
+    %434 = llvm.getelementptr %240[%47, %46] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %435 = llvm.getelementptr %434[%45, %44] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %436 = llvm.load %435 : !llvm.ptr<f32>
+    %437 = llvm.bitcast %267 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    llvm.store %436, %437 : !llvm.ptr<f32>
+    %438 = llvm.getelementptr %240[%43, %42] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %439 = llvm.getelementptr %438[%41, %40] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %440 = llvm.load %439 : !llvm.ptr<f32>
+    %441 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    llvm.store %440, %441 : !llvm.ptr<f32>
+    %442 = llvm.bitcast %269 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %39, %442 : !llvm.ptr<i8>
+    %443 = llvm.bitcast %270 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %38, %443 : !llvm.ptr<i8>
+    %444 = llvm.bitcast %267 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    %445 = llvm.load %444 : !llvm.ptr<i32>
+    llvm.call @_ZN7ap_uintILi32EEC2Ej(%271, %445) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
+    %446 = llvm.bitcast %271 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
+    %447 = llvm.bitcast %272 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %37, %447 : !llvm.ptr<i8>
+    %448 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    %449 = llvm.load %448 : !llvm.ptr<i32>
+    llvm.call @_ZN7ap_uintILi32EEC2Ej(%272, %449) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
+    %450 = llvm.bitcast %272 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
+    llvm.call @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERKS3_(%270, %446, %450) : (!llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>) -> ()
+    llvm.call @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%269, %270) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>) -> ()
+    %451 = llvm.load %269 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %451, %266 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %452 = llvm.bitcast %272 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %36, %452 : !llvm.ptr<i8>
+    %453 = llvm.bitcast %270 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %35, %453 : !llvm.ptr<i8>
+    %454 = llvm.bitcast %269 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %34, %454 : !llvm.ptr<i8>
+    %455 = llvm.load %235 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%455, %266) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %456 = llvm.bitcast %268 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %33, %456 : !llvm.ptr<i8>
+    %457 = llvm.bitcast %267 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %32, %457 : !llvm.ptr<i8>
+    %458 = llvm.bitcast %266 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %31, %458 : !llvm.ptr<i8>
+    %459 = llvm.bitcast %273 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %30, %459 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%273) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %460 = llvm.bitcast %274 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %29, %460 : !llvm.ptr<i8>
+    %461 = llvm.bitcast %275 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %28, %461 : !llvm.ptr<i8>
+    %462 = llvm.getelementptr %239[%27, %26] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %463 = llvm.getelementptr %462[%25, %24] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %464 = llvm.load %463 : !llvm.ptr<f32>
+    %465 = llvm.bitcast %274 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    llvm.store %464, %465 : !llvm.ptr<f32>
+    %466 = llvm.getelementptr %239[%23, %22] : (!llvm.ptr<array<1 x array<2 x f32>>>, i64, i64) -> !llvm.ptr<array<2 x f32>>
+    %467 = llvm.getelementptr %466[%21, %20] : (!llvm.ptr<array<2 x f32>>, i64, i64) -> !llvm.ptr<f32>
+    %468 = llvm.load %467 : !llvm.ptr<f32>
+    %469 = llvm.bitcast %275 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    llvm.store %468, %469 : !llvm.ptr<f32>
+    %470 = llvm.bitcast %276 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %19, %470 : !llvm.ptr<i8>
+    %471 = llvm.bitcast %277 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %18, %471 : !llvm.ptr<i8>
+    %472 = llvm.bitcast %274 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    %473 = llvm.load %472 : !llvm.ptr<i32>
+    llvm.call @_ZN7ap_uintILi32EEC2Ej(%278, %473) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
+    %474 = llvm.bitcast %278 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
+    %475 = llvm.bitcast %279 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %17, %475 : !llvm.ptr<i8>
+    %476 = llvm.bitcast %275 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    %477 = llvm.load %476 : !llvm.ptr<i32>
+    llvm.call @_ZN7ap_uintILi32EEC2Ej(%279, %477) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
+    %478 = llvm.bitcast %279 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
+    llvm.call @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERKS3_(%277, %474, %478) : (!llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>) -> ()
+    llvm.call @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%276, %277) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>) -> ()
+    %479 = llvm.load %276 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %479, %273 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %480 = llvm.bitcast %279 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %16, %480 : !llvm.ptr<i8>
+    %481 = llvm.bitcast %277 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %15, %481 : !llvm.ptr<i8>
+    %482 = llvm.bitcast %276 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %14, %482 : !llvm.ptr<i8>
+    %483 = llvm.load %233 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE5writeERKS2_(%483, %273) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %484 = llvm.bitcast %275 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %13, %484 : !llvm.ptr<i8>
+    %485 = llvm.bitcast %274 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %12, %485 : !llvm.ptr<i8>
+    %486 = llvm.bitcast %273 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %486 : !llvm.ptr<i8>
     llvm.br ^bb58
   ^bb58:  // pred: ^bb57
-    %476 = llvm.bitcast %239 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %477 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%476, %10) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %487 = llvm.bitcast %250 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %488 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%487, %10) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb34
   ^bb59:  // pred: ^bb35
     llvm.br ^bb60
   ^bb60:  // pred: ^bb59
-    %478 = llvm.bitcast %238 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %479 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%478, %9) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %489 = llvm.bitcast %249 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %490 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%489, %9) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb30
   ^bb61:  // pred: ^bb31
     llvm.br ^bb62
   ^bb62:  // pred: ^bb61
-    %480 = llvm.bitcast %237 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %481 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%480, %8) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %491 = llvm.bitcast %248 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %492 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%491, %8) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb26
   ^bb63:  // pred: ^bb27
     llvm.br ^bb64
   ^bb64:  // pred: ^bb63
-    %482 = llvm.bitcast %236 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %483 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%482, %7) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %493 = llvm.bitcast %247 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %494 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%493, %7) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb22
   ^bb65:  // pred: ^bb23
     llvm.br ^bb66
   ^bb66:  // pred: ^bb65
-    %484 = llvm.bitcast %233 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %485 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%484, %6) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %495 = llvm.bitcast %244 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %496 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%495, %6) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb6
   ^bb67:  // pred: ^bb7
     llvm.br ^bb68
   ^bb68:  // pred: ^bb67
-    %486 = llvm.bitcast %231 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %487 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%486, %5) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %497 = llvm.bitcast %242 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %498 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%497, %5) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb2
   ^bb69:  // pred: ^bb3
-    %488 = llvm.bitcast %230 : !llvm.ptr<array<8 x array<8 x f32>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %488 : !llvm.ptr<i8>
-    %489 = llvm.bitcast %229 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %489 : !llvm.ptr<i8>
-    %490 = llvm.bitcast %228 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %490 : !llvm.ptr<i8>
-    %491 = llvm.bitcast %227 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %491 : !llvm.ptr<i8>
-    %492 = llvm.bitcast %226 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %492 : !llvm.ptr<i8>
+    %499 = llvm.bitcast %241 : !llvm.ptr<array<8 x array<8 x f32>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %499 : !llvm.ptr<i8>
+    %500 = llvm.bitcast %240 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %500 : !llvm.ptr<i8>
+    %501 = llvm.bitcast %239 : !llvm.ptr<array<1 x array<2 x f32>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %501 : !llvm.ptr<i8>
+    %502 = llvm.bitcast %238 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %502 : !llvm.ptr<i8>
+    %503 = llvm.bitcast %237 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %503 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func linkonce_odr @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%arg0: !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, %arg1: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) attributes {llvm.alwaysinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "read", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -8064,21 +8106,21 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %54 = llvm.mlir.constant(7 : i32) : i32
     %55 = llvm.mlir.constant(0 : i32) : i32
     %56 = llvm.mlir.constant(1 : i64) : i64
-    %57 = llvm.mlir.constant(0 : i32) : i32
-    %58 = llvm.mlir.constant(0 : i32) : i32
-    %59 = llvm.mlir.constant(1 : i32) : i32
-    %60 = llvm.mlir.constant(0 : i32) : i32
-    %61 = llvm.mlir.constant(1 : i32) : i32
+    %57 = llvm.mlir.constant(false) : i1
+    %58 = llvm.mlir.constant(1 : i32) : i32
+    %59 = llvm.mlir.constant(0 : i32) : i32
+    %60 = llvm.mlir.constant(2 : i32) : i32
+    %61 = llvm.mlir.constant(0 : i32) : i32
     %62 = llvm.mlir.constant(0 : i32) : i32
-    %63 = llvm.mlir.constant(0 : i32) : i32
+    %63 = llvm.mlir.constant(1 : i32) : i32
     %64 = llvm.mlir.constant(0 : i32) : i32
-    %65 = llvm.mlir.constant(8 : i64) : i64
-    %66 = llvm.mlir.constant(4 : i64) : i64
-    %67 = llvm.mlir.constant(4 : i64) : i64
-    %68 = llvm.mlir.constant(1 : i32) : i32
-    %69 = llvm.mlir.constant(1 : i32) : i32
-    %70 = llvm.mlir.constant(1 : i32) : i32
-    %71 = llvm.mlir.constant(1 : i32) : i32
+    %65 = llvm.mlir.constant(1 : i32) : i32
+    %66 = llvm.mlir.constant(0 : i32) : i32
+    %67 = llvm.mlir.constant(0 : i32) : i32
+    %68 = llvm.mlir.constant(0 : i32) : i32
+    %69 = llvm.mlir.constant(8 : i64) : i64
+    %70 = llvm.mlir.constant(4 : i64) : i64
+    %71 = llvm.mlir.constant(4 : i64) : i64
     %72 = llvm.mlir.constant(1 : i32) : i32
     %73 = llvm.mlir.constant(1 : i32) : i32
     %74 = llvm.mlir.constant(1 : i32) : i32
@@ -8102,241 +8144,245 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %92 = llvm.mlir.constant(1 : i32) : i32
     %93 = llvm.mlir.constant(1 : i32) : i32
     %94 = llvm.mlir.constant(1 : i32) : i32
-    %95 = llvm.alloca %94 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %96 = llvm.alloca %93 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %97 = llvm.alloca %92 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %98 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %99 = llvm.alloca %90 x !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
-    %100 = llvm.alloca %89 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %101 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %102 = llvm.alloca %87 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %103 = llvm.alloca %86 x !llvm.array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>
-    %104 = llvm.alloca %85 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %105 = llvm.alloca %84 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %106 = llvm.alloca %83 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %107 = llvm.alloca %82 x f32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<f32>
-    %108 = llvm.alloca %81 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %109 = llvm.alloca %80 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %110 = llvm.alloca %79 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %111 = llvm.alloca %78 x !llvm.struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>
-    %112 = llvm.alloca %77 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %113 = llvm.alloca %76 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %114 = llvm.alloca %75 x !llvm.struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>
-    %115 = llvm.alloca %74 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %116 = llvm.alloca %73 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
-    %117 = llvm.alloca %72 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
-    %118 = llvm.alloca %71 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %119 = llvm.alloca %70 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %120 = llvm.alloca %69 x !llvm.struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>
-    %121 = llvm.alloca %68 x !llvm.struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>
-    llvm.store %arg0, %95 : !llvm.ptr<i32>
-    llvm.store %arg1, %96 : !llvm.ptr<i32>
-    llvm.store %arg2, %97 : !llvm.ptr<i32>
-    llvm.store %arg3, %98 : !llvm.ptr<i32>
-    llvm.store %arg4, %99 : !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
-    llvm.store %arg5, %100 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %122 = llvm.bitcast %101 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %67, %122 : !llvm.ptr<i8>
-    %123 = llvm.load %95 : !llvm.ptr<i32>
-    llvm.store %123, %101 : !llvm.ptr<i32>
-    %124 = llvm.bitcast %102 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %66, %124 : !llvm.ptr<i8>
-    %125 = llvm.load %96 : !llvm.ptr<i32>
-    llvm.store %125, %102 : !llvm.ptr<i32>
-    %126 = llvm.bitcast %103 : !llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %65, %126 : !llvm.ptr<i8>
-    %127 = llvm.getelementptr %103[%64, %63] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    llvm.br ^bb1(%62 : i32)
-  ^bb1(%128: i32):  // 2 preds: ^bb0, ^bb1
-    %129 = llvm.add %128, %61  : i32
-    %130 = llvm.getelementptr %103[%60, %128] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    llvm.call @_ZN7ap_uintILi32EEC2Ev(%130) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>) -> ()
-    %131 = llvm.icmp "eq" %128, %59 : i32
-    llvm.cond_br %131, ^bb2, ^bb1(%129 : i32)
+    %95 = llvm.mlir.constant(1 : i32) : i32
+    %96 = llvm.mlir.constant(1 : i32) : i32
+    %97 = llvm.mlir.constant(1 : i32) : i32
+    %98 = llvm.mlir.constant(1 : i32) : i32
+    %99 = llvm.alloca %98 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %100 = llvm.alloca %97 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %101 = llvm.alloca %96 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %102 = llvm.alloca %95 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %103 = llvm.alloca %94 x !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
+    %104 = llvm.alloca %93 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %105 = llvm.alloca %92 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %106 = llvm.alloca %91 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %107 = llvm.alloca %90 x !llvm.array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> {alignment = 4 : i64} : (i32) -> !llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>
+    %108 = llvm.alloca %89 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %109 = llvm.alloca %88 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %110 = llvm.alloca %87 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %111 = llvm.alloca %86 x f32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<f32>
+    %112 = llvm.alloca %85 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %113 = llvm.alloca %84 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %114 = llvm.alloca %83 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %115 = llvm.alloca %82 x !llvm.struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>
+    %116 = llvm.alloca %81 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %117 = llvm.alloca %80 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %118 = llvm.alloca %79 x !llvm.struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>
+    %119 = llvm.alloca %78 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %120 = llvm.alloca %77 x !llvm.struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>
+    %121 = llvm.alloca %76 x !llvm.struct<"struct.ssdm_int<32, true>", (i32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>>
+    %122 = llvm.alloca %75 x !llvm.struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %123 = llvm.alloca %74 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %124 = llvm.alloca %73 x !llvm.struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>
+    %125 = llvm.alloca %72 x !llvm.struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>
+    llvm.store %arg0, %99 : !llvm.ptr<i32>
+    llvm.store %arg1, %100 : !llvm.ptr<i32>
+    llvm.store %arg2, %101 : !llvm.ptr<i32>
+    llvm.store %arg3, %102 : !llvm.ptr<i32>
+    llvm.store %arg4, %103 : !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
+    llvm.store %arg5, %104 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %126 = llvm.bitcast %105 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %71, %126 : !llvm.ptr<i8>
+    %127 = llvm.load %99 : !llvm.ptr<i32>
+    llvm.store %127, %105 : !llvm.ptr<i32>
+    %128 = llvm.bitcast %106 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %70, %128 : !llvm.ptr<i8>
+    %129 = llvm.load %100 : !llvm.ptr<i32>
+    llvm.store %129, %106 : !llvm.ptr<i32>
+    %130 = llvm.bitcast %107 : !llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %69, %130 : !llvm.ptr<i8>
+    %131 = llvm.getelementptr %107[%68, %67] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    llvm.br ^bb1(%66 : i32)
+  ^bb1(%132: i32):  // 2 preds: ^bb0, ^bb1
+    %133 = llvm.add %132, %65  : i32
+    %134 = llvm.getelementptr %107[%64, %132] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    llvm.call @_ZN7ap_uintILi32EEC2Ev(%134) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>) -> ()
+    %135 = llvm.icmp "eq" %132, %63 : i32
+    llvm.cond_br %135, ^bb2, ^bb1(%133 : i32)
   ^bb2:  // pred: ^bb1
     llvm.br ^bb3
   ^bb3:  // pred: ^bb2
-    %132 = llvm.getelementptr %103[%58, %57] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    llvm.call @llvm.sideeffect() : () -> ()
+    %136 = llvm.getelementptr %107[%62, %61] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    llvm.intr.sideeffect(%136, %60, %59, %58, %57) {llvm.bundle.xlx_array_partition = 5 : i64} : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32, i32, i32, i1
     llvm.br ^bb4
   ^bb4:  // pred: ^bb3
-    %133 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %56, %133 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%104, %55) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %137 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %56, %137 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%108, %55) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb5
   ^bb5:  // 2 preds: ^bb4, ^bb20
-    %134 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %135 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%134, %54) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %135, ^bb7, ^bb6
+    %138 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %139 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%138, %54) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %139, ^bb7, ^bb6
   ^bb6:  // pred: ^bb5
-    llvm.store %53, %105 : !llvm.ptr<i32>
-    %136 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %52, %136 : !llvm.ptr<i8>
+    llvm.store %53, %109 : !llvm.ptr<i32>
+    %140 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %52, %140 : !llvm.ptr<i8>
     llvm.br ^bb21
   ^bb7:  // pred: ^bb5
     llvm.br ^bb8
   ^bb8:  // pred: ^bb7
-    %137 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %51, %137 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%106, %50) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %141 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %141 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%110, %50) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb9
   ^bb9:  // 2 preds: ^bb8, ^bb18
-    %138 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %139 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%138, %49) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %139, ^bb11, ^bb10
+    %142 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %143 = llvm.call @_ZleILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%142, %49) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %143, ^bb11, ^bb10
   ^bb10:  // pred: ^bb9
-    llvm.store %48, %105 : !llvm.ptr<i32>
-    %140 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %47, %140 : !llvm.ptr<i8>
+    llvm.store %48, %109 : !llvm.ptr<i32>
+    %144 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %47, %144 : !llvm.ptr<i8>
     llvm.br ^bb19
   ^bb11:  // pred: ^bb9
-    %141 = llvm.bitcast %107 : !llvm.ptr<f32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %141 : !llvm.ptr<i8>
-    %142 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %45, %142 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%108) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %143 = llvm.load %100 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %144 = llvm.call @_ZN3hls6streamIfLi0EE4readEv(%143) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> f32
-    llvm.store %144, %107 : !llvm.ptr<f32>
-    %145 = llvm.bitcast %109 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %44, %145 : !llvm.ptr<i8>
-    %146 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZrmILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3modERKS1_i(%110, %146, %43) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
-    %147 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %148 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%147) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %149 = llvm.trunc %148 : i64 to i32
-    llvm.store %149, %109 : !llvm.ptr<i32>
-    %150 = llvm.load %99 : !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
-    %151 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %145 = llvm.bitcast %111 : !llvm.ptr<f32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %46, %145 : !llvm.ptr<i8>
+    %146 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %45, %146 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%112) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %147 = llvm.load %104 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %148 = llvm.call @_ZN3hls6streamIfLi0EE4readEv(%147) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> f32
+    llvm.store %148, %111 : !llvm.ptr<f32>
+    %149 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %44, %149 : !llvm.ptr<i8>
+    %150 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZrmILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3modERKS1_i(%114, %150, %43) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
+    %151 = llvm.bitcast %114 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     %152 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%151) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %153 = llvm.getelementptr %150[%152] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %154 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZdvILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%111, %154, %42) : (!llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
-    %155 = llvm.bitcast %111 : !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>
-    %156 = llvm.call @_ZNK11ap_int_baseILi5ELb1EEcvxEv(%155) : (!llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>) -> i64
-    %157 = llvm.getelementptr %153[%41, %156] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %158 = llvm.load %157 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %158, %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %153 = llvm.trunc %152 : i64 to i32
+    llvm.store %153, %113 : !llvm.ptr<i32>
+    %154 = llvm.load %103 : !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
+    %155 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %156 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%155) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %157 = llvm.getelementptr %154[%156] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %158 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZdvILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%115, %158, %42) : (!llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
+    %159 = llvm.bitcast %115 : !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>
+    %160 = llvm.call @_ZNK11ap_int_baseILi5ELb1EEcvxEv(%159) : (!llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>) -> i64
+    %161 = llvm.getelementptr %157[%41, %160] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %162 = llvm.load %161 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %162, %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     llvm.br ^bb12
   ^bb12:  // pred: ^bb11
-    %159 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %40, %159 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi2EEC2Ei(%112, %39) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
+    %163 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %40, %163 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi2EEC2Ei(%116, %39) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, i32) -> ()
     llvm.br ^bb13
   ^bb13:  // 2 preds: ^bb12, ^bb16
-    %160 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %161 = llvm.call @_ZltILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%160, %38) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
-    llvm.cond_br %161, ^bb15, ^bb14
+    %164 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %165 = llvm.call @_ZltILi2ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%164, %38) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> i1
+    llvm.cond_br %165, ^bb15, ^bb14
   ^bb14:  // pred: ^bb13
-    llvm.store %37, %105 : !llvm.ptr<i32>
-    %162 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %36, %162 : !llvm.ptr<i8>
+    llvm.store %37, %109 : !llvm.ptr<i32>
+    %166 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %36, %166 : !llvm.ptr<i8>
     llvm.br ^bb17
   ^bb15:  // pred: ^bb13
-    %163 = llvm.bitcast %113 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %35, %163 : !llvm.ptr<i8>
-    %164 = llvm.bitcast %114 : !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %34, %164 : !llvm.ptr<i8>
-    %165 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN11ap_int_baseILi64ELb0EEclEii(%114, %165, %33, %32) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32) -> ()
-    llvm.call @_ZN7ap_uintILi32EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%113, %114) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>) -> ()
-    %166 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %167 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%166) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
-    %168 = llvm.getelementptr %103[%31, %167] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %169 = llvm.load %113 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    llvm.store %169, %168 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %170 = llvm.bitcast %114 : !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %30, %170 : !llvm.ptr<i8>
-    %171 = llvm.bitcast %113 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %29, %171 : !llvm.ptr<i8>
-    %172 = llvm.bitcast %115 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %28, %172 : !llvm.ptr<i8>
-    %173 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZrsILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%115, %173, %27) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32) -> ()
-    %174 = llvm.load %115 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %174, %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %175 = llvm.bitcast %115 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %26, %175 : !llvm.ptr<i8>
+    %167 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %167 : !llvm.ptr<i8>
+    %168 = llvm.bitcast %118 : !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %34, %168 : !llvm.ptr<i8>
+    %169 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZN11ap_int_baseILi64ELb0EEclEii(%118, %169, %33, %32) : (!llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32) -> ()
+    llvm.call @_ZN7ap_uintILi32EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%117, %118) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>>) -> ()
+    %170 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %171 = llvm.call @_ZNK11ap_int_baseILi2ELb0EEcvyEv(%170) : (!llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>) -> i64
+    %172 = llvm.getelementptr %107[%31, %171] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %173 = llvm.load %117 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    llvm.store %173, %172 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %174 = llvm.bitcast %118 : !llvm.ptr<struct<"struct.ap_range_ref<64, false>", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32, i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %30, %174 : !llvm.ptr<i8>
+    %175 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %29, %175 : !llvm.ptr<i8>
+    %176 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %28, %176 : !llvm.ptr<i8>
+    %177 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZrsILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%119, %177, %27) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, i32) -> ()
+    %178 = llvm.load %119 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %178, %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %179 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %26, %179 : !llvm.ptr<i8>
     llvm.br ^bb16
   ^bb16:  // pred: ^bb15
-    %176 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
-    %177 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %25, %177 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi2ELb0EEppEi(%116, %176, %24) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> ()
-    %178 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %23, %178 : !llvm.ptr<i8>
+    %180 = llvm.bitcast %116 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>
+    %181 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %25, %181 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi2ELb0EEppEi(%120, %180, %24) : (!llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>>, i32) -> ()
+    %182 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_uint<2>", (struct<"struct.ap_int_base<2, false>", (struct<"struct.ssdm_int<2, false>", (i2)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %23, %182 : !llvm.ptr<i8>
     llvm.br ^bb13
   ^bb17:  // pred: ^bb14
-    %179 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %22, %179 : !llvm.ptr<i8>
-    %180 = llvm.load %107 : !llvm.ptr<f32>
-    %181 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
-    llvm.store %180, %181 : !llvm.ptr<f32>
-    %182 = llvm.bitcast %118 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %21, %182 : !llvm.ptr<i8>
-    %183 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
-    %184 = llvm.load %183 : !llvm.ptr<i32>
-    llvm.call @_ZN7ap_uintILi32EEC2Ej(%118, %184) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
-    %185 = llvm.load %109 : !llvm.ptr<i32>
-    %186 = llvm.sext %185 : i32 to i64
-    %187 = llvm.getelementptr %103[%20, %186] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %188 = llvm.load %118 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    llvm.store %188, %187 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %189 = llvm.bitcast %118 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %19, %189 : !llvm.ptr<i8>
-    %190 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %18, %190 : !llvm.ptr<i8>
-    %191 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %17, %191 : !llvm.ptr<i8>
-    %192 = llvm.getelementptr %103[%16, %15] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %193 = llvm.bitcast %192 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
-    %194 = llvm.getelementptr %103[%14, %13] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
-    %195 = llvm.bitcast %194 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
-    llvm.call @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%120, %193, %195) : (!llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>) -> ()
-    llvm.call @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%119, %120) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>) -> ()
-    %196 = llvm.load %119 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %196, %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %197 = llvm.bitcast %120 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %12, %197 : !llvm.ptr<i8>
-    %198 = llvm.bitcast %119 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %198 : !llvm.ptr<i8>
-    %199 = llvm.load %99 : !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
-    %200 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %201 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%200) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %202 = llvm.getelementptr %199[%201] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %203 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    llvm.call @_ZdvILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%121, %203, %10) : (!llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
-    %204 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>
-    %205 = llvm.call @_ZNK11ap_int_baseILi5ELb1EEcvxEv(%204) : (!llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>) -> i64
-    %206 = llvm.getelementptr %202[%9, %205] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %207 = llvm.load %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %207, %206 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %208 = llvm.bitcast %117 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %208 : !llvm.ptr<i8>
-    %209 = llvm.bitcast %109 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %209 : !llvm.ptr<i8>
-    %210 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %210 : !llvm.ptr<i8>
-    %211 = llvm.bitcast %107 : !llvm.ptr<f32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %211 : !llvm.ptr<i8>
+    %183 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %22, %183 : !llvm.ptr<i8>
+    %184 = llvm.load %111 : !llvm.ptr<f32>
+    %185 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<f32>
+    llvm.store %184, %185 : !llvm.ptr<f32>
+    %186 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %21, %186 : !llvm.ptr<i8>
+    %187 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i32>
+    %188 = llvm.load %187 : !llvm.ptr<i32>
+    llvm.call @_ZN7ap_uintILi32EEC2Ej(%122, %188) : (!llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>, i32) -> ()
+    %189 = llvm.load %113 : !llvm.ptr<i32>
+    %190 = llvm.sext %189 : i32 to i64
+    %191 = llvm.getelementptr %107[%20, %190] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %192 = llvm.load %122 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    llvm.store %192, %191 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %193 = llvm.bitcast %122 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %19, %193 : !llvm.ptr<i8>
+    %194 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %18, %194 : !llvm.ptr<i8>
+    %195 = llvm.bitcast %124 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %17, %195 : !llvm.ptr<i8>
+    %196 = llvm.getelementptr %107[%16, %15] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %197 = llvm.bitcast %196 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
+    %198 = llvm.getelementptr %107[%14, %13] : (!llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>
+    %199 = llvm.bitcast %198 : !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>
+    llvm.call @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%124, %197, %199) : (!llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, !llvm.ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>) -> ()
+    llvm.call @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%123, %124) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>>) -> ()
+    %200 = llvm.load %123 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %200, %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %201 = llvm.bitcast %124 : !llvm.ptr<struct<"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", (ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>, ptr<struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %12, %201 : !llvm.ptr<i8>
+    %202 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %202 : !llvm.ptr<i8>
+    %203 = llvm.load %103 : !llvm.ptr<ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
+    %204 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %205 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%204) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %206 = llvm.getelementptr %203[%205] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %207 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    llvm.call @_ZdvILi4ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE3divERKS1_i(%125, %207, %10) : (!llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
+    %208 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_int<5>", (struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>
+    %209 = llvm.call @_ZNK11ap_int_baseILi5ELb1EEcvxEv(%208) : (!llvm.ptr<struct<"struct.ap_int_base<5, true>", (struct<"struct.ssdm_int<5, true>", (i5)>)>>) -> i64
+    %210 = llvm.getelementptr %206[%9, %209] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %211 = llvm.load %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %211, %210 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %212 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ssdm_int<32, true>", (i32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %212 : !llvm.ptr<i8>
+    %213 = llvm.bitcast %113 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %213 : !llvm.ptr<i8>
+    %214 = llvm.bitcast %112 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %214 : !llvm.ptr<i8>
+    %215 = llvm.bitcast %111 : !llvm.ptr<f32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %215 : !llvm.ptr<i8>
     llvm.br ^bb18
   ^bb18:  // pred: ^bb17
-    %212 = llvm.bitcast %106 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %213 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%212, %4) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %216 = llvm.bitcast %110 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %217 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%216, %4) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb9
   ^bb19:  // pred: ^bb10
     llvm.br ^bb20
   ^bb20:  // pred: ^bb19
-    %214 = llvm.bitcast %104 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %215 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%214, %3) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %218 = llvm.bitcast %108 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %219 = llvm.call @_ZpLILi4ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%218, %3) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
     llvm.br ^bb5
   ^bb21:  // pred: ^bb6
-    %216 = llvm.bitcast %103 : !llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %216 : !llvm.ptr<i8>
-    %217 = llvm.bitcast %102 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %217 : !llvm.ptr<i8>
-    %218 = llvm.bitcast %101 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %218 : !llvm.ptr<i8>
+    %220 = llvm.bitcast %107 : !llvm.ptr<array<2 x struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %220 : !llvm.ptr<i8>
+    %221 = llvm.bitcast %106 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %221 : !llvm.ptr<i8>
+    %222 = llvm.bitcast %105 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %222 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func linkonce_odr @_ZN7ap_uintILi32EEC2Ev(%arg0: !llvm.ptr<struct<"struct.ap_uint<32>", (struct<"struct.ap_int_base<32, true>", (struct<"struct.ssdm_int<32, true>", (i32)>)>)>>) attributes {llvm.alwaysinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -9103,22 +9149,22 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %17 = llvm.mlir.constant(3 : i32) : i32
     %18 = llvm.mlir.constant(0 : i32) : i32
     %19 = llvm.mlir.constant(1 : i64) : i64
-    %20 = llvm.mlir.constant(3 : i32) : i32
-    %21 = llvm.mlir.constant(0 : i32) : i32
-    %22 = llvm.mlir.constant(1 : i32) : i32
-    %23 = llvm.mlir.constant(0 : i32) : i32
+    %20 = llvm.mlir.constant(-1 : i32) : i32
+    %21 = llvm.mlir.constant(22 : i32) : i32
+    %22 = llvm.mlir.constant(666 : i32) : i32
+    %23 = llvm.mlir.constant(3 : i32) : i32
     %24 = llvm.mlir.constant(0 : i32) : i32
     %25 = llvm.mlir.constant(1 : i32) : i32
     %26 = llvm.mlir.constant(0 : i32) : i32
     %27 = llvm.mlir.constant(0 : i32) : i32
-    %28 = llvm.mlir.constant(0 : i32) : i32
+    %28 = llvm.mlir.constant(1 : i32) : i32
     %29 = llvm.mlir.constant(0 : i32) : i32
-    %30 = llvm.mlir.constant(256 : i64) : i64
-    %31 = llvm.mlir.constant(4 : i64) : i64
-    %32 = llvm.mlir.constant(4 : i64) : i64
-    %33 = llvm.mlir.constant(1 : i32) : i32
-    %34 = llvm.mlir.constant(1 : i32) : i32
-    %35 = llvm.mlir.constant(1 : i32) : i32
+    %30 = llvm.mlir.constant(0 : i32) : i32
+    %31 = llvm.mlir.constant(0 : i32) : i32
+    %32 = llvm.mlir.constant(0 : i32) : i32
+    %33 = llvm.mlir.constant(256 : i64) : i64
+    %34 = llvm.mlir.constant(4 : i64) : i64
+    %35 = llvm.mlir.constant(4 : i64) : i64
     %36 = llvm.mlir.constant(1 : i32) : i32
     %37 = llvm.mlir.constant(1 : i32) : i32
     %38 = llvm.mlir.constant(1 : i32) : i32
@@ -9127,126 +9173,129 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %41 = llvm.mlir.constant(1 : i32) : i32
     %42 = llvm.mlir.constant(1 : i32) : i32
     %43 = llvm.mlir.constant(1 : i32) : i32
-    %44 = llvm.alloca %43 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %45 = llvm.alloca %42 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %46 = llvm.alloca %41 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %47 = llvm.alloca %40 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %48 = llvm.alloca %39 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %49 = llvm.alloca %38 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %50 = llvm.alloca %37 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %51 = llvm.alloca %36 x !llvm.array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
-    %52 = llvm.alloca %35 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %53 = llvm.alloca %34 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %54 = llvm.alloca %33 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    llvm.store %arg0, %44 : !llvm.ptr<i32>
-    llvm.store %arg1, %45 : !llvm.ptr<i32>
-    llvm.store %arg2, %46 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg3, %47 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg4, %48 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %55 = llvm.bitcast %49 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %32, %55 : !llvm.ptr<i8>
-    %56 = llvm.load %44 : !llvm.ptr<i32>
-    llvm.store %56, %49 : !llvm.ptr<i32>
-    %57 = llvm.bitcast %50 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %31, %57 : !llvm.ptr<i8>
-    %58 = llvm.load %45 : !llvm.ptr<i32>
-    llvm.store %58, %50 : !llvm.ptr<i32>
-    %59 = llvm.bitcast %51 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %30, %59 : !llvm.ptr<i8>
-    %60 = llvm.getelementptr %51[%29, %28, %27] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.br ^bb1(%26 : i32)
-  ^bb1(%61: i32):  // 2 preds: ^bb0, ^bb9
-    %62 = llvm.add %61, %25  : i32
-    %63 = llvm.getelementptr %51[%24, %61] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    llvm.br ^bb2(%23 : i32)
-  ^bb2(%64: i32):  // 2 preds: ^bb1, ^bb2
-    %65 = llvm.add %64, %22  : i32
-    %66 = llvm.getelementptr %63[%21, %64] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%66) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %67 = llvm.icmp "eq" %64, %20 : i32
-    llvm.cond_br %67, ^bb3, ^bb2(%65 : i32)
+    %44 = llvm.mlir.constant(1 : i32) : i32
+    %45 = llvm.mlir.constant(1 : i32) : i32
+    %46 = llvm.mlir.constant(1 : i32) : i32
+    %47 = llvm.alloca %46 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %48 = llvm.alloca %45 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %49 = llvm.alloca %44 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %50 = llvm.alloca %43 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %51 = llvm.alloca %42 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %52 = llvm.alloca %41 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %53 = llvm.alloca %40 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %54 = llvm.alloca %39 x !llvm.array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
+    %55 = llvm.alloca %38 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %56 = llvm.alloca %37 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %57 = llvm.alloca %36 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    llvm.store %arg0, %47 : !llvm.ptr<i32>
+    llvm.store %arg1, %48 : !llvm.ptr<i32>
+    llvm.store %arg2, %49 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg3, %50 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg4, %51 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %58 = llvm.bitcast %52 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %58 : !llvm.ptr<i8>
+    %59 = llvm.load %47 : !llvm.ptr<i32>
+    llvm.store %59, %52 : !llvm.ptr<i32>
+    %60 = llvm.bitcast %53 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %34, %60 : !llvm.ptr<i8>
+    %61 = llvm.load %48 : !llvm.ptr<i32>
+    llvm.store %61, %53 : !llvm.ptr<i32>
+    %62 = llvm.bitcast %54 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %33, %62 : !llvm.ptr<i8>
+    %63 = llvm.getelementptr %54[%32, %31, %30] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.br ^bb1(%29 : i32)
+  ^bb1(%64: i32):  // 2 preds: ^bb0, ^bb9
+    %65 = llvm.add %64, %28  : i32
+    %66 = llvm.getelementptr %54[%27, %64] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    llvm.br ^bb2(%26 : i32)
+  ^bb2(%67: i32):  // 2 preds: ^bb1, ^bb2
+    %68 = llvm.add %67, %25  : i32
+    %69 = llvm.getelementptr %66[%24, %67] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%69) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %70 = llvm.icmp "eq" %67, %23 : i32
+    llvm.cond_br %70, ^bb3, ^bb2(%68 : i32)
   ^bb3:  // pred: ^bb2
     llvm.br ^bb9
   ^bb4:  // pred: ^bb9
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    llvm.call @llvm.sideeffect() : () -> ()
+    llvm.intr.sideeffect(%54, %22, %21, %20) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32, i32
     llvm.br ^bb6
   ^bb6:  // pred: ^bb5
-    %68 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %19, %68 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%52, %18) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %71 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %19, %71 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%55, %18) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb7
   ^bb7:  // 2 preds: ^bb6, ^bb17
-    %69 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %70 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%69, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %70, ^bb10, ^bb8
+    %72 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %73 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%72, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %73, ^bb10, ^bb8
   ^bb8:  // pred: ^bb7
-    llvm.store %16, %53 : !llvm.ptr<i32>
-    %71 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %15, %71 : !llvm.ptr<i8>
+    llvm.store %16, %56 : !llvm.ptr<i32>
+    %74 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %15, %74 : !llvm.ptr<i8>
     llvm.br ^bb18
   ^bb9:  // pred: ^bb3
-    %72 = llvm.icmp "eq" %61, %14 : i32
-    llvm.cond_br %72, ^bb4, ^bb1(%62 : i32)
+    %75 = llvm.icmp "eq" %64, %14 : i32
+    llvm.cond_br %75, ^bb4, ^bb1(%65 : i32)
   ^bb10:  // pred: ^bb7
     llvm.br ^bb11
   ^bb11:  // pred: ^bb10
-    %73 = llvm.bitcast %54 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %13, %73 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%54, %12) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %76 = llvm.bitcast %57 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %13, %76 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%57, %12) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb12
   ^bb12:  // 2 preds: ^bb11, ^bb15
-    %74 = llvm.bitcast %54 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %75 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%74, %11) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %75, ^bb14, ^bb13
+    %77 = llvm.bitcast %57 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %78 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%77, %11) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %78, ^bb14, ^bb13
   ^bb13:  // pred: ^bb12
-    llvm.store %10, %53 : !llvm.ptr<i32>
-    %76 = llvm.bitcast %54 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %76 : !llvm.ptr<i8>
+    llvm.store %10, %56 : !llvm.ptr<i32>
+    %79 = llvm.bitcast %57 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %79 : !llvm.ptr<i8>
     llvm.br ^bb16
   ^bb14:  // pred: ^bb12
-    %77 = llvm.load %44 : !llvm.ptr<i32>
-    %78 = llvm.load %45 : !llvm.ptr<i32>
-    %79 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %80 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%79) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %81 = llvm.trunc %80 : i64 to i32
-    %82 = llvm.bitcast %54 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %80 = llvm.load %47 : !llvm.ptr<i32>
+    %81 = llvm.load %48 : !llvm.ptr<i32>
+    %82 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %83 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%82) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %84 = llvm.trunc %83 : i64 to i32
-    %85 = llvm.getelementptr %51[%8, %7] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %86 = llvm.load %48 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    llvm.call @_Z29C_drain_IO_L1_out_intra_transiiiiPA4_7ap_uintILi64EERN3hls6streamIfLi0EEE(%77, %78, %81, %84, %85, %86) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    %87 = llvm.load %44 : !llvm.ptr<i32>
-    %88 = llvm.load %45 : !llvm.ptr<i32>
-    %89 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %90 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%89) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %91 = llvm.trunc %90 : i64 to i32
-    %92 = llvm.bitcast %54 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %85 = llvm.bitcast %57 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %86 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%85) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %87 = llvm.trunc %86 : i64 to i32
+    %88 = llvm.getelementptr %54[%8, %7] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %89 = llvm.load %51 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    llvm.call @_Z29C_drain_IO_L1_out_intra_transiiiiPA4_7ap_uintILi64EERN3hls6streamIfLi0EEE(%80, %81, %84, %87, %88, %89) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    %90 = llvm.load %47 : !llvm.ptr<i32>
+    %91 = llvm.load %48 : !llvm.ptr<i32>
+    %92 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %93 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%92) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %94 = llvm.trunc %93 : i64 to i32
-    %95 = llvm.getelementptr %51[%6, %5] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %96 = llvm.load %46 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %97 = llvm.load %47 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_Z29C_drain_IO_L1_out_inter_transiiiiPA4_7ap_uintILi64EERN3hls6streamIS0_Li0EEES6_(%87, %88, %91, %94, %95, %96, %97) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    %95 = llvm.bitcast %57 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %96 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%95) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %97 = llvm.trunc %96 : i64 to i32
+    %98 = llvm.getelementptr %54[%6, %5] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %99 = llvm.load %49 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %100 = llvm.load %50 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_Z29C_drain_IO_L1_out_inter_transiiiiPA4_7ap_uintILi64EERN3hls6streamIS0_Li0EEES6_(%90, %91, %94, %97, %98, %99, %100) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
     llvm.br ^bb15
   ^bb15:  // pred: ^bb14
-    %98 = llvm.bitcast %54 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %99 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%98, %4) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %101 = llvm.bitcast %57 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %102 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%101, %4) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb12
   ^bb16:  // pred: ^bb13
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %100 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %101 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%100, %3) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %103 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %104 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%103, %3) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb7
   ^bb18:  // pred: ^bb8
-    %102 = llvm.bitcast %51 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %102 : !llvm.ptr<i8>
-    %103 = llvm.bitcast %50 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %103 : !llvm.ptr<i8>
-    %104 = llvm.bitcast %49 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %104 : !llvm.ptr<i8>
+    %105 = llvm.bitcast %54 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %105 : !llvm.ptr<i8>
+    %106 = llvm.bitcast %53 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %106 : !llvm.ptr<i8>
+    %107 = llvm.bitcast %52 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %107 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func @_Z25C_drain_IO_L1_out_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_RNS0_IfLi0EEE(%arg0: i32, %arg1: i32, %arg2: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg3: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg4: !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) attributes {"llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "C_drain_IO_L1_out_wrapper", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -9294,22 +9343,22 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %17 = llvm.mlir.constant(3 : i32) : i32
     %18 = llvm.mlir.constant(0 : i32) : i32
     %19 = llvm.mlir.constant(1 : i64) : i64
-    %20 = llvm.mlir.constant(3 : i32) : i32
-    %21 = llvm.mlir.constant(0 : i32) : i32
-    %22 = llvm.mlir.constant(1 : i32) : i32
-    %23 = llvm.mlir.constant(0 : i32) : i32
+    %20 = llvm.mlir.constant(-1 : i32) : i32
+    %21 = llvm.mlir.constant(22 : i32) : i32
+    %22 = llvm.mlir.constant(666 : i32) : i32
+    %23 = llvm.mlir.constant(3 : i32) : i32
     %24 = llvm.mlir.constant(0 : i32) : i32
     %25 = llvm.mlir.constant(1 : i32) : i32
     %26 = llvm.mlir.constant(0 : i32) : i32
     %27 = llvm.mlir.constant(0 : i32) : i32
-    %28 = llvm.mlir.constant(0 : i32) : i32
+    %28 = llvm.mlir.constant(1 : i32) : i32
     %29 = llvm.mlir.constant(0 : i32) : i32
-    %30 = llvm.mlir.constant(256 : i64) : i64
-    %31 = llvm.mlir.constant(4 : i64) : i64
-    %32 = llvm.mlir.constant(4 : i64) : i64
-    %33 = llvm.mlir.constant(1 : i32) : i32
-    %34 = llvm.mlir.constant(1 : i32) : i32
-    %35 = llvm.mlir.constant(1 : i32) : i32
+    %30 = llvm.mlir.constant(0 : i32) : i32
+    %31 = llvm.mlir.constant(0 : i32) : i32
+    %32 = llvm.mlir.constant(0 : i32) : i32
+    %33 = llvm.mlir.constant(256 : i64) : i64
+    %34 = llvm.mlir.constant(4 : i64) : i64
+    %35 = llvm.mlir.constant(4 : i64) : i64
     %36 = llvm.mlir.constant(1 : i32) : i32
     %37 = llvm.mlir.constant(1 : i32) : i32
     %38 = llvm.mlir.constant(1 : i32) : i32
@@ -9317,123 +9366,126 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %40 = llvm.mlir.constant(1 : i32) : i32
     %41 = llvm.mlir.constant(1 : i32) : i32
     %42 = llvm.mlir.constant(1 : i32) : i32
-    %43 = llvm.alloca %42 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %44 = llvm.alloca %41 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %45 = llvm.alloca %40 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %46 = llvm.alloca %39 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %47 = llvm.alloca %38 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %48 = llvm.alloca %37 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %49 = llvm.alloca %36 x !llvm.array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
-    %50 = llvm.alloca %35 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    %51 = llvm.alloca %34 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %52 = llvm.alloca %33 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
-    llvm.store %arg0, %43 : !llvm.ptr<i32>
-    llvm.store %arg1, %44 : !llvm.ptr<i32>
-    llvm.store %arg2, %45 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.store %arg3, %46 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    %53 = llvm.bitcast %47 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %32, %53 : !llvm.ptr<i8>
-    %54 = llvm.load %43 : !llvm.ptr<i32>
-    llvm.store %54, %47 : !llvm.ptr<i32>
-    %55 = llvm.bitcast %48 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %31, %55 : !llvm.ptr<i8>
-    %56 = llvm.load %44 : !llvm.ptr<i32>
-    llvm.store %56, %48 : !llvm.ptr<i32>
-    %57 = llvm.bitcast %49 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %30, %57 : !llvm.ptr<i8>
-    %58 = llvm.getelementptr %49[%29, %28, %27] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.br ^bb1(%26 : i32)
-  ^bb1(%59: i32):  // 2 preds: ^bb0, ^bb9
-    %60 = llvm.add %59, %25  : i32
-    %61 = llvm.getelementptr %49[%24, %59] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    llvm.br ^bb2(%23 : i32)
-  ^bb2(%62: i32):  // 2 preds: ^bb1, ^bb2
-    %63 = llvm.add %62, %22  : i32
-    %64 = llvm.getelementptr %61[%21, %62] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%64) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %65 = llvm.icmp "eq" %62, %20 : i32
-    llvm.cond_br %65, ^bb3, ^bb2(%63 : i32)
+    %43 = llvm.mlir.constant(1 : i32) : i32
+    %44 = llvm.mlir.constant(1 : i32) : i32
+    %45 = llvm.mlir.constant(1 : i32) : i32
+    %46 = llvm.alloca %45 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %47 = llvm.alloca %44 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %48 = llvm.alloca %43 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %49 = llvm.alloca %42 x !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %50 = llvm.alloca %41 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %51 = llvm.alloca %40 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %52 = llvm.alloca %39 x !llvm.array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>
+    %53 = llvm.alloca %38 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    %54 = llvm.alloca %37 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %55 = llvm.alloca %36 x !llvm.struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>
+    llvm.store %arg0, %46 : !llvm.ptr<i32>
+    llvm.store %arg1, %47 : !llvm.ptr<i32>
+    llvm.store %arg2, %48 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.store %arg3, %49 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    %56 = llvm.bitcast %50 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %35, %56 : !llvm.ptr<i8>
+    %57 = llvm.load %46 : !llvm.ptr<i32>
+    llvm.store %57, %50 : !llvm.ptr<i32>
+    %58 = llvm.bitcast %51 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %34, %58 : !llvm.ptr<i8>
+    %59 = llvm.load %47 : !llvm.ptr<i32>
+    llvm.store %59, %51 : !llvm.ptr<i32>
+    %60 = llvm.bitcast %52 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %33, %60 : !llvm.ptr<i8>
+    %61 = llvm.getelementptr %52[%32, %31, %30] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.br ^bb1(%29 : i32)
+  ^bb1(%62: i32):  // 2 preds: ^bb0, ^bb9
+    %63 = llvm.add %62, %28  : i32
+    %64 = llvm.getelementptr %52[%27, %62] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    llvm.br ^bb2(%26 : i32)
+  ^bb2(%65: i32):  // 2 preds: ^bb1, ^bb2
+    %66 = llvm.add %65, %25  : i32
+    %67 = llvm.getelementptr %64[%24, %65] : (!llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%67) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %68 = llvm.icmp "eq" %65, %23 : i32
+    llvm.cond_br %68, ^bb3, ^bb2(%66 : i32)
   ^bb3:  // pred: ^bb2
     llvm.br ^bb9
   ^bb4:  // pred: ^bb9
     llvm.br ^bb5
   ^bb5:  // pred: ^bb4
-    llvm.call @llvm.sideeffect() : () -> ()
+    llvm.intr.sideeffect(%52, %22, %21, %20) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32, i32
     llvm.br ^bb6
   ^bb6:  // pred: ^bb5
-    %66 = llvm.bitcast %50 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %19, %66 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%50, %18) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %69 = llvm.bitcast %53 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %19, %69 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%53, %18) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb7
   ^bb7:  // 2 preds: ^bb6, ^bb17
-    %67 = llvm.bitcast %50 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %68 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%67, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %68, ^bb10, ^bb8
+    %70 = llvm.bitcast %53 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %71 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%70, %17) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %71, ^bb10, ^bb8
   ^bb8:  // pred: ^bb7
-    llvm.store %16, %51 : !llvm.ptr<i32>
-    %69 = llvm.bitcast %50 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %15, %69 : !llvm.ptr<i8>
+    llvm.store %16, %54 : !llvm.ptr<i32>
+    %72 = llvm.bitcast %53 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %15, %72 : !llvm.ptr<i8>
     llvm.br ^bb18
   ^bb9:  // pred: ^bb3
-    %70 = llvm.icmp "eq" %59, %14 : i32
-    llvm.cond_br %70, ^bb4, ^bb1(%60 : i32)
+    %73 = llvm.icmp "eq" %62, %14 : i32
+    llvm.cond_br %73, ^bb4, ^bb1(%63 : i32)
   ^bb10:  // pred: ^bb7
     llvm.br ^bb11
   ^bb11:  // pred: ^bb10
-    %71 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %13, %71 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi3EEC2Ei(%52, %12) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
+    %74 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %13, %74 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi3EEC2Ei(%55, %12) : (!llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>>, i32) -> ()
     llvm.br ^bb12
   ^bb12:  // 2 preds: ^bb11, ^bb15
-    %72 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %73 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%72, %11) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
-    llvm.cond_br %73, ^bb14, ^bb13
+    %75 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %76 = llvm.call @_ZleILi3ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%75, %11) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> i1
+    llvm.cond_br %76, ^bb14, ^bb13
   ^bb13:  // pred: ^bb12
-    llvm.store %10, %51 : !llvm.ptr<i32>
-    %74 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %74 : !llvm.ptr<i8>
+    llvm.store %10, %54 : !llvm.ptr<i32>
+    %77 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %77 : !llvm.ptr<i8>
     llvm.br ^bb16
   ^bb14:  // pred: ^bb12
-    %75 = llvm.load %43 : !llvm.ptr<i32>
-    %76 = llvm.load %44 : !llvm.ptr<i32>
-    %77 = llvm.bitcast %50 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %78 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%77) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %79 = llvm.trunc %78 : i64 to i32
-    %80 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %78 = llvm.load %46 : !llvm.ptr<i32>
+    %79 = llvm.load %47 : !llvm.ptr<i32>
+    %80 = llvm.bitcast %53 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %81 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%80) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %82 = llvm.trunc %81 : i64 to i32
-    %83 = llvm.getelementptr %49[%8, %7] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %84 = llvm.load %46 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
-    llvm.call @_Z29C_drain_IO_L1_out_intra_transiiiiPA4_7ap_uintILi64EERN3hls6streamIfLi0EEE(%75, %76, %79, %82, %83, %84) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    %85 = llvm.load %43 : !llvm.ptr<i32>
-    %86 = llvm.load %44 : !llvm.ptr<i32>
-    %87 = llvm.bitcast %50 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %88 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%87) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
-    %89 = llvm.trunc %88 : i64 to i32
-    %90 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %83 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %84 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%83) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %85 = llvm.trunc %84 : i64 to i32
+    %86 = llvm.getelementptr %52[%8, %7] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %87 = llvm.load %49 : !llvm.ptr<ptr<struct<"class.hls::stream<float, 0>", (f32)>>>
+    llvm.call @_Z29C_drain_IO_L1_out_intra_transiiiiPA4_7ap_uintILi64EERN3hls6streamIfLi0EEE(%78, %79, %82, %85, %86, %87) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    %88 = llvm.load %46 : !llvm.ptr<i32>
+    %89 = llvm.load %47 : !llvm.ptr<i32>
+    %90 = llvm.bitcast %53 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     %91 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%90) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
     %92 = llvm.trunc %91 : i64 to i32
-    %93 = llvm.getelementptr %49[%6, %5] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %94 = llvm.load %45 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_Z38C_drain_IO_L1_out_inter_trans_boundaryiiiiPA4_7ap_uintILi64EERN3hls6streamIS0_Li0EEE(%85, %86, %89, %92, %93, %94) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    %93 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %94 = llvm.call @_ZNK11ap_int_baseILi3ELb0EEcvyEv(%93) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>) -> i64
+    %95 = llvm.trunc %94 : i64 to i32
+    %96 = llvm.getelementptr %52[%6, %5] : (!llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>>, i32, i32) -> !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %97 = llvm.load %48 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_Z38C_drain_IO_L1_out_inter_trans_boundaryiiiiPA4_7ap_uintILi64EERN3hls6streamIS0_Li0EEE(%88, %89, %92, %95, %96, %97) : (i32, i32, i32, i32, !llvm.ptr<array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
     llvm.br ^bb15
   ^bb15:  // pred: ^bb14
-    %95 = llvm.bitcast %52 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %96 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%95, %4) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %98 = llvm.bitcast %55 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %99 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%98, %4) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb12
   ^bb16:  // pred: ^bb13
     llvm.br ^bb17
   ^bb17:  // pred: ^bb16
-    %97 = llvm.bitcast %50 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
-    %98 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%97, %3) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %100 = llvm.bitcast %53 : !llvm.ptr<struct<"struct.ap_uint<3>", (struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
+    %101 = llvm.call @_ZpLILi3ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%100, %3) : (!llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>, i32) -> !llvm.ptr<struct<"struct.ap_int_base<3, false>", (struct<"struct.ssdm_int<3, false>", (i3)>)>>
     llvm.br ^bb7
   ^bb18:  // pred: ^bb8
-    %99 = llvm.bitcast %49 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %99 : !llvm.ptr<i8>
-    %100 = llvm.bitcast %48 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %100 : !llvm.ptr<i8>
-    %101 = llvm.bitcast %47 : !llvm.ptr<i32> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %101 : !llvm.ptr<i8>
+    %102 = llvm.bitcast %52 : !llvm.ptr<array<8 x array<4 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %102 : !llvm.ptr<i8>
+    %103 = llvm.bitcast %51 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %103 : !llvm.ptr<i8>
+    %104 = llvm.bitcast %50 : !llvm.ptr<i32> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %104 : !llvm.ptr<i8>
     llvm.return
   }
   llvm.func @_Z34C_drain_IO_L1_out_boundary_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEERNS0_IfLi0EEE(%arg0: i32, %arg1: i32, %arg2: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, %arg3: !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) attributes {"llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", llvm.string.fpga.demangled.name = "C_drain_IO_L1_out_boundary_wrapper", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
@@ -10338,26 +10390,26 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %34 = llvm.mlir.constant(8 : i32) : i32
     %35 = llvm.mlir.constant(0 : i32) : i32
     %36 = llvm.mlir.constant(1 : i64) : i64
-    %37 = llvm.mlir.constant(0 : i32) : i32
-    %38 = llvm.mlir.constant(0 : i32) : i32
-    %39 = llvm.mlir.constant(7 : i32) : i32
-    %40 = llvm.mlir.constant(0 : i32) : i32
-    %41 = llvm.mlir.constant(1 : i32) : i32
+    %37 = llvm.mlir.constant(false) : i1
+    %38 = llvm.mlir.constant(1 : i32) : i32
+    %39 = llvm.mlir.constant(0 : i32) : i32
+    %40 = llvm.mlir.constant(2 : i32) : i32
+    %41 = llvm.mlir.constant(0 : i32) : i32
     %42 = llvm.mlir.constant(0 : i32) : i32
-    %43 = llvm.mlir.constant(0 : i32) : i32
+    %43 = llvm.mlir.constant(7 : i32) : i32
     %44 = llvm.mlir.constant(0 : i32) : i32
-    %45 = llvm.mlir.constant(64 : i64) : i64
-    %46 = llvm.mlir.constant(64 : i64) : i64
-    %47 = llvm.mlir.constant(8 : i64) : i64
-    %48 = llvm.mlir.constant(2 : i64) : i64
-    %49 = llvm.mlir.constant(3 : i32) : i32
-    %50 = llvm.mlir.constant(256 : i32) : i32
-    %51 = llvm.mlir.constant(0 : i32) : i32
+    %45 = llvm.mlir.constant(1 : i32) : i32
+    %46 = llvm.mlir.constant(0 : i32) : i32
+    %47 = llvm.mlir.constant(0 : i32) : i32
+    %48 = llvm.mlir.constant(0 : i32) : i32
+    %49 = llvm.mlir.constant(64 : i64) : i64
+    %50 = llvm.mlir.constant(64 : i64) : i64
+    %51 = llvm.mlir.constant(8 : i64) : i64
     %52 = llvm.mlir.constant(2 : i64) : i64
-    %53 = llvm.mlir.constant(1 : i32) : i32
-    %54 = llvm.mlir.constant(1 : i32) : i32
-    %55 = llvm.mlir.constant(1 : i32) : i32
-    %56 = llvm.mlir.constant(1 : i32) : i32
+    %53 = llvm.mlir.constant(3 : i32) : i32
+    %54 = llvm.mlir.constant(256 : i32) : i32
+    %55 = llvm.mlir.constant(0 : i32) : i32
+    %56 = llvm.mlir.constant(2 : i64) : i64
     %57 = llvm.mlir.constant(1 : i32) : i32
     %58 = llvm.mlir.constant(1 : i32) : i32
     %59 = llvm.mlir.constant(1 : i32) : i32
@@ -10373,157 +10425,161 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %69 = llvm.mlir.constant(1 : i32) : i32
     %70 = llvm.mlir.constant(1 : i32) : i32
     %71 = llvm.mlir.constant(1 : i32) : i32
-    %72 = llvm.alloca %71 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    %73 = llvm.alloca %70 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    %74 = llvm.alloca %69 x !llvm.struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)> {alignment = 2 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>
-    %75 = llvm.alloca %68 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
-    %76 = llvm.alloca %67 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %77 = llvm.alloca %66 x !llvm.struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)> {alignment = 64 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    %78 = llvm.alloca %65 x !llvm.array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
-    %79 = llvm.alloca %64 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %80 = llvm.alloca %63 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %81 = llvm.alloca %62 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
-    %82 = llvm.alloca %61 x !llvm.struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)> {alignment = 64 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    %83 = llvm.alloca %60 x !llvm.struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %84 = llvm.alloca %59 x !llvm.struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %85 = llvm.alloca %58 x !llvm.struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %86 = llvm.alloca %57 x !llvm.struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %87 = llvm.alloca %56 x !llvm.struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %88 = llvm.alloca %55 x !llvm.struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %89 = llvm.alloca %54 x !llvm.struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
-    %90 = llvm.alloca %53 x !llvm.struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)> {alignment = 2 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>
-    llvm.store %arg0, %72 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.store %arg1, %73 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %72 = llvm.mlir.constant(1 : i32) : i32
+    %73 = llvm.mlir.constant(1 : i32) : i32
+    %74 = llvm.mlir.constant(1 : i32) : i32
+    %75 = llvm.mlir.constant(1 : i32) : i32
+    %76 = llvm.alloca %75 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    %77 = llvm.alloca %74 x !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    %78 = llvm.alloca %73 x !llvm.struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)> {alignment = 2 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>
+    %79 = llvm.alloca %72 x i32 {alignment = 4 : i64} : (i32) -> !llvm.ptr<i32>
+    %80 = llvm.alloca %71 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %81 = llvm.alloca %70 x !llvm.struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)> {alignment = 64 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    %82 = llvm.alloca %69 x !llvm.array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>
+    %83 = llvm.alloca %68 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %84 = llvm.alloca %67 x !llvm.struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %85 = llvm.alloca %66 x !llvm.struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)> {alignment = 1 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>
+    %86 = llvm.alloca %65 x !llvm.struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)> {alignment = 64 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    %87 = llvm.alloca %64 x !llvm.struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %88 = llvm.alloca %63 x !llvm.struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %89 = llvm.alloca %62 x !llvm.struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %90 = llvm.alloca %61 x !llvm.struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %91 = llvm.alloca %60 x !llvm.struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %92 = llvm.alloca %59 x !llvm.struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %93 = llvm.alloca %58 x !llvm.struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>
+    %94 = llvm.alloca %57 x !llvm.struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)> {alignment = 2 : i64} : (i32) -> !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>
+    llvm.store %arg0, %76 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.store %arg1, %77 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
     llvm.br ^bb1
   ^bb1:  // pred: ^bb0
-    %91 = llvm.bitcast %74 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %52, %91 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi9EEC2Ei(%74, %51) : (!llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>, i32) -> ()
+    %95 = llvm.bitcast %78 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %56, %95 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi9EEC2Ei(%78, %55) : (!llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>, i32) -> ()
     llvm.br ^bb2
   ^bb2:  // 2 preds: ^bb1, ^bb14
-    %92 = llvm.bitcast %74 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>
-    %93 = llvm.call @_ZltILi9ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%92, %50) : (!llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>, i32) -> i1
-    llvm.cond_br %93, ^bb4, ^bb3
+    %96 = llvm.bitcast %78 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>
+    %97 = llvm.call @_ZltILi9ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%96, %54) : (!llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>, i32) -> i1
+    llvm.cond_br %97, ^bb4, ^bb3
   ^bb3:  // pred: ^bb2
-    llvm.store %49, %75 : !llvm.ptr<i32>
-    %94 = llvm.bitcast %74 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %48, %94 : !llvm.ptr<i8>
+    llvm.store %53, %79 : !llvm.ptr<i32>
+    %98 = llvm.bitcast %78 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %52, %98 : !llvm.ptr<i8>
     llvm.br ^bb15
   ^bb4:  // pred: ^bb2
-    %95 = llvm.bitcast %76 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %47, %95 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%76) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %96 = llvm.bitcast %77 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %46, %96 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi512EEC2Ev(%77) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>) -> ()
-    %97 = llvm.bitcast %78 : !llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %45, %97 : !llvm.ptr<i8>
-    %98 = llvm.getelementptr %78[%44, %43] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.br ^bb5(%42 : i32)
-  ^bb5(%99: i32):  // 2 preds: ^bb4, ^bb5
-    %100 = llvm.add %99, %41  : i32
-    %101 = llvm.getelementptr %78[%40, %99] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @_ZN7ap_uintILi64EEC2Ev(%101) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
-    %102 = llvm.icmp "eq" %99, %39 : i32
-    llvm.cond_br %102, ^bb6, ^bb5(%100 : i32)
+    %99 = llvm.bitcast %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %51, %99 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%80) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %100 = llvm.bitcast %81 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %50, %100 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi512EEC2Ev(%81) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>) -> ()
+    %101 = llvm.bitcast %82 : !llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %49, %101 : !llvm.ptr<i8>
+    %102 = llvm.getelementptr %82[%48, %47] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.br ^bb5(%46 : i32)
+  ^bb5(%103: i32):  // 2 preds: ^bb4, ^bb5
+    %104 = llvm.add %103, %45  : i32
+    %105 = llvm.getelementptr %82[%44, %103] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN7ap_uintILi64EEC2Ev(%105) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>) -> ()
+    %106 = llvm.icmp "eq" %103, %43 : i32
+    llvm.cond_br %106, ^bb6, ^bb5(%104 : i32)
   ^bb6:  // pred: ^bb5
     llvm.br ^bb7
   ^bb7:  // pred: ^bb6
-    %103 = llvm.getelementptr %78[%38, %37] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.call @llvm.sideeffect() : () -> ()
+    %107 = llvm.getelementptr %82[%42, %41] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i32, i32) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.intr.sideeffect(%107, %40, %39, %38, %37) {llvm.bundle.xlx_array_partition = 5 : i64} : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, i32, i32, i32, i1
     llvm.br ^bb8
   ^bb8:  // pred: ^bb7
-    %104 = llvm.bitcast %79 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %36, %104 : !llvm.ptr<i8>
-    llvm.call @_ZN7ap_uintILi4EEC2Ei(%79, %35) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
+    %108 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %36, %108 : !llvm.ptr<i8>
+    llvm.call @_ZN7ap_uintILi4EEC2Ei(%83, %35) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, i32) -> ()
     llvm.br ^bb9
   ^bb9:  // 2 preds: ^bb8, ^bb12
-    %105 = llvm.bitcast %79 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %106 = llvm.call @_ZltILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%105, %34) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
-    llvm.cond_br %106, ^bb11, ^bb10
+    %109 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %110 = llvm.call @_ZltILi4ELb0EEbRK11ap_int_baseIXT_EXT0_EEi(%109, %34) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> i1
+    llvm.cond_br %110, ^bb11, ^bb10
   ^bb10:  // pred: ^bb9
-    llvm.store %33, %75 : !llvm.ptr<i32>
-    %107 = llvm.bitcast %79 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %32, %107 : !llvm.ptr<i8>
+    llvm.store %33, %79 : !llvm.ptr<i32>
+    %111 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %32, %111 : !llvm.ptr<i8>
     llvm.br ^bb13
   ^bb11:  // pred: ^bb9
-    %108 = llvm.bitcast %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %31, %108 : !llvm.ptr<i8>
-    %109 = llvm.load %73 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%80, %109) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    %110 = llvm.load %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %110, %76 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %111 = llvm.bitcast %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %30, %111 : !llvm.ptr<i8>
-    %112 = llvm.bitcast %79 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %113 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%112) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
-    %114 = llvm.getelementptr %78[%29, %113] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %115 = llvm.load %76 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    llvm.store %115, %114 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %112 = llvm.bitcast %84 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %31, %112 : !llvm.ptr<i8>
+    %113 = llvm.load %77 : !llvm.ptr<ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EE4readEv(%84, %113) : (!llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    %114 = llvm.load %84 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %114, %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %115 = llvm.bitcast %84 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %30, %115 : !llvm.ptr<i8>
+    %116 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %117 = llvm.call @_ZNK11ap_int_baseILi4ELb0EEcvyEv(%116) : (!llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>) -> i64
+    %118 = llvm.getelementptr %82[%29, %117] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %119 = llvm.load %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.store %119, %118 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     llvm.br ^bb12
   ^bb12:  // pred: ^bb11
-    %116 = llvm.bitcast %79 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
-    %117 = llvm.bitcast %81 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %28, %117 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi4ELb0EEppEi(%81, %116, %27) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
-    %118 = llvm.bitcast %81 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %26, %118 : !llvm.ptr<i8>
+    %120 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>
+    %121 = llvm.bitcast %85 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %28, %121 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi4ELb0EEppEi(%85, %120, %27) : (!llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>>, i32) -> ()
+    %122 = llvm.bitcast %85 : !llvm.ptr<struct<"struct.ap_uint<4>", (struct<"struct.ap_int_base<4, false>", (struct<"struct.ssdm_int<4, false>", (i4)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %26, %122 : !llvm.ptr<i8>
     llvm.br ^bb9
   ^bb13:  // pred: ^bb10
-    %119 = llvm.bitcast %82 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %25, %119 : !llvm.ptr<i8>
-    %120 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %24, %120 : !llvm.ptr<i8>
-    %121 = llvm.getelementptr %78[%23, %22] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %122 = llvm.bitcast %121 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    %123 = llvm.getelementptr %78[%21, %20] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
-    %124 = llvm.bitcast %123 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN11ap_int_baseILi64ELb0EEcmILi64ELb0EEE13ap_concat_refILi64ES0_XT_ES_IXT_EXT0_EEERS3_(%84, %122, %124) : (!llvm.ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    %125 = llvm.getelementptr %78[%19, %18] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %123 = llvm.bitcast %86 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %25, %123 : !llvm.ptr<i8>
+    %124 = llvm.bitcast %87 : !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %24, %124 : !llvm.ptr<i8>
+    %125 = llvm.getelementptr %82[%23, %22] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     %126 = llvm.bitcast %125 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN13ap_concat_refILi64E11ap_int_baseILi64ELb0EELi64ES1_EcmILi64ELb0EEES_ILi128ES2_XT_ES0_IXT_EXT0_EEERS4_(%85, %84, %126) : (!llvm.ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    %127 = llvm.getelementptr %78[%17, %16] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %127 = llvm.getelementptr %82[%21, %20] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     %128 = llvm.bitcast %127 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN13ap_concat_refILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi192ES3_XT_ES0_IXT_EXT0_EEERS5_(%86, %85, %128) : (!llvm.ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    %129 = llvm.getelementptr %78[%15, %14] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN11ap_int_baseILi64ELb0EEcmILi64ELb0EEE13ap_concat_refILi64ES0_XT_ES_IXT_EXT0_EEERS3_(%88, %126, %128) : (!llvm.ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    %129 = llvm.getelementptr %82[%19, %18] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     %130 = llvm.bitcast %129 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN13ap_concat_refILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi256ES4_XT_ES0_IXT_EXT0_EEERS6_(%87, %86, %130) : (!llvm.ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    %131 = llvm.getelementptr %78[%13, %12] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN13ap_concat_refILi64E11ap_int_baseILi64ELb0EELi64ES1_EcmILi64ELb0EEES_ILi128ES2_XT_ES0_IXT_EXT0_EEERS4_(%89, %88, %130) : (!llvm.ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    %131 = llvm.getelementptr %82[%17, %16] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     %132 = llvm.bitcast %131 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN13ap_concat_refILi256ES_ILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi320ES5_XT_ES0_IXT_EXT0_EEERS7_(%88, %87, %132) : (!llvm.ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    %133 = llvm.getelementptr %78[%11, %10] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN13ap_concat_refILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi192ES3_XT_ES0_IXT_EXT0_EEERS5_(%90, %89, %132) : (!llvm.ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    %133 = llvm.getelementptr %82[%15, %14] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     %134 = llvm.bitcast %133 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN13ap_concat_refILi320ES_ILi256ES_ILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi384ES6_XT_ES0_IXT_EXT0_EEERS8_(%89, %88, %134) : (!llvm.ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    %135 = llvm.getelementptr %78[%9, %8] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    llvm.call @_ZN13ap_concat_refILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi256ES4_XT_ES0_IXT_EXT0_EEERS6_(%91, %90, %134) : (!llvm.ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    %135 = llvm.getelementptr %82[%13, %12] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
     %136 = llvm.bitcast %135 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
-    llvm.call @_ZN13ap_concat_refILi384ES_ILi320ES_ILi256ES_ILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi448ES7_XT_ES0_IXT_EXT0_EEERS9_(%83, %89, %136) : (!llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
-    llvm.call @_ZN7ap_uintILi512EEC2ILi448E13ap_concat_refILi384ES2_ILi320ES2_ILi256ES2_ILi192ES2_ILi128ES2_ILi64E11ap_int_baseILi64ELb0EELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_EERKS2_IXT_ET0_XT1_ET2_E(%82, %83) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>) -> ()
-    %137 = llvm.load %82 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    llvm.store %137, %77 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    %138 = llvm.bitcast %83 : !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %138 : !llvm.ptr<i8>
-    %139 = llvm.bitcast %82 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %139 : !llvm.ptr<i8>
-    %140 = llvm.load %72 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    %141 = llvm.bitcast %74 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>
-    %142 = llvm.call @_ZNK11ap_int_baseILi9ELb0EEcvyEv(%141) : (!llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>) -> i64
-    %143 = llvm.getelementptr %140[%142] : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, i64) -> !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    %144 = llvm.load %77 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    llvm.store %144, %143 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
-    %145 = llvm.bitcast %78 : !llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %145 : !llvm.ptr<i8>
-    %146 = llvm.bitcast %77 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %146 : !llvm.ptr<i8>
-    %147 = llvm.bitcast %76 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %147 : !llvm.ptr<i8>
+    llvm.call @_ZN13ap_concat_refILi256ES_ILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi320ES5_XT_ES0_IXT_EXT0_EEERS7_(%92, %91, %136) : (!llvm.ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    %137 = llvm.getelementptr %82[%11, %10] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %138 = llvm.bitcast %137 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZN13ap_concat_refILi320ES_ILi256ES_ILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi384ES6_XT_ES0_IXT_EXT0_EEERS8_(%93, %92, %138) : (!llvm.ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    %139 = llvm.getelementptr %82[%9, %8] : (!llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>>, i64, i64) -> !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>
+    %140 = llvm.bitcast %139 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>
+    llvm.call @_ZN13ap_concat_refILi384ES_ILi320ES_ILi256ES_ILi192ES_ILi128ES_ILi64E11ap_int_baseILi64ELb0EELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_ELi64ES1_EcmILi64ELb0EEES_ILi448ES7_XT_ES0_IXT_EXT0_EEERS9_(%87, %93, %140) : (!llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, !llvm.ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>) -> ()
+    llvm.call @_ZN7ap_uintILi512EEC2ILi448E13ap_concat_refILi384ES2_ILi320ES2_ILi256ES2_ILi192ES2_ILi128ES2_ILi64E11ap_int_baseILi64ELb0EELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_ELi64ES4_EERKS2_IXT_ET0_XT1_ET2_E(%86, %87) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>) -> ()
+    %141 = llvm.load %86 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    llvm.store %141, %81 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    %142 = llvm.bitcast %87 : !llvm.ptr<struct<"struct.ap_concat_ref<448, ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<384, ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<320, ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<256, ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<192, ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<128, ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_concat_ref<64, ap_int_base<64, false>, 64, ap_int_base<64, false> >", (ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>>, ptr<struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %142 : !llvm.ptr<i8>
+    %143 = llvm.bitcast %86 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %143 : !llvm.ptr<i8>
+    %144 = llvm.load %76 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    %145 = llvm.bitcast %78 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>
+    %146 = llvm.call @_ZNK11ap_int_baseILi9ELb0EEcvyEv(%145) : (!llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>) -> i64
+    %147 = llvm.getelementptr %144[%146] : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, i64) -> !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    %148 = llvm.load %81 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    llvm.store %148, %147 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>
+    %149 = llvm.bitcast %82 : !llvm.ptr<array<8 x struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %149 : !llvm.ptr<i8>
+    %150 = llvm.bitcast %81 : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %150 : !llvm.ptr<i8>
+    %151 = llvm.bitcast %80 : !llvm.ptr<struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %151 : !llvm.ptr<i8>
     llvm.br ^bb14
   ^bb14:  // pred: ^bb13
-    %148 = llvm.bitcast %74 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>
-    %149 = llvm.bitcast %90 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %2, %149 : !llvm.ptr<i8>
-    llvm.call @_ZN11ap_int_baseILi9ELb0EEppEi(%90, %148, %1) : (!llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>, i32) -> ()
-    %150 = llvm.bitcast %90 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %150 : !llvm.ptr<i8>
+    %152 = llvm.bitcast %78 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>
+    %153 = llvm.bitcast %94 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %2, %153 : !llvm.ptr<i8>
+    llvm.call @_ZN11ap_int_baseILi9ELb0EEppEi(%94, %152, %1) : (!llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>>, !llvm.ptr<struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>>, i32) -> ()
+    %154 = llvm.bitcast %94 : !llvm.ptr<struct<"struct.ap_uint<9>", (struct<"struct.ap_int_base<9, false>", (struct<"struct.ssdm_int<9, false>", (i9)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %154 : !llvm.ptr<i8>
     llvm.br ^bb2
   ^bb15:  // pred: ^bb3
     llvm.return
@@ -13001,505 +13057,689 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     %61 = llvm.mlir.constant(0 : i32) : i32
     %62 = llvm.mlir.constant(1 : i32) : i32
     %63 = llvm.mlir.constant(0 : i32) : i32
-    %64 = llvm.mlir.constant(8 : i64) : i64
-    %65 = llvm.mlir.constant(8 : i64) : i64
-    %66 = llvm.mlir.constant(8 : i64) : i64
-    %67 = llvm.mlir.constant(8 : i64) : i64
+    %64 = llvm.mlir.constant(-1 : i32) : i32
+    %65 = llvm.mlir.constant(10 : i32) : i32
+    %66 = llvm.mlir.constant(666 : i32) : i32
+    %67 = llvm.mlir.constant(2 : i32) : i32
     %68 = llvm.mlir.constant(8 : i64) : i64
-    %69 = llvm.mlir.constant(8 : i64) : i64
-    %70 = llvm.mlir.constant(8 : i64) : i64
-    %71 = llvm.mlir.constant(8 : i64) : i64
-    %72 = llvm.mlir.constant(8 : i64) : i64
-    %73 = llvm.mlir.constant(4 : i64) : i64
-    %74 = llvm.mlir.constant(4 : i64) : i64
-    %75 = llvm.mlir.constant(4 : i64) : i64
-    %76 = llvm.mlir.constant(4 : i64) : i64
-    %77 = llvm.mlir.constant(8 : i64) : i64
+    %69 = llvm.mlir.constant(-1 : i32) : i32
+    %70 = llvm.mlir.constant(10 : i32) : i32
+    %71 = llvm.mlir.constant(666 : i32) : i32
+    %72 = llvm.mlir.constant(2 : i32) : i32
+    %73 = llvm.mlir.constant(8 : i64) : i64
+    %74 = llvm.mlir.constant(-1 : i32) : i32
+    %75 = llvm.mlir.constant(10 : i32) : i32
+    %76 = llvm.mlir.constant(666 : i32) : i32
+    %77 = llvm.mlir.constant(2 : i32) : i32
     %78 = llvm.mlir.constant(8 : i64) : i64
-    %79 = llvm.mlir.constant(8 : i64) : i64
-    %80 = llvm.mlir.constant(8 : i64) : i64
-    %81 = llvm.mlir.constant(8 : i64) : i64
-    %82 = llvm.mlir.constant(8 : i64) : i64
+    %79 = llvm.mlir.constant(-1 : i32) : i32
+    %80 = llvm.mlir.constant(10 : i32) : i32
+    %81 = llvm.mlir.constant(666 : i32) : i32
+    %82 = llvm.mlir.constant(2 : i32) : i32
     %83 = llvm.mlir.constant(8 : i64) : i64
-    %84 = llvm.mlir.constant(8 : i64) : i64
-    %85 = llvm.mlir.constant(8 : i64) : i64
-    %86 = llvm.mlir.constant(8 : i64) : i64
-    %87 = llvm.mlir.constant(8 : i64) : i64
+    %84 = llvm.mlir.constant(-1 : i32) : i32
+    %85 = llvm.mlir.constant(10 : i32) : i32
+    %86 = llvm.mlir.constant(666 : i32) : i32
+    %87 = llvm.mlir.constant(2 : i32) : i32
     %88 = llvm.mlir.constant(8 : i64) : i64
-    %89 = llvm.mlir.constant(32 : i64) : i64
-    %90 = llvm.mlir.constant(32 : i64) : i64
-    %91 = llvm.mlir.constant(32 : i64) : i64
-    %92 = llvm.mlir.constant(32 : i64) : i64
-    %93 = llvm.mlir.constant(32 : i64) : i64
-    %94 = llvm.mlir.constant(32 : i64) : i64
-    %95 = llvm.mlir.constant(8 : i64) : i64
-    %96 = llvm.mlir.constant(32 : i64) : i64
-    %97 = llvm.mlir.constant(32 : i64) : i64
-    %98 = llvm.mlir.constant(1 : i32) : i32
-    %99 = llvm.mlir.constant(1 : i32) : i32
-    %100 = llvm.mlir.constant(1 : i32) : i32
-    %101 = llvm.mlir.constant(1 : i32) : i32
-    %102 = llvm.mlir.constant(1 : i32) : i32
-    %103 = llvm.mlir.constant(1 : i32) : i32
-    %104 = llvm.mlir.constant(1 : i32) : i32
-    %105 = llvm.mlir.constant(1 : i32) : i32
-    %106 = llvm.mlir.constant(1 : i32) : i32
-    %107 = llvm.mlir.constant(1 : i32) : i32
-    %108 = llvm.mlir.constant(1 : i32) : i32
-    %109 = llvm.mlir.constant(1 : i32) : i32
-    %110 = llvm.mlir.constant(1 : i32) : i32
-    %111 = llvm.mlir.constant(1 : i32) : i32
-    %112 = llvm.mlir.constant(1 : i32) : i32
-    %113 = llvm.mlir.constant(1 : i32) : i32
-    %114 = llvm.mlir.constant(1 : i32) : i32
-    %115 = llvm.mlir.constant(1 : i32) : i32
-    %116 = llvm.mlir.constant(1 : i32) : i32
-    %117 = llvm.mlir.constant(1 : i32) : i32
-    %118 = llvm.mlir.constant(1 : i32) : i32
-    %119 = llvm.mlir.constant(1 : i32) : i32
-    %120 = llvm.mlir.constant(1 : i32) : i32
-    %121 = llvm.mlir.constant(1 : i32) : i32
-    %122 = llvm.mlir.constant(1 : i32) : i32
-    %123 = llvm.mlir.constant(1 : i32) : i32
-    %124 = llvm.mlir.constant(1 : i32) : i32
-    %125 = llvm.mlir.constant(1 : i32) : i32
-    %126 = llvm.mlir.constant(1 : i32) : i32
-    %127 = llvm.mlir.constant(1 : i32) : i32
-    %128 = llvm.mlir.constant(1 : i32) : i32
-    %129 = llvm.mlir.constant(1 : i32) : i32
-    %130 = llvm.mlir.constant(1 : i32) : i32
-    %131 = llvm.mlir.constant(1 : i32) : i32
-    %132 = llvm.mlir.constant(1 : i32) : i32
-    %133 = llvm.mlir.constant(1 : i32) : i32
-    %134 = llvm.mlir.constant(1 : i32) : i32
-    %135 = llvm.alloca %134 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    %136 = llvm.alloca %133 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    %137 = llvm.alloca %132 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    %138 = llvm.alloca %131 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %139 = llvm.alloca %130 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %140 = llvm.alloca %129 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %141 = llvm.alloca %128 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %142 = llvm.alloca %127 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %143 = llvm.alloca %126 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %144 = llvm.alloca %125 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %145 = llvm.alloca %124 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %146 = llvm.alloca %123 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
-    %147 = llvm.alloca %122 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %148 = llvm.alloca %121 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %149 = llvm.alloca %120 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %150 = llvm.alloca %119 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %151 = llvm.alloca %118 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %152 = llvm.alloca %117 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %153 = llvm.alloca %116 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %154 = llvm.alloca %115 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %155 = llvm.alloca %114 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %156 = llvm.alloca %113 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %157 = llvm.alloca %112 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %158 = llvm.alloca %111 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %159 = llvm.alloca %110 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
-    %160 = llvm.alloca %109 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
-    %161 = llvm.alloca %108 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
-    %162 = llvm.alloca %107 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
-    %163 = llvm.alloca %106 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %164 = llvm.alloca %105 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %165 = llvm.alloca %104 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %166 = llvm.alloca %103 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %167 = llvm.alloca %102 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %168 = llvm.alloca %101 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %169 = llvm.alloca %100 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %170 = llvm.alloca %99 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    %171 = llvm.alloca %98 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
-    llvm.store %arg0, %135 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.store %arg1, %136 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.store %arg2, %137 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %172 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %173 = llvm.bitcast %138 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %97, %173 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%138) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%172) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %174 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %175 = llvm.bitcast %139 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %96, %175 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%139) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%174) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %176 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %177 = llvm.bitcast %140 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %95, %177 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%140) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%176) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %178 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %179 = llvm.bitcast %141 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %94, %179 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%141) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%178) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %180 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %181 = llvm.bitcast %142 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %93, %181 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%142) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%180) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %182 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %183 = llvm.bitcast %143 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %92, %183 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%143) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%182) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %184 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %185 = llvm.bitcast %144 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %91, %185 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%144) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%184) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %186 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %187 = llvm.bitcast %145 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %90, %187 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%145) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%186) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %188 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %189 = llvm.bitcast %146 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %89, %189 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%146) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%188) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %190 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %191 = llvm.bitcast %147 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %88, %191 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%147) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%190) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %192 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %193 = llvm.bitcast %148 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %87, %193 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%148) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%192) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %194 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %195 = llvm.bitcast %149 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %86, %195 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%149) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%194) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %196 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %197 = llvm.bitcast %150 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %85, %197 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%150) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%196) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %198 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %199 = llvm.bitcast %151 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %84, %199 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%151) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%198) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %200 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %201 = llvm.bitcast %152 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %83, %201 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%152) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%200) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %202 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %203 = llvm.bitcast %153 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %82, %203 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%153) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%202) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %204 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %205 = llvm.bitcast %154 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %81, %205 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%154) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%204) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %206 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %207 = llvm.bitcast %155 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %80, %207 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%155) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%206) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %208 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %209 = llvm.bitcast %156 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %79, %209 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%156) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%208) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %210 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %211 = llvm.bitcast %157 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %78, %211 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%157) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%210) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %212 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %213 = llvm.bitcast %158 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %77, %213 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%158) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%212) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %214 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %215 = llvm.bitcast %159 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %76, %215 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%159) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%214) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %216 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %217 = llvm.bitcast %160 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %75, %217 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%160) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%216) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %218 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %219 = llvm.bitcast %161 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %74, %219 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%161) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%218) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %220 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %221 = llvm.bitcast %162 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %73, %221 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%162) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%220) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %222 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %223 = llvm.bitcast %163 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %72, %223 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%163) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%222) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %224 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %225 = llvm.bitcast %164 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %71, %225 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%164) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%224) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %226 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %227 = llvm.bitcast %165 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %70, %227 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%165) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%226) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %228 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %229 = llvm.bitcast %166 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %69, %229 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%166) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%228) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %230 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %231 = llvm.bitcast %167 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %68, %231 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%167) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%230) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %232 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %233 = llvm.bitcast %168 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %67, %233 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%168) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%232) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %234 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %235 = llvm.bitcast %169 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %66, %235 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%169) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%234) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %236 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %237 = llvm.bitcast %170 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %65, %237 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%170) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%236) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %238 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %239 = llvm.bitcast %171 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.start %64, %239 : !llvm.ptr<i8>
-    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%171) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%238) : (!llvm.token) -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    llvm.call @llvm.sideeffect() : () -> ()
-    %240 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %241 = llvm.load %135 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.call @_Z20A_IO_L3_in_serializeP7ap_uintILi512EERN3hls6streamIS_ILi256EELi0EEE(%241, %138) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%240) : (!llvm.token) -> ()
-    %242 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%138, %141) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%242) : (!llvm.token) -> ()
-    %243 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10A_IO_L2_iniRN3hls6streamI7ap_uintILi256EELi0EEES4_RNS0_IS1_ILi64EELi0EEE(%63, %141, %142, %147) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%243) : (!llvm.token) -> ()
-    %244 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z19A_IO_L2_in_boundaryiRN3hls6streamI7ap_uintILi256EELi0EEERNS0_IS1_ILi64EELi0EEE(%62, %142, %150) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%244) : (!llvm.token) -> ()
-    %245 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %246 = llvm.load %136 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.call @_Z20B_IO_L3_in_serializeP7ap_uintILi512EERN3hls6streamIS_ILi256EELi0EEE(%246, %139) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%245) : (!llvm.token) -> ()
-    %247 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10B_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%139, %144) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%247) : (!llvm.token) -> ()
-    %248 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10B_IO_L2_iniRN3hls6streamI7ap_uintILi256EELi0EEES4_RNS0_IS1_ILi64EELi0EEE(%61, %144, %145, %153) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%248) : (!llvm.token) -> ()
-    %249 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z19B_IO_L2_in_boundaryiRN3hls6streamI7ap_uintILi256EELi0EEERNS0_IS1_ILi64EELi0EEE(%60, %145, %156) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%249) : (!llvm.token) -> ()
-    %250 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%59, %58, %147, %148, %153, %154, %159) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%250) : (!llvm.token) -> ()
-    %251 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%57, %56, %148, %149, %156, %157, %161) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%251) : (!llvm.token) -> ()
-    %252 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%55, %54, %150, %151, %154, %155, %160) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%252) : (!llvm.token) -> ()
-    %253 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%53, %52, %151, %152, %157, %158, %162) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%253) : (!llvm.token) -> ()
-    %254 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z13A_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%51, %50, %149) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%254) : (!llvm.token) -> ()
-    %255 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z13A_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%49, %48, %152) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%255) : (!llvm.token) -> ()
-    %256 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z13B_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%47, %46, %155) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%256) : (!llvm.token) -> ()
-    %257 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z13B_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%45, %44, %158) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%257) : (!llvm.token) -> ()
-    %258 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z34C_drain_IO_L1_out_boundary_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEERNS0_IfLi0EEE(%43, %42, %164, %160) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%258) : (!llvm.token) -> ()
-    %259 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z25C_drain_IO_L1_out_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_RNS0_IfLi0EEE(%41, %40, %164, %163, %159) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%259) : (!llvm.token) -> ()
-    %260 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z34C_drain_IO_L1_out_boundary_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEERNS0_IfLi0EEE(%39, %38, %167, %162) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%260) : (!llvm.token) -> ()
-    %261 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z25C_drain_IO_L1_out_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_RNS0_IfLi0EEE(%37, %36, %167, %166, %161) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%261) : (!llvm.token) -> ()
-    %262 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z26C_drain_IO_L2_out_boundaryiRN3hls6streamI7ap_uintILi64EELi0EEES4_(%35, %170, %166) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%262) : (!llvm.token) -> ()
-    %263 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z17C_drain_IO_L2_outiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_(%34, %170, %169, %163) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%263) : (!llvm.token) -> ()
-    %264 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    llvm.call @_Z17C_drain_IO_L3_outRN3hls6streamI7ap_uintILi64EELi0EEES4_(%140, %169) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%264) : (!llvm.token) -> ()
-    %265 = llvm.call @llvm.directive.scope.entry() : () -> !llvm.token
-    %266 = llvm.load %137 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
-    llvm.call @_Z27C_drain_IO_L3_out_serializeP7ap_uintILi512EERN3hls6streamIS_ILi64EELi0EEE(%266, %140) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
-    llvm.call @llvm.directive.scope.exit(%265) : (!llvm.token) -> ()
-    %267 = llvm.bitcast %171 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %33, %267 : !llvm.ptr<i8>
-    %268 = llvm.bitcast %170 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %32, %268 : !llvm.ptr<i8>
-    %269 = llvm.bitcast %169 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %31, %269 : !llvm.ptr<i8>
-    %270 = llvm.bitcast %168 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %30, %270 : !llvm.ptr<i8>
-    %271 = llvm.bitcast %167 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %29, %271 : !llvm.ptr<i8>
-    %272 = llvm.bitcast %166 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %28, %272 : !llvm.ptr<i8>
-    %273 = llvm.bitcast %165 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %27, %273 : !llvm.ptr<i8>
-    %274 = llvm.bitcast %164 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %26, %274 : !llvm.ptr<i8>
-    %275 = llvm.bitcast %163 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %25, %275 : !llvm.ptr<i8>
-    %276 = llvm.bitcast %162 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %24, %276 : !llvm.ptr<i8>
-    %277 = llvm.bitcast %161 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %23, %277 : !llvm.ptr<i8>
-    %278 = llvm.bitcast %160 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %22, %278 : !llvm.ptr<i8>
-    %279 = llvm.bitcast %159 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %21, %279 : !llvm.ptr<i8>
-    %280 = llvm.bitcast %158 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %20, %280 : !llvm.ptr<i8>
-    %281 = llvm.bitcast %157 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %19, %281 : !llvm.ptr<i8>
-    %282 = llvm.bitcast %156 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %18, %282 : !llvm.ptr<i8>
-    %283 = llvm.bitcast %155 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %17, %283 : !llvm.ptr<i8>
-    %284 = llvm.bitcast %154 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %16, %284 : !llvm.ptr<i8>
-    %285 = llvm.bitcast %153 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %15, %285 : !llvm.ptr<i8>
-    %286 = llvm.bitcast %152 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %14, %286 : !llvm.ptr<i8>
-    %287 = llvm.bitcast %151 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %13, %287 : !llvm.ptr<i8>
-    %288 = llvm.bitcast %150 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %12, %288 : !llvm.ptr<i8>
-    %289 = llvm.bitcast %149 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %11, %289 : !llvm.ptr<i8>
-    %290 = llvm.bitcast %148 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %10, %290 : !llvm.ptr<i8>
-    %291 = llvm.bitcast %147 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %9, %291 : !llvm.ptr<i8>
-    %292 = llvm.bitcast %146 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %8, %292 : !llvm.ptr<i8>
-    %293 = llvm.bitcast %145 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %7, %293 : !llvm.ptr<i8>
-    %294 = llvm.bitcast %144 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %6, %294 : !llvm.ptr<i8>
-    %295 = llvm.bitcast %143 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %5, %295 : !llvm.ptr<i8>
-    %296 = llvm.bitcast %142 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %4, %296 : !llvm.ptr<i8>
-    %297 = llvm.bitcast %141 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %3, %297 : !llvm.ptr<i8>
-    %298 = llvm.bitcast %140 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %2, %298 : !llvm.ptr<i8>
-    %299 = llvm.bitcast %139 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %1, %299 : !llvm.ptr<i8>
-    %300 = llvm.bitcast %138 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
-    llvm.intr.lifetime.end %0, %300 : !llvm.ptr<i8>
+    %89 = llvm.mlir.constant(-1 : i32) : i32
+    %90 = llvm.mlir.constant(10 : i32) : i32
+    %91 = llvm.mlir.constant(666 : i32) : i32
+    %92 = llvm.mlir.constant(2 : i32) : i32
+    %93 = llvm.mlir.constant(8 : i64) : i64
+    %94 = llvm.mlir.constant(-1 : i32) : i32
+    %95 = llvm.mlir.constant(10 : i32) : i32
+    %96 = llvm.mlir.constant(666 : i32) : i32
+    %97 = llvm.mlir.constant(2 : i32) : i32
+    %98 = llvm.mlir.constant(8 : i64) : i64
+    %99 = llvm.mlir.constant(-1 : i32) : i32
+    %100 = llvm.mlir.constant(10 : i32) : i32
+    %101 = llvm.mlir.constant(666 : i32) : i32
+    %102 = llvm.mlir.constant(2 : i32) : i32
+    %103 = llvm.mlir.constant(8 : i64) : i64
+    %104 = llvm.mlir.constant(-1 : i32) : i32
+    %105 = llvm.mlir.constant(10 : i32) : i32
+    %106 = llvm.mlir.constant(666 : i32) : i32
+    %107 = llvm.mlir.constant(2 : i32) : i32
+    %108 = llvm.mlir.constant(8 : i64) : i64
+    %109 = llvm.mlir.constant(-1 : i32) : i32
+    %110 = llvm.mlir.constant(10 : i32) : i32
+    %111 = llvm.mlir.constant(666 : i32) : i32
+    %112 = llvm.mlir.constant(2 : i32) : i32
+    %113 = llvm.mlir.constant(4 : i64) : i64
+    %114 = llvm.mlir.constant(-1 : i32) : i32
+    %115 = llvm.mlir.constant(10 : i32) : i32
+    %116 = llvm.mlir.constant(666 : i32) : i32
+    %117 = llvm.mlir.constant(2 : i32) : i32
+    %118 = llvm.mlir.constant(4 : i64) : i64
+    %119 = llvm.mlir.constant(-1 : i32) : i32
+    %120 = llvm.mlir.constant(10 : i32) : i32
+    %121 = llvm.mlir.constant(666 : i32) : i32
+    %122 = llvm.mlir.constant(2 : i32) : i32
+    %123 = llvm.mlir.constant(4 : i64) : i64
+    %124 = llvm.mlir.constant(-1 : i32) : i32
+    %125 = llvm.mlir.constant(10 : i32) : i32
+    %126 = llvm.mlir.constant(666 : i32) : i32
+    %127 = llvm.mlir.constant(2 : i32) : i32
+    %128 = llvm.mlir.constant(4 : i64) : i64
+    %129 = llvm.mlir.constant(-1 : i32) : i32
+    %130 = llvm.mlir.constant(10 : i32) : i32
+    %131 = llvm.mlir.constant(666 : i32) : i32
+    %132 = llvm.mlir.constant(2 : i32) : i32
+    %133 = llvm.mlir.constant(8 : i64) : i64
+    %134 = llvm.mlir.constant(-1 : i32) : i32
+    %135 = llvm.mlir.constant(10 : i32) : i32
+    %136 = llvm.mlir.constant(666 : i32) : i32
+    %137 = llvm.mlir.constant(2 : i32) : i32
+    %138 = llvm.mlir.constant(8 : i64) : i64
+    %139 = llvm.mlir.constant(-1 : i32) : i32
+    %140 = llvm.mlir.constant(10 : i32) : i32
+    %141 = llvm.mlir.constant(666 : i32) : i32
+    %142 = llvm.mlir.constant(2 : i32) : i32
+    %143 = llvm.mlir.constant(8 : i64) : i64
+    %144 = llvm.mlir.constant(-1 : i32) : i32
+    %145 = llvm.mlir.constant(10 : i32) : i32
+    %146 = llvm.mlir.constant(666 : i32) : i32
+    %147 = llvm.mlir.constant(2 : i32) : i32
+    %148 = llvm.mlir.constant(8 : i64) : i64
+    %149 = llvm.mlir.constant(-1 : i32) : i32
+    %150 = llvm.mlir.constant(10 : i32) : i32
+    %151 = llvm.mlir.constant(666 : i32) : i32
+    %152 = llvm.mlir.constant(2 : i32) : i32
+    %153 = llvm.mlir.constant(8 : i64) : i64
+    %154 = llvm.mlir.constant(-1 : i32) : i32
+    %155 = llvm.mlir.constant(10 : i32) : i32
+    %156 = llvm.mlir.constant(666 : i32) : i32
+    %157 = llvm.mlir.constant(2 : i32) : i32
+    %158 = llvm.mlir.constant(8 : i64) : i64
+    %159 = llvm.mlir.constant(-1 : i32) : i32
+    %160 = llvm.mlir.constant(10 : i32) : i32
+    %161 = llvm.mlir.constant(666 : i32) : i32
+    %162 = llvm.mlir.constant(2 : i32) : i32
+    %163 = llvm.mlir.constant(8 : i64) : i64
+    %164 = llvm.mlir.constant(-1 : i32) : i32
+    %165 = llvm.mlir.constant(10 : i32) : i32
+    %166 = llvm.mlir.constant(666 : i32) : i32
+    %167 = llvm.mlir.constant(2 : i32) : i32
+    %168 = llvm.mlir.constant(8 : i64) : i64
+    %169 = llvm.mlir.constant(-1 : i32) : i32
+    %170 = llvm.mlir.constant(10 : i32) : i32
+    %171 = llvm.mlir.constant(666 : i32) : i32
+    %172 = llvm.mlir.constant(2 : i32) : i32
+    %173 = llvm.mlir.constant(8 : i64) : i64
+    %174 = llvm.mlir.constant(-1 : i32) : i32
+    %175 = llvm.mlir.constant(10 : i32) : i32
+    %176 = llvm.mlir.constant(666 : i32) : i32
+    %177 = llvm.mlir.constant(2 : i32) : i32
+    %178 = llvm.mlir.constant(8 : i64) : i64
+    %179 = llvm.mlir.constant(-1 : i32) : i32
+    %180 = llvm.mlir.constant(10 : i32) : i32
+    %181 = llvm.mlir.constant(666 : i32) : i32
+    %182 = llvm.mlir.constant(2 : i32) : i32
+    %183 = llvm.mlir.constant(8 : i64) : i64
+    %184 = llvm.mlir.constant(-1 : i32) : i32
+    %185 = llvm.mlir.constant(10 : i32) : i32
+    %186 = llvm.mlir.constant(666 : i32) : i32
+    %187 = llvm.mlir.constant(2 : i32) : i32
+    %188 = llvm.mlir.constant(8 : i64) : i64
+    %189 = llvm.mlir.constant(-1 : i32) : i32
+    %190 = llvm.mlir.constant(10 : i32) : i32
+    %191 = llvm.mlir.constant(666 : i32) : i32
+    %192 = llvm.mlir.constant(2 : i32) : i32
+    %193 = llvm.mlir.constant(32 : i64) : i64
+    %194 = llvm.mlir.constant(-1 : i32) : i32
+    %195 = llvm.mlir.constant(10 : i32) : i32
+    %196 = llvm.mlir.constant(666 : i32) : i32
+    %197 = llvm.mlir.constant(2 : i32) : i32
+    %198 = llvm.mlir.constant(32 : i64) : i64
+    %199 = llvm.mlir.constant(-1 : i32) : i32
+    %200 = llvm.mlir.constant(10 : i32) : i32
+    %201 = llvm.mlir.constant(666 : i32) : i32
+    %202 = llvm.mlir.constant(2 : i32) : i32
+    %203 = llvm.mlir.constant(32 : i64) : i64
+    %204 = llvm.mlir.constant(-1 : i32) : i32
+    %205 = llvm.mlir.constant(10 : i32) : i32
+    %206 = llvm.mlir.constant(666 : i32) : i32
+    %207 = llvm.mlir.constant(2 : i32) : i32
+    %208 = llvm.mlir.constant(32 : i64) : i64
+    %209 = llvm.mlir.constant(-1 : i32) : i32
+    %210 = llvm.mlir.constant(10 : i32) : i32
+    %211 = llvm.mlir.constant(666 : i32) : i32
+    %212 = llvm.mlir.constant(2 : i32) : i32
+    %213 = llvm.mlir.constant(32 : i64) : i64
+    %214 = llvm.mlir.constant(-1 : i32) : i32
+    %215 = llvm.mlir.constant(10 : i32) : i32
+    %216 = llvm.mlir.constant(666 : i32) : i32
+    %217 = llvm.mlir.constant(2 : i32) : i32
+    %218 = llvm.mlir.constant(32 : i64) : i64
+    %219 = llvm.mlir.constant(2 : i32) : i32
+    %220 = llvm.mlir.constant(8 : i64) : i64
+    %221 = llvm.mlir.constant(2 : i32) : i32
+    %222 = llvm.mlir.constant(32 : i64) : i64
+    %223 = llvm.mlir.constant(2 : i32) : i32
+    %224 = llvm.mlir.constant(32 : i64) : i64
+    %225 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %226 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %227 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %228 = llvm.mlir.constant(false) : i1
+    %229 = llvm.mlir.constant(-1 : i64) : i64
+    %230 = llvm.mlir.constant("control") : !llvm.array<7 x i8>
+    %231 = llvm.mlir.null : !llvm.ptr<i8>
+    %232 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %233 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %234 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %235 = llvm.mlir.constant(false) : i1
+    %236 = llvm.mlir.constant(-1 : i64) : i64
+    %237 = llvm.mlir.constant("control") : !llvm.array<7 x i8>
+    %238 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %239 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %240 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %241 = llvm.mlir.constant(false) : i1
+    %242 = llvm.mlir.constant(-1 : i64) : i64
+    %243 = llvm.mlir.constant("control") : !llvm.array<7 x i8>
+    %244 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %245 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %246 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %247 = llvm.mlir.constant(false) : i1
+    %248 = llvm.mlir.constant(-1 : i64) : i64
+    %249 = llvm.mlir.constant("control") : !llvm.array<7 x i8>
+    %250 = llvm.mlir.constant(0 : i32) : i32
+    %251 = llvm.mlir.constant(-1 : i64) : i64
+    %252 = llvm.mlir.constant(-1 : i64) : i64
+    %253 = llvm.mlir.constant(-1 : i64) : i64
+    %254 = llvm.mlir.constant(-1 : i64) : i64
+    %255 = llvm.mlir.constant(-1 : i64) : i64
+    %256 = llvm.mlir.constant(-1 : i64) : i64
+    %257 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %258 = llvm.mlir.constant("slave") : !llvm.array<5 x i8>
+    %259 = llvm.mlir.constant(-1 : i64) : i64
+    %260 = llvm.mlir.constant("gmem_C") : !llvm.array<6 x i8>
+    %261 = llvm.mlir.constant(0 : i32) : i32
+    %262 = llvm.mlir.constant(-1 : i64) : i64
+    %263 = llvm.mlir.constant(-1 : i64) : i64
+    %264 = llvm.mlir.constant(-1 : i64) : i64
+    %265 = llvm.mlir.constant(-1 : i64) : i64
+    %266 = llvm.mlir.constant(-1 : i64) : i64
+    %267 = llvm.mlir.constant(-1 : i64) : i64
+    %268 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %269 = llvm.mlir.constant("slave") : !llvm.array<5 x i8>
+    %270 = llvm.mlir.constant(-1 : i64) : i64
+    %271 = llvm.mlir.constant("gmem_B") : !llvm.array<6 x i8>
+    %272 = llvm.mlir.constant(0 : i32) : i32
+    %273 = llvm.mlir.constant(-1 : i64) : i64
+    %274 = llvm.mlir.constant(-1 : i64) : i64
+    %275 = llvm.mlir.constant(-1 : i64) : i64
+    %276 = llvm.mlir.constant(-1 : i64) : i64
+    %277 = llvm.mlir.constant(-1 : i64) : i64
+    %278 = llvm.mlir.constant(-1 : i64) : i64
+    %279 = llvm.mlir.undef : !llvm.array<0 x i8>
+    %280 = llvm.mlir.constant("slave") : !llvm.array<5 x i8>
+    %281 = llvm.mlir.constant(-1 : i64) : i64
+    %282 = llvm.mlir.constant("gmem_A") : !llvm.array<6 x i8>
+    %283 = llvm.mlir.constant(1 : i32) : i32
+    %284 = llvm.mlir.constant(1 : i32) : i32
+    %285 = llvm.mlir.constant(1 : i32) : i32
+    %286 = llvm.mlir.constant(1 : i32) : i32
+    %287 = llvm.mlir.constant(1 : i32) : i32
+    %288 = llvm.mlir.constant(1 : i32) : i32
+    %289 = llvm.mlir.constant(1 : i32) : i32
+    %290 = llvm.mlir.constant(1 : i32) : i32
+    %291 = llvm.mlir.constant(1 : i32) : i32
+    %292 = llvm.mlir.constant(1 : i32) : i32
+    %293 = llvm.mlir.constant(1 : i32) : i32
+    %294 = llvm.mlir.constant(1 : i32) : i32
+    %295 = llvm.mlir.constant(1 : i32) : i32
+    %296 = llvm.mlir.constant(1 : i32) : i32
+    %297 = llvm.mlir.constant(1 : i32) : i32
+    %298 = llvm.mlir.constant(1 : i32) : i32
+    %299 = llvm.mlir.constant(1 : i32) : i32
+    %300 = llvm.mlir.constant(1 : i32) : i32
+    %301 = llvm.mlir.constant(1 : i32) : i32
+    %302 = llvm.mlir.constant(1 : i32) : i32
+    %303 = llvm.mlir.constant(1 : i32) : i32
+    %304 = llvm.mlir.constant(1 : i32) : i32
+    %305 = llvm.mlir.constant(1 : i32) : i32
+    %306 = llvm.mlir.constant(1 : i32) : i32
+    %307 = llvm.mlir.constant(1 : i32) : i32
+    %308 = llvm.mlir.constant(1 : i32) : i32
+    %309 = llvm.mlir.constant(1 : i32) : i32
+    %310 = llvm.mlir.constant(1 : i32) : i32
+    %311 = llvm.mlir.constant(1 : i32) : i32
+    %312 = llvm.mlir.constant(1 : i32) : i32
+    %313 = llvm.mlir.constant(1 : i32) : i32
+    %314 = llvm.mlir.constant(1 : i32) : i32
+    %315 = llvm.mlir.constant(1 : i32) : i32
+    %316 = llvm.mlir.constant(1 : i32) : i32
+    %317 = llvm.mlir.constant(1 : i32) : i32
+    %318 = llvm.mlir.constant(1 : i32) : i32
+    %319 = llvm.mlir.constant(1 : i32) : i32
+    %320 = llvm.alloca %319 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    %321 = llvm.alloca %318 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    %322 = llvm.alloca %317 x !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>> {alignment = 8 : i64} : (i32) -> !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    %323 = llvm.alloca %316 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %324 = llvm.alloca %315 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %325 = llvm.alloca %314 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %326 = llvm.alloca %313 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %327 = llvm.alloca %312 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %328 = llvm.alloca %311 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %329 = llvm.alloca %310 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %330 = llvm.alloca %309 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %331 = llvm.alloca %308 x !llvm.struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)> {alignment = 32 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>
+    %332 = llvm.alloca %307 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %333 = llvm.alloca %306 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %334 = llvm.alloca %305 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %335 = llvm.alloca %304 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %336 = llvm.alloca %303 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %337 = llvm.alloca %302 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %338 = llvm.alloca %301 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %339 = llvm.alloca %300 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %340 = llvm.alloca %299 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %341 = llvm.alloca %298 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %342 = llvm.alloca %297 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %343 = llvm.alloca %296 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %344 = llvm.alloca %295 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
+    %345 = llvm.alloca %294 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
+    %346 = llvm.alloca %293 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
+    %347 = llvm.alloca %292 x !llvm.struct<"class.hls::stream<float, 0>", (f32)> {alignment = 4 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>
+    %348 = llvm.alloca %291 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %349 = llvm.alloca %290 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %350 = llvm.alloca %289 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %351 = llvm.alloca %288 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %352 = llvm.alloca %287 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %353 = llvm.alloca %286 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %354 = llvm.alloca %285 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %355 = llvm.alloca %284 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    %356 = llvm.alloca %283 x !llvm.struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)> {alignment = 8 : i64} : (i32) -> !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>
+    llvm.store %arg0, %320 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.store %arg1, %321 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.store %arg2, %322 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.intr.sideeffect(%arg0, %282, %281, %280, %279, %278, %277, %276, %275, %274, %273, %272) {llvm.bundle.xlx_m_axi = 12 : i64} : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.array<6 x i8>, i64, !llvm.array<5 x i8>, !llvm.array<0 x i8>, i64, i64, i64, i64, i64, i64, i32
+    llvm.intr.sideeffect(%arg1, %271, %270, %269, %268, %267, %266, %265, %264, %263, %262, %261) {llvm.bundle.xlx_m_axi = 12 : i64} : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.array<6 x i8>, i64, !llvm.array<5 x i8>, !llvm.array<0 x i8>, i64, i64, i64, i64, i64, i64, i32
+    llvm.intr.sideeffect(%arg2, %260, %259, %258, %257, %256, %255, %254, %253, %252, %251, %250) {llvm.bundle.xlx_m_axi = 12 : i64} : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.array<6 x i8>, i64, !llvm.array<5 x i8>, !llvm.array<0 x i8>, i64, i64, i64, i64, i64, i64, i32
+    llvm.intr.sideeffect(%arg0, %249, %248, %247, %246, %245, %244) {llvm.bundle.xlx_s_axilite = 7 : i64} : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.array<7 x i8>, i64, i1, !llvm.array<0 x i8>, !llvm.array<0 x i8>, !llvm.array<0 x i8>
+    llvm.intr.sideeffect(%arg1, %243, %242, %241, %240, %239, %238) {llvm.bundle.xlx_s_axilite = 7 : i64} : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.array<7 x i8>, i64, i1, !llvm.array<0 x i8>, !llvm.array<0 x i8>, !llvm.array<0 x i8>
+    llvm.intr.sideeffect(%arg2, %237, %236, %235, %234, %233, %232) {llvm.bundle.xlx_s_axilite = 7 : i64} : !llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.array<7 x i8>, i64, i1, !llvm.array<0 x i8>, !llvm.array<0 x i8>, !llvm.array<0 x i8>
+    llvm.intr.sideeffect(%231, %230, %229, %228, %227, %226, %225) {llvm.bundle.xlx_s_axilite = 7 : i64} : !llvm.ptr<i8>, !llvm.array<7 x i8>, i64, i1, !llvm.array<0 x i8>, !llvm.array<0 x i8>, !llvm.array<0 x i8>
+    %357 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %358 = llvm.bitcast %323 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %224, %358 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%323) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%357) : !llvm.token
+    llvm.intr.sideeffect(%323, %223) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    %359 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %360 = llvm.bitcast %324 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %222, %360 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%324) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%359) : !llvm.token
+    llvm.intr.sideeffect(%324, %221) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    %361 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %362 = llvm.bitcast %325 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %220, %362 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%325) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%361) : !llvm.token
+    llvm.intr.sideeffect(%325, %219) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    %363 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %364 = llvm.bitcast %326 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %218, %364 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%326) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%363) : !llvm.token
+    llvm.intr.sideeffect(%326, %217) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    llvm.intr.sideeffect(%326, %216, %215, %214) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32, i32, i32
+    %365 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %366 = llvm.bitcast %327 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %213, %366 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%327) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%365) : !llvm.token
+    llvm.intr.sideeffect(%327, %212) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    llvm.intr.sideeffect(%327, %211, %210, %209) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32, i32, i32
+    %367 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %368 = llvm.bitcast %328 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %208, %368 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%328) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%367) : !llvm.token
+    llvm.intr.sideeffect(%328, %207) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    llvm.intr.sideeffect(%328, %206, %205, %204) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32, i32, i32
+    %369 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %370 = llvm.bitcast %329 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %203, %370 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%329) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%369) : !llvm.token
+    llvm.intr.sideeffect(%329, %202) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    llvm.intr.sideeffect(%329, %201, %200, %199) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32, i32, i32
+    %371 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %372 = llvm.bitcast %330 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %198, %372 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%330) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%371) : !llvm.token
+    llvm.intr.sideeffect(%330, %197) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    llvm.intr.sideeffect(%330, %196, %195, %194) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32, i32, i32
+    %373 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %374 = llvm.bitcast %331 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %193, %374 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%331) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%373) : !llvm.token
+    llvm.intr.sideeffect(%331, %192) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32
+    llvm.intr.sideeffect(%331, %191, %190, %189) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, i32, i32, i32
+    %375 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %376 = llvm.bitcast %332 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %188, %376 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%332) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%375) : !llvm.token
+    llvm.intr.sideeffect(%332, %187) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%332, %186, %185, %184) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %377 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %378 = llvm.bitcast %333 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %183, %378 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%333) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%377) : !llvm.token
+    llvm.intr.sideeffect(%333, %182) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%333, %181, %180, %179) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %379 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %380 = llvm.bitcast %334 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %178, %380 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%334) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%379) : !llvm.token
+    llvm.intr.sideeffect(%334, %177) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%334, %176, %175, %174) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %381 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %382 = llvm.bitcast %335 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %173, %382 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%335) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%381) : !llvm.token
+    llvm.intr.sideeffect(%335, %172) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%335, %171, %170, %169) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %383 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %384 = llvm.bitcast %336 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %168, %384 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%336) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%383) : !llvm.token
+    llvm.intr.sideeffect(%336, %167) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%336, %166, %165, %164) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %385 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %386 = llvm.bitcast %337 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %163, %386 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%337) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%385) : !llvm.token
+    llvm.intr.sideeffect(%337, %162) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%337, %161, %160, %159) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %387 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %388 = llvm.bitcast %338 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %158, %388 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%338) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%387) : !llvm.token
+    llvm.intr.sideeffect(%338, %157) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%338, %156, %155, %154) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %389 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %390 = llvm.bitcast %339 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %153, %390 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%339) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%389) : !llvm.token
+    llvm.intr.sideeffect(%339, %152) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%339, %151, %150, %149) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %391 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %392 = llvm.bitcast %340 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %148, %392 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%340) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%391) : !llvm.token
+    llvm.intr.sideeffect(%340, %147) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%340, %146, %145, %144) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %393 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %394 = llvm.bitcast %341 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %143, %394 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%341) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%393) : !llvm.token
+    llvm.intr.sideeffect(%341, %142) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%341, %141, %140, %139) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %395 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %396 = llvm.bitcast %342 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %138, %396 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%342) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%395) : !llvm.token
+    llvm.intr.sideeffect(%342, %137) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%342, %136, %135, %134) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %397 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %398 = llvm.bitcast %343 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %133, %398 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%343) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%397) : !llvm.token
+    llvm.intr.sideeffect(%343, %132) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%343, %131, %130, %129) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %399 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %400 = llvm.bitcast %344 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %128, %400 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%344) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%399) : !llvm.token
+    llvm.intr.sideeffect(%344, %127) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32
+    llvm.intr.sideeffect(%344, %126, %125, %124) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32, i32, i32
+    %401 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %402 = llvm.bitcast %345 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %123, %402 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%345) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%401) : !llvm.token
+    llvm.intr.sideeffect(%345, %122) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32
+    llvm.intr.sideeffect(%345, %121, %120, %119) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32, i32, i32
+    %403 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %404 = llvm.bitcast %346 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %118, %404 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%346) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%403) : !llvm.token
+    llvm.intr.sideeffect(%346, %117) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32
+    llvm.intr.sideeffect(%346, %116, %115, %114) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32, i32, i32
+    %405 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %406 = llvm.bitcast %347 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %113, %406 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamIfLi0EEC2Ev(%347) : (!llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%405) : !llvm.token
+    llvm.intr.sideeffect(%347, %112) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32
+    llvm.intr.sideeffect(%347, %111, %110, %109) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>, i32, i32, i32
+    %407 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %408 = llvm.bitcast %348 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %108, %408 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%348) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%407) : !llvm.token
+    llvm.intr.sideeffect(%348, %107) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%348, %106, %105, %104) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %409 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %410 = llvm.bitcast %349 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %103, %410 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%349) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%409) : !llvm.token
+    llvm.intr.sideeffect(%349, %102) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%349, %101, %100, %99) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %411 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %412 = llvm.bitcast %350 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %98, %412 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%350) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%411) : !llvm.token
+    llvm.intr.sideeffect(%350, %97) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%350, %96, %95, %94) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %413 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %414 = llvm.bitcast %351 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %93, %414 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%351) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%413) : !llvm.token
+    llvm.intr.sideeffect(%351, %92) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%351, %91, %90, %89) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %415 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %416 = llvm.bitcast %352 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %88, %416 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%352) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%415) : !llvm.token
+    llvm.intr.sideeffect(%352, %87) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%352, %86, %85, %84) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %417 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %418 = llvm.bitcast %353 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %83, %418 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%353) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%417) : !llvm.token
+    llvm.intr.sideeffect(%353, %82) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%353, %81, %80, %79) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %419 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %420 = llvm.bitcast %354 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %78, %420 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%354) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%419) : !llvm.token
+    llvm.intr.sideeffect(%354, %77) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%354, %76, %75, %74) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %421 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %422 = llvm.bitcast %355 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %73, %422 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%355) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%421) : !llvm.token
+    llvm.intr.sideeffect(%355, %72) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%355, %71, %70, %69) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %423 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %424 = llvm.bitcast %356 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.start %68, %424 : !llvm.ptr<i8>
+    llvm.call @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%356) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%423) : !llvm.token
+    llvm.intr.sideeffect(%356, %67) {llvm.bundle.xlx_reqd_pipe_depth = 2 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32
+    llvm.intr.sideeffect(%356, %66, %65, %64) {llvm.bundle.xlx_bind_storage = 4 : i64} : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, i32, i32, i32
+    %425 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %426 = llvm.load %320 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.call @_Z20A_IO_L3_in_serializeP7ap_uintILi512EERN3hls6streamIS_ILi256EELi0EEE(%426, %323) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%425) : !llvm.token
+    %427 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10A_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%323, %326) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%427) : !llvm.token
+    %428 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10A_IO_L2_iniRN3hls6streamI7ap_uintILi256EELi0EEES4_RNS0_IS1_ILi64EELi0EEE(%63, %326, %327, %332) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%428) : !llvm.token
+    %429 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z19A_IO_L2_in_boundaryiRN3hls6streamI7ap_uintILi256EELi0EEERNS0_IS1_ILi64EELi0EEE(%62, %327, %335) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%429) : !llvm.token
+    %430 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %431 = llvm.load %321 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.call @_Z20B_IO_L3_in_serializeP7ap_uintILi512EERN3hls6streamIS_ILi256EELi0EEE(%431, %324) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%430) : !llvm.token
+    %432 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10B_IO_L3_inRN3hls6streamI7ap_uintILi256EELi0EEES4_(%324, %329) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%432) : !llvm.token
+    %433 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10B_IO_L2_iniRN3hls6streamI7ap_uintILi256EELi0EEES4_RNS0_IS1_ILi64EELi0EEE(%61, %329, %330, %338) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%433) : !llvm.token
+    %434 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z19B_IO_L2_in_boundaryiRN3hls6streamI7ap_uintILi256EELi0EEERNS0_IS1_ILi64EELi0EEE(%60, %330, %341) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%434) : !llvm.token
+    %435 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%59, %58, %332, %333, %338, %339, %344) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%435) : !llvm.token
+    %436 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%57, %56, %333, %334, %341, %342, %346) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%436) : !llvm.token
+    %437 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%55, %54, %335, %336, %339, %340, %345) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%437) : !llvm.token
+    %438 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z10PE_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_S4_RNS0_IfLi0EEE(%53, %52, %336, %337, %342, %343, %347) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%438) : !llvm.token
+    %439 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z13A_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%51, %50, %334) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%439) : !llvm.token
+    %440 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z13A_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%49, %48, %337) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%440) : !llvm.token
+    %441 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z13B_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%47, %46, %340) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%441) : !llvm.token
+    %442 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z13B_PE_dummy_iniiRN3hls6streamI7ap_uintILi64EELi0EEE(%45, %44, %343) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%442) : !llvm.token
+    %443 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z34C_drain_IO_L1_out_boundary_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEERNS0_IfLi0EEE(%43, %42, %349, %345) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%443) : !llvm.token
+    %444 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z25C_drain_IO_L1_out_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_RNS0_IfLi0EEE(%41, %40, %349, %348, %344) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%444) : !llvm.token
+    %445 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z34C_drain_IO_L1_out_boundary_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEERNS0_IfLi0EEE(%39, %38, %352, %347) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%445) : !llvm.token
+    %446 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z25C_drain_IO_L1_out_wrapperiiRN3hls6streamI7ap_uintILi64EELi0EEES4_RNS0_IfLi0EEE(%37, %36, %352, %351, %346) : (i32, i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>>) -> ()
+    llvm.intr.directive.scope.exit(%446) : !llvm.token
+    %447 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z26C_drain_IO_L2_out_boundaryiRN3hls6streamI7ap_uintILi64EELi0EEES4_(%35, %355, %351) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%447) : !llvm.token
+    %448 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z17C_drain_IO_L2_outiRN3hls6streamI7ap_uintILi64EELi0EEES4_S4_(%34, %355, %354, %348) : (i32, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%448) : !llvm.token
+    %449 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    llvm.call @_Z17C_drain_IO_L3_outRN3hls6streamI7ap_uintILi64EELi0EEES4_(%325, %354) : (!llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%449) : !llvm.token
+    %450 = llvm.intr.directive.scope.entry() {llvm.bundle.xcl_outline = 0 : i64} : () -> !llvm.token
+    %451 = llvm.load %322 : !llvm.ptr<ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>>
+    llvm.call @_Z27C_drain_IO_L3_out_serializeP7ap_uintILi512EERN3hls6streamIS_ILi64EELi0EEE(%451, %325) : (!llvm.ptr<struct<"struct.ap_uint<512>", (struct<"struct.ap_int_base<512, false>", (struct<"struct.ssdm_int<512, false>", (i512)>)>)>>, !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) -> ()
+    llvm.intr.directive.scope.exit(%450) : !llvm.token
+    %452 = llvm.bitcast %356 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %33, %452 : !llvm.ptr<i8>
+    %453 = llvm.bitcast %355 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %32, %453 : !llvm.ptr<i8>
+    %454 = llvm.bitcast %354 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %31, %454 : !llvm.ptr<i8>
+    %455 = llvm.bitcast %353 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %30, %455 : !llvm.ptr<i8>
+    %456 = llvm.bitcast %352 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %29, %456 : !llvm.ptr<i8>
+    %457 = llvm.bitcast %351 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %28, %457 : !llvm.ptr<i8>
+    %458 = llvm.bitcast %350 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %27, %458 : !llvm.ptr<i8>
+    %459 = llvm.bitcast %349 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %26, %459 : !llvm.ptr<i8>
+    %460 = llvm.bitcast %348 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %25, %460 : !llvm.ptr<i8>
+    %461 = llvm.bitcast %347 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %24, %461 : !llvm.ptr<i8>
+    %462 = llvm.bitcast %346 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %23, %462 : !llvm.ptr<i8>
+    %463 = llvm.bitcast %345 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %22, %463 : !llvm.ptr<i8>
+    %464 = llvm.bitcast %344 : !llvm.ptr<struct<"class.hls::stream<float, 0>", (f32)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %21, %464 : !llvm.ptr<i8>
+    %465 = llvm.bitcast %343 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %20, %465 : !llvm.ptr<i8>
+    %466 = llvm.bitcast %342 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %19, %466 : !llvm.ptr<i8>
+    %467 = llvm.bitcast %341 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %18, %467 : !llvm.ptr<i8>
+    %468 = llvm.bitcast %340 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %17, %468 : !llvm.ptr<i8>
+    %469 = llvm.bitcast %339 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %16, %469 : !llvm.ptr<i8>
+    %470 = llvm.bitcast %338 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %15, %470 : !llvm.ptr<i8>
+    %471 = llvm.bitcast %337 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %14, %471 : !llvm.ptr<i8>
+    %472 = llvm.bitcast %336 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %13, %472 : !llvm.ptr<i8>
+    %473 = llvm.bitcast %335 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %12, %473 : !llvm.ptr<i8>
+    %474 = llvm.bitcast %334 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %11, %474 : !llvm.ptr<i8>
+    %475 = llvm.bitcast %333 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %10, %475 : !llvm.ptr<i8>
+    %476 = llvm.bitcast %332 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %9, %476 : !llvm.ptr<i8>
+    %477 = llvm.bitcast %331 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %8, %477 : !llvm.ptr<i8>
+    %478 = llvm.bitcast %330 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %7, %478 : !llvm.ptr<i8>
+    %479 = llvm.bitcast %329 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %6, %479 : !llvm.ptr<i8>
+    %480 = llvm.bitcast %328 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %5, %480 : !llvm.ptr<i8>
+    %481 = llvm.bitcast %327 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %4, %481 : !llvm.ptr<i8>
+    %482 = llvm.bitcast %326 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %3, %482 : !llvm.ptr<i8>
+    %483 = llvm.bitcast %325 : !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %2, %483 : !llvm.ptr<i8>
+    %484 = llvm.bitcast %324 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %1, %484 : !llvm.ptr<i8>
+    %485 = llvm.bitcast %323 : !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>> to !llvm.ptr<i8>
+    llvm.intr.lifetime.end %0, %485 : !llvm.ptr<i8>
     llvm.return
   }
-  llvm.func @llvm.directive.scope.entry() -> !llvm.token
   llvm.func linkonce_odr @_ZN3hls6streamI7ap_uintILi256EELi0EEC2Ev(%arg0: !llvm.ptr<struct<"class.hls::stream<ap_uint<256>, 0>", (struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>)>>) attributes {llvm.alwaysinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
     %0 = llvm.mlir.constant(0 : i32) : i32
     %1 = llvm.mlir.constant(0 : i32) : i32
@@ -13512,7 +13752,6 @@ module attributes {dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<"dlti.endianness"
     llvm.call @llvm.fpga.set.stream.depth(%6, %0) : (!llvm.ptr<struct<"struct.ap_uint<256>", (struct<"struct.ap_int_base<256, false>", (struct<"struct.ssdm_int<256, false>", (i256)>)>)>>, i32) -> ()
     llvm.return
   }
-  llvm.func @llvm.directive.scope.exit(!llvm.token)
   llvm.func linkonce_odr @_ZN3hls6streamI7ap_uintILi64EELi0EEC2Ev(%arg0: !llvm.ptr<struct<"class.hls::stream<ap_uint<64>, 0>", (struct<"struct.ap_uint<64>", (struct<"struct.ap_int_base<64, false>", (struct<"struct.ssdm_int<64, false>", (i64)>)>)>)>>) attributes {llvm.alwaysinline, "llvm.string.correctly-rounded-divide-sqrt-fp-math" = "false", "llvm.string.disable-tail-calls" = "false", "llvm.string.less-precise-fpmad" = "false", "llvm.string.no-frame-pointer-elim" = "true", "llvm.string.no-frame-pointer-elim-non-leaf" = "", "llvm.string.no-infs-fp-math" = "false", "llvm.string.no-jump-tables" = "false", "llvm.string.no-nans-fp-math" = "false", "llvm.string.no-signed-zeros-fp-math" = "false", "llvm.string.no-trapping-math" = "false", "llvm.string.stack-protector-buffer-size" = "8", "llvm.string.unsafe-fp-math" = "false", "llvm.string.use-soft-float" = "false"} {
     %0 = llvm.mlir.constant(0 : i32) : i32
     %1 = llvm.mlir.constant(0 : i32) : i32

@@ -75,10 +75,6 @@ def santize_llvm(llvm: str) -> str:
   llvm = re.sub(r', !dbg ![0-9]*', r'', llvm)
   llvm = re.sub(r'!dbg ![0-9]*', r'', llvm)
 
-  # (8) TODO: temporary workaround:
-  # sideeffect function call must have a body which is not emitted now.
-  llvm = re.sub(r'call void @llvm.sideeffect\(\)', r'', llvm)
-
   return llvm
 
 

@@ -161,6 +161,72 @@ def LLVM_AssumeOp : LLVM_Op<"intr.assume", []> {
   }];
 }
 
+//
+// Intrinsics with operation bundle suppport.
+//
+class LLVM_OpBundleBaseOp<string name, int numResults, int numOperands>
+    : LLVM_IntrOp<name, [], [], [], numResults> {
+
+  string resultPattern = !if(!gt(numResults, 1),
+                             LLVM_IntrPatterns.structResult,
+                             LLVM_IntrPatterns.result);
+  string enumName = !subst(".", "_", name);
+
+  let arguments = (ins Variadic<AnyType>:$operands);
+
+  // Custom builder to convert the size attribute to operand bundle.
+  string llvmBuilder = [{
+    std::vector<llvm::OperandBundleDef> bundles;
+    std::string prefix = "llvm.bundle.";
+    auto operands = moduleTranslation.lookupValues(opInst.getOperands());
+
+    for (auto attr : opInst.getAttrs()) {
+      auto name = attr.getName().getValue().str();
+
+      if (name.rfind(prefix, 0) == 0) {
+        auto count = attr.getValue().dyn_cast<IntegerAttr>()
+                         .getValue().getZExtValue();
+
+        // Move the operands belonging to the bundle.
+        SmallVector<llvm::Value *, 4> bundle_operands;
+        for (size_t i = 0; i < count; i++) {
+          bundle_operands.push_back(operands[}] # numOperands # [{]);
+          operands.erase(operands.begin() + }] # numOperands # [{);
+        }
+
+        bundles.emplace_back(name.substr(prefix.length()), bundle_operands);
+      }
+    }
+
+    llvm::Module *module = builder.GetInsertBlock()->getModule();
+    llvm::Function *fn = llvm::Intrinsic::getDeclaration(
+        module, llvm::Intrinsic::}] # enumName # [{, {});
+    auto *inst = builder.CreateCall(fn, operands, bundles);
+
+  }] # !if(!gt(numResults, 0), "$res = inst;", "(void) inst;");
+
+  let assemblyFormat = "`(` $operands `)` attr-dict "
+    "`:` type($operands)";
+} 
+
+//
+// SideEffect intrinsics.
+//
+
+def LLVM_SideEffectOp : LLVM_OpBundleBaseOp<"sideeffect", 0, 0> {
+}
+
+//
+// Directive Scope intrinsics.
+//
+
+def LLVM_DirectiveScopeEntryOp : LLVM_OpBundleBaseOp<"directive.scope.entry", 1, 0> {
+  let assemblyFormat = "`(` $operands `)` attr-dict "
+    "`:` functional-type($operands, $res)";
+}
+
+def LLVM_DirectiveScopeExitOp : LLVM_OpBundleBaseOp<"directive.scope.exit", 0, 1> {
+}
 
 //
 // Coroutine intrinsics.

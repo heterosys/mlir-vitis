@@ -11,6 +11,7 @@
 //===----------------------------------------------------------------------===//
 
 #include "mlir/IR/BuiltinAttributes.h"
+#include "mlir/Support/LogicalResult.h"
 #include "mlir/Target/LLVMIR/Import.h"
 
 #include "mlir/Dialect/DLTI/DLTI.h"
@@ -30,12 +31,15 @@
 #include "llvm/IR/DerivedTypes.h"
 #include "llvm/IR/Function.h"
 #include "llvm/IR/InlineAsm.h"
+#include "llvm/IR/InstrTypes.h"
 #include "llvm/IR/Instructions.h"
 #include "llvm/IR/Intrinsics.h"
 #include "llvm/IR/Type.h"
 #include "llvm/IRReader/IRReader.h"
+#include "llvm/Support/Casting.h"
 #include "llvm/Support/Error.h"
 #include "llvm/Support/SourceMgr.h"
+#include <cstddef>
 #include <string>
 
 using namespace mlir;
@@ -971,24 +975,48 @@ LogicalResult Importer::processInstruction(llvm::Instruction *inst) {
         return failure();
       tys.push_back(type);
     }
+
+    // Attach operand bundles as the operation operands
+    size_t numBundles = ci->getNumOperandBundles();
+    for (size_t i = 0; i != numBundles; i++) {
+      auto bundle = ci->getOperandBundleAt(i);
+      for (auto &input : bundle.Inputs) {
+        Value arg = processValue(input.get());
+        if (!arg)
+          return failure();
+        ops.push_back(arg);
+      }
+    }
+
     Operation *op;
+
     if (llvm::Function *callee = ci->getCalledFunction()) {
-      // For all intrinsics, try to generate to the corresponding op.
-      if (callee->isIntrinsic()) {
+      auto createIntrinsicOp = [&] {
+        if (!callee->isIntrinsic())
+          return (Operation *)nullptr;
+
         auto id = callee->getIntrinsicID();
         StringRef opName = lookupOperationNameFromIntrinsicID(id);
-        if (!opName.empty()) {
-          OperationState state(loc, opName);
-          state.addOperands(ops);
-          state.addTypes(tys);
-          Operation *op = b.create(state);
-          if (!inst->getType()->isVoidTy())
-            instMap[inst] = op->getResult(0);
-          return success();
-        }
-      }
-      op = b.create<CallOp>(
-          loc, tys, SymbolRefAttr::get(b.getContext(), callee->getName()), ops);
+        if (opName.empty())
+          return (Operation *)nullptr;
+
+        OperationState state(loc, opName);
+        state.addOperands(ops);
+        state.addTypes(tys);
+        Operation *op = b.create(state);
+        if (!inst->getType()->isVoidTy())
+          instMap[inst] = op->getResult(0);
+
+        return op;
+      };
+
+      // For all intrinsics, try to generate to the corresponding op.
+      op = createIntrinsicOp();
+      if (!op)
+        op = b.create<CallOp>(
+            loc, tys, SymbolRefAttr::get(b.getContext(), callee->getName()),
+            ops);
+
     } else {
       Value calledValue = processValue(ci->getCalledOperand());
       if (!calledValue)
@@ -996,8 +1024,18 @@ LogicalResult Importer::processInstruction(llvm::Instruction *inst) {
       ops.insert(ops.begin(), calledValue);
       op = b.create<CallOp>(loc, tys, ops);
     }
+
+    // set attribute value to be the count of the inputs
+    for (size_t i = 0; i != numBundles; i++) {
+      auto bundle = ci->getOperandBundleAt(i);
+      auto name = bundle.getTagName().str();
+      op->setAttr("llvm.bundle." + name,
+                  b.getI64IntegerAttr(bundle.Inputs.size()));
+    }
+
     if (!ci->getType()->isVoidTy())
       instMap[inst] = op->getResult(0);
+
     return success();
   }
   case llvm::Instruction::LandingPad: {

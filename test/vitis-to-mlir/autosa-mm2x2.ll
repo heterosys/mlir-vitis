@@ -2163,6 +2163,8 @@ entry2:                                           ; preds = %arrayctor.loop
 
 entry1:                                           ; preds = %entry2
   %4 = getelementptr inbounds [4 x %"struct.ap_uint<64>"], [4 x %"struct.ap_uint<64>"]* %data_split, i32 0, i32 0, !dbg !15019
+
+  ; CHECK-DAG: llvm.bundle.xlx_array_partition = 5
   call void @llvm.sideeffect() #44 [ "xlx_array_partition"(%"struct.ap_uint<64>"* %4, i32 2, i32 0, i32 1, i1 false) ], !dbg !15019
   %5 = load i1, i1* %intra_trans_en.addr, align 1, !dbg !15020
   br i1 %5, label %if.end, label %if.then, !dbg !15022
