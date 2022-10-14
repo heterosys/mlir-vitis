@@ -40,21 +40,14 @@ def entry_point(verbose, file):
             stdin=PIPE,
             stderr=PIPE)
 
-  try:
-    mlir, err = p.communicate(input=llvm.encode())
+  mlir, err = p.communicate(input=llvm.encode())
 
-    # Print out MLIR code
-    if p.returncode == 0:
-      print(mlir.decode())
+  # Print out MLIR code
+  if p.returncode == 0:
+    print(mlir.decode())
 
-    if verbose or p.returncode != 0:
-      # Debug information
-      print(err.decode(), file=sys.stderr)
-
-  except:
-    # Error happens
-    p.kill()
-    _, err = p.communicate()
+  if verbose or p.returncode != 0:
+    # Debug information
     print(err.decode(), file=sys.stderr)
 
 
