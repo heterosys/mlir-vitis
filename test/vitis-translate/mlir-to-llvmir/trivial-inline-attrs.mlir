@@ -1,4 +1,4 @@
-// RUN: vitis-translate --mlir-to-llvmir %s | FileCheck %s
+// RUN: vitis-translate --mlir-to-llvmir -opaque-pointers=0 %s | FileCheck %s
 
 module {
 // CHECK: define void @kernel1() #0
