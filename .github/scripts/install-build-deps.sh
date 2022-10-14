@@ -20,3 +20,4 @@ sudo -H python3 -m pip install cmake
 sudo -H python3 -m pip install ninja
 sudo -H python3 -m pip install lit
 sudo -H python3 -m pip install psutil
+sudo -H python3 -m pip install click
