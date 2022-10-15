@@ -25624,8 +25624,12 @@ attributes #50 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" }
 !12442 = !DILocation(line: 53, column: 66, scope: !12419)
 !12443 = distinct !{!12443, !12421, !12444, !12445, !12447}
 !12444 = !DILocation(line: 62, column: 13, scope: !12413)
+
+; CHECK-DAG: llvm.loop.pipeline.enable = [1 : i32, false, -1 : i8]
 !12445 = !{!"llvm.loop.pipeline.enable", i32 1, i1 false, i8 -1, !12446}
 !12446 = !DILocation(line: 54, column: 9, scope: !12413)
+
+; CHECK-DAG: llvm.loop.name = "VITIS_LOOP_53_6"
 !12447 = !{!"llvm.loop.name", !"VITIS_LOOP_53_6"}
 !12448 = !DILocation(line: 63, column: 11, scope: !12414)
 !12449 = !DILocation(line: 50, column: 61, scope: !12407)
@@ -28276,6 +28280,9 @@ attributes #50 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" }
 !15094 = !DILocation(line: 116, column: 59, scope: !15080)
 !15095 = distinct !{!15095, !15082, !15096, !15097, !15099}
 !15096 = !DILocation(line: 120, column: 11, scope: !15075)
+
+
+; CHECK-DAG: llvm.loop.unroll.full
 !15097 = !{!"llvm.loop.unroll.full", !15098}
 !15098 = !DILocation(line: 117, column: 9, scope: !15075)
 !15099 = !{!"llvm.loop.name", !"VITIS_LOOP_116_4"}

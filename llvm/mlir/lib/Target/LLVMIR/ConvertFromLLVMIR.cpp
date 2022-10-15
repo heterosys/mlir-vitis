@@ -919,10 +919,64 @@ LogicalResult Importer::processInstruction(llvm::Instruction *inst) {
         auto *subMd = cast<llvm::MDNode>(md->getOperand(i));
         auto *subName = llvm::dyn_cast<llvm::MDString>(subMd->getOperand(0));
 
-        if (subName && subName->getString() == "llvm.loop.name") {
+        if (!subName)
+          continue;
+        auto nameStr = subName->getString().str();
+
+        auto getIntegerOperand = [&](size_t index) {
+          return llvm::dyn_cast<llvm::ConstantInt>(
+                     llvm::dyn_cast<llvm::ConstantAsMetadata>(
+                         subMd->getOperand(index))
+                         ->getValue())
+              ->getSExtValue();
+        };
+
+        if (nameStr == "llvm.loop.name") {
           auto *loopName = llvm::dyn_cast<llvm::MDString>(subMd->getOperand(1));
-          state.addAttribute(subName->getString(),
-                             b.getStringAttr(loopName->getString()));
+          state.addAttribute(nameStr, b.getStringAttr(loopName->getString()));
+
+          // The folllowing are adapted from clang/lib/CodeGen/CGLoopInfo.cpp
+          // of Xilinx/hls-llvm-project and may be copyrighted by Xilinx.
+          // The original code was licensed with Apache.
+        } else if (std::set<std::string>({"llvm.loop.vectorize.width",
+                                          "llvm.loop.interleave.count",
+                                          "llvm.loop.unroll.count",
+                                          "llvm.loop.unroll.withoutcheck"})
+                       .count(nameStr)) {
+          state.addAttribute(nameStr,
+                             b.getI32IntegerAttr(getIntegerOperand(1)));
+
+        } else if (std::set<std::string>({"llvm.loop.vectorize.enable",
+                                          "llvm.loop.distribute.enable",
+                                          "llvm.loop.flatten.enable",
+                                          "llvm.loop.dataflow.enable"})
+                       .count(nameStr)) {
+          state.addAttribute(
+              nameStr, b.getIntegerAttr(b.getI1Type(), getIntegerOperand(1)));
+
+        } else if (nameStr == "llvm.loop.pipeline.enable") {
+          state.addAttribute(
+              nameStr,
+              b.getArrayAttr(
+                  {b.getI32IntegerAttr(getIntegerOperand(1)),
+                   b.getIntegerAttr(b.getI1Type(), getIntegerOperand(2)),
+                   b.getI8IntegerAttr(getIntegerOperand(3))}));
+
+        } else if (nameStr == "llvm.loop.latency") {
+          state.addAttribute(
+              nameStr,
+              b.getArrayAttr({b.getI32IntegerAttr(getIntegerOperand(1)),
+                              b.getI32IntegerAttr(getIntegerOperand(2))}));
+
+        } else if (nameStr == "llvm.loop.tripcount") {
+          state.addAttribute(
+              nameStr,
+              b.getArrayAttr({b.getI32IntegerAttr(getIntegerOperand(1)),
+                              b.getI32IntegerAttr(getIntegerOperand(2)),
+                              b.getI32IntegerAttr(getIntegerOperand(3))}));
+
+        } else {
+          state.addAttribute(subName->getString(), b.getUnitAttr());
         }
       }
     }
