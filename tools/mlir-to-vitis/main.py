@@ -91,7 +91,8 @@ def add_entry_label(llvm: str) -> str:
     # Look for the last parameter value
     value = re.findall(r"%([0-9][0-9]*)[^%]*$", line)
 
-    lines[i] += '\nv' + str(int(value[-1]) + 1) + ':'
+    if value:
+      lines[i] += '\nv' + str(int(value[-1]) + 1) + ':'
 
   return '\n'.join(lines)
 

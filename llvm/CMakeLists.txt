@@ -15,25 +15,9 @@
 include(FetchContent)
 FetchContent_Declare(
   llvm
-  URL "https://github.com/heterosys/llvm-nightly/archive/refs/tags/snapshot-20220926.tar.gz"
-  PATCH_COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/llvm/include/llvm/IR/CMakeLists.txt llvm/include/llvm/IR/CMakeLists.txt
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/llvm/include/llvm/IR/Intrinsics.td llvm/include/llvm/IR/Intrinsics.td
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/llvm/include/llvm/IR/IntrinsicsFPGA.td llvm/include/llvm/IR/IntrinsicsFPGA.td
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/llvm/include/llvm/IR/IntrinsicsSPIR.td llvm/include/llvm/IR/IntrinsicsSPIR.td
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/llvm/lib/IR/Verifier.cpp llvm/lib/IR/Verifier.cpp
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/include/mlir/Dialect/LLVMIR/LLVMIntrinsicOps.td mlir/include/mlir/Dialect/LLVMIR/LLVMIntrinsicOps.td
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/include/mlir/Dialect/LLVMIR/LLVMOpBase.td mlir/include/mlir/Dialect/LLVMIR/LLVMOpBase.td
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/lib/Target/LLVMIR/ConvertFromLLVMIR.cpp mlir/lib/Target/LLVMIR/ConvertFromLLVMIR.cpp
-  COMMAND
-  ln -sf ${CMAKE_CURRENT_LIST_DIR}/mlir/lib/Target/LLVMIR/ModuleTranslation.cpp mlir/lib/Target/LLVMIR/ModuleTranslation.cpp
+  GIT_REPOSITORY "https://github.com/heterosys-fork/llvm-project.git"
+  GIT_TAG origin/main
+  GIT_SHALLOW TRUE
 )
 
 FetchContent_GetProperties(llvm)
