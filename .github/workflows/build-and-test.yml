@@ -47,12 +47,6 @@ jobs:
             -DLLVM_EXTERNAL_LIT=`which lit` \
             -G Ninja
 
-      - name: Cache dependencies
-        uses: actions/cache@v1
-        with:
-          path: build/_deps/
-          key: ${{ matrix.os }}-deps-202210-2
-
       - name: Build myself
         run: cmake --build build --target all
 
